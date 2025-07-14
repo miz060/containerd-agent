@@ -1,0 +1,53 @@
+# Azure OpenAI Training Data Generator Configuration Template
+# Copy this file to azure_openai_config.txt and update with your values
+
+## Authentication Setup
+# Using Azure AD authentication (no API key needed):
+
+# 1. Login to Azure CLI
+az login
+
+# 2. Set environment variables with your Azure OpenAI resource details
+export AZURE_OPENAI_ENDPOINT="https://your-resource-name.openai.azure.com/"
+export AZURE_OPENAI_DEPLOYMENT="gpt-4o"
+
+## Usage Examples
+
+# Basic usage with 500 files (recommended for full coverage)
+python3 agentic/generate_azure_openai_training_data.py \
+  --repo-path /workspace/upstream/containerd \
+  --output-path output/containerd_training_data_azure.jsonl \
+  --max-files 500 \
+  --max-qa-per-file 12
+
+# Large scale processing (for comprehensive training data)
+python3 agentic/generate_azure_openai_training_data.py \
+  --repo-path /workspace/upstream/containerd \
+  --output-path output/containerd_training_data_large.jsonl \
+  --max-files 1000 \
+  --max-qa-per-file 15
+
+# Cost-optimized processing (for budget-conscious scenarios)
+python3 agentic/generate_azure_openai_training_data.py \
+  --repo-path /workspace/upstream/containerd \
+  --output-path output/containerd_training_data_cost_optimized.jsonl \
+  --max-files 200 \
+  --max-qa-per-file 8
+
+## Expected Output
+# With 500 files × 10 Q&A pairs average = ~5,000 training examples
+# With 1000 files × 12 Q&A pairs average = ~12,000 training examples
+
+## Cost Estimation (approximate)
+# GPT-4o: ~$0.005 per 1K tokens input, ~$0.015 per 1K tokens output  
+# Average file analysis: ~2K tokens input, ~1K tokens output = ~$0.025 per file
+# 500 files: ~$12.50
+# 1000 files: ~$25.00
+
+## Quality Benefits
+# - Deep code analysis by GPT-4o
+# - Contextual understanding of containerd architecture
+# - Diverse question types (technical, practical, architectural)
+# - High-quality answers with proper technical depth
+# - Better coverage of edge cases and integration points
+# - Azure AD authentication (no API key management needed)
