@@ -256,7 +256,7 @@ SOURCE CODE:
 {file_content}
 ```
 
-Generate 8-12 diverse question-answer pairs that would help train an AI assistant to be an expert in containerd. Focus on:
+Generate exactly {max_qa_pairs} diverse question-answer pairs that would help train an AI assistant to be an expert in containerd. Focus on:
 
 1. **File Purpose**: What does this file do in the containerd architecture?
 2. **Key Functions**: What are the most important exported functions and what do they do?
@@ -281,13 +281,15 @@ Example format:
 ]
 
 Generate questions that would actually be asked by developers working with containerd, not generic questions.
+IMPORTANT: Generate exactly {max_qa_pairs} question-answer pairs, no more, no less.
 """.format(
             relative_path=relative_path,
             package=file_info.package,
             function_count=file_info.function_count,
             has_structs=file_info.has_structs,
             has_interfaces=file_info.has_interfaces,
-            file_content=file_content
+            file_content=file_content,
+            max_qa_pairs=self.max_qa_per_file
         )
         return prompt
 
