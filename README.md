@@ -1,17 +1,16 @@
-# Azure OpenAI Training Data 5. **Generate training data**:
-   ```bash
-   # Small test with rate limiting (3 files per minute)
-   python3 code-scanner/generate_code_training_data.py --max-files 10 --max-qa-entries 3 --max-files-per-minute 3
-   
-   # Production run with TPM quota respect (6 files per minute for 100K TPM)
-   python3 code-scanner/generate_code_training_data.py --max-files 500 --max-qa-entries 12 --max-files-per-minute 6
-   ```r
+# Containerd Agent Training Data Generator
 
-This system generates high-quality fine-tuning data for Azure OpenAI by analyzing code repositories. The `code-scanner/` folder contains scripts that use Azure OpenAI GPT-4 to create training data from code content - currently configured for the containerd repository but can be adapted for any code repository.
+This system generates high-quality fine-tuning data for Azure OpenAI by analyzing the containerd repository. It creates comprehensive training datasets from both source code and GitHub issues using Azure OpenAI GPT-4o. The generated data is specifically formatted for supervised fine-tuning of Azure OpenAI models to create containerd domain experts.
+
+**Note**: While configured for containerd, this system can be easily adapted to work with any code repository by changing the repository path and adjusting the priority scoring logic.
 
 ## Quick Setup
 
-1. **Prerequisites**: Azure OpenAI resource with GPT-4o deployment, Azure CLI, Python 3.8+
+1. **Prerequisites**: 
+   - Azure OpenAI resource with GPT-4o deployment
+   - Azure CLI installed and configured (`az login`)
+   - Python 3.8+ 
+   - GitHub token (for issue mining)
 
 2. **Install dependencies**:
    ```bash
@@ -19,126 +18,139 @@ This system generates high-quality fine-tuning data for Azure OpenAI by analyzin
    pip install -r requirements.txt
    ```
 
-3. **Configure Azure OpenAI**:
+3. **Configure environment**:
    ```bash
-   # Login to Azure
-   az login
-   
-   # Copy template and edit with your values
    cp .env.template .env
-   # Edit .env with your actual Azure OpenAI endpoint and deployment
+   # Edit .env with your Azure OpenAI endpoint, deployment, and GitHub token
    ```
 
 4. **Test the setup**:
    ```bash
-   python3 code-scanner/test_azure_openai_generator.py
+   python3 code-scanner/test_code_training_generator.py
    ```
 
-5. **Generate training data**:
-   ```bash
-   # Small test with rate limiting (3 files per minute)
-   python3 code-scanner/generate_code_training_data.py --max-files 10 --max-qa-entries 3 --max-files-per-minute 3
-   
-   # Production run with TPM quota respect (6 files per minute for 100K TPM)
-   python3 code-scanner/generate_code_training_data.py --max-files 500 --max-qa-entries 12 --max-files-per-minute 6
-   ```
+## Usage
 
-6. **Full repository processing (long-running job)**:
-   ```bash
-   # Process all containerd files safely in background (~2.5 hours)
-   nohup python3 -u code-scanner/generate_code_training_data.py \
-     --max-files 855 \
-     --max-qa-entries 5 \
-     --max-files-per-minute 6 \
-     --output-path output/containerd_full_training_data.jsonl \
-     > output/generation.log 2>&1 &
-   
-   echo "Background job started. PID: $!"
-   ```
+### Code Training Data Generation
 
-## GitHub Issues Training Data Generation
+Generate training data from containerd source code:
 
-Generate training data from GitHub issues using the same Azure OpenAI approach:
-
-### 1. **Fetch GitHub Issues**:
 ```bash
-# Fetch ALL issues from last 2 years (prioritized by bugs, questions, maintainer responses)
-python3 issue-miner/prioritize_github_issues.py --output-path output/github_issues_metadata.json
+# Test run (10 Q&A pairs from 5 files)
+python3 code-scanner/generate_code_training_data.py \
+  --max-files 5 --max-qa-entries 10 --max-files-per-minute 3
 
-# Or limit to top 500 issues
-python3 issue-miner/prioritize_github_issues.py --max-issues 500 --output-path output/github_issues_metadata.json
+# Production run (6,000 Q&A pairs from 855 files, ~$180, 5 hours)
+python3 code-scanner/generate_code_training_data.py \
+  --max-files 855 --max-qa-entries 6000 --max-files-per-minute 6
+
+# Maximum coverage (12,000 Q&A pairs, ~$360, 10 hours)
+python3 code-scanner/generate_code_training_data.py \
+  --max-files 855 --max-qa-entries 12000 --max-files-per-minute 6
 ```
 
-### 2. **Generate Training Data from Issues**:
+### GitHub Issues Training Data Generation
+
+Generate training data from GitHub issues:
+
 ```bash
-# Small test (10 issues)
-python3 issue-miner/generate_issue_training_data.py --max-issues 10 --max-issues-per-minute 3
+# Step 1: Fetch and prioritize issues (one-time)
+python3 issue-miner/prioritize_github_issues.py
 
-# Production run (100 issues)
-python3 issue-miner/generate_issue_training_data.py --max-issues 100 --max-issues-per-minute 6
+# Step 2: Generate training data (3,000 Q&A pairs, ~$25, 3 hours)
+python3 issue-miner/generate_issue_training_data.py \
+  --max-qa-entries 3000 --max-issues-per-minute 6
 ```
 
-### 3. **Combined approach** (recommended for comprehensive training):
+### Background Processing
+
+For long-running jobs:
+
 ```bash
-# First fetch issues
-python3 issue-miner/prioritize_github_issues.py --max-issues 200
+# Code training (background)
+nohup python3 -u code-scanner/generate_code_training_data.py \
+  --max-files 855 --max-qa-entries 12000 --max-files-per-minute 6 \
+  > output/code_generation.log 2>&1 &
 
-# Then generate training data
-python3 issue-miner/generate_issue_training_data.py --max-issues 100
+# Issue training (background)
+nohup python3 -u issue-miner/generate_issue_training_data.py \
+  --max-qa-entries 3000 --max-issues-per-minute 6 \
+  > output/issue_generation.log 2>&1 &
 ```
 
-## Q&A Allocation System
+## Key Features
 
-The system now uses a unified Q&A allocation utility (`utils/qa_allocation.py`) that ensures:
+### Smart Q&A Allocation
+- **Priority-based**: Higher priority items get more Q&A pairs
+- **Quota management**: Total Q&A pairs distributed according to global quota
+- **Fair distribution**: Lower priority items still get at least 1 Q&A pair
+- **Per-file limits**: Prevents any single file from dominating (max 20 Q&A per file)
 
-1. **Priority-based allocation**: Higher priority items get more Q&A pairs
-2. **Quota management**: Total Q&A pairs are distributed according to a global quota
-3. **Fair distribution**: Lower priority items still get at least 1 Q&A pair
-4. **Validation**: Allocation constraints are validated before processing
+### Rate Limiting & Cost Control
+- **TPM-aware**: Respects Azure OpenAI 100K TPM quotas
+- **Cost estimation**: Real-time cost tracking and estimates
+- **Efficient processing**: 6 files/issues per minute for stable processing
 
-### Usage in Issue-Miner
+### Security & Configuration
+- **Environment variables**: All sensitive config in `.env` (git-excluded)
+- **Azure AD authentication**: Uses Azure CLI credentials
+- **No hardcoded secrets**: All endpoints and tokens via environment variables
 
-The issue-miner uses `calculate_qa_allocation()` to allocate Q&A pairs based on issue priority scores:
+## Components
 
-```python
-qa_allocation = calculate_qa_allocation(
-    items=issues,
-    max_qa_entries=max_qa_entries,
-    priority_field="priority_score",
-    id_field="number"
-)
-```
-
-### Usage in Code-Scanner
-
-The code-scanner uses `calculate_file_qa_allocation()` for file-based allocation with additional per-file limits:
-
-```python
-qa_allocation = calculate_file_qa_allocation(
-    files_data=files_for_allocation,
-    max_qa_entries=max_qa_entries,
-    max_qa_per_file=20,
-    priority_field='priority_score',
-    file_path_field='path'
-)
-```
-
-### Key Features
-
-- **Weighted distribution**: Q&A pairs are allocated proportionally to priority scores
-- **Minimum guarantees**: Each item gets at least 1 Q&A pair (if quota allows)
-- **Maximum limits**: Per-file limits prevent any single file from dominating
-- **Validation**: Built-in validation ensures constraints are met
-- **Debugging**: Detailed allocation summaries for monitoring
-
-## What's Included
-
-- **`code-scanner/`**: Scripts for AI-powered training data generation from code repositories
-- **`issue-miner/`**: Scripts for mining GitHub issues and generating training data from issue conversations
-- **`static/`**: Template-based training data generation (faster, less detailed)
+- **`code-scanner/`**: AI-powered training data from Go source files
+- **`issue-miner/`**: GitHub issues mining and training data generation
+- **`utils/`**: Shared Q&A allocation and processing utilities
 - **`output/`**: Generated JSONL files and metadata
-- **Templates**: Safe configuration templates (`.env.template`, `azure_openai_config.template.txt`)
 
-## Security
+## Cost Estimation
 
-All personal configuration is excluded from git commits via `.gitignore`. The system uses Azure AD authentication for secure access to Azure OpenAI.
+| Component | Q&A Pairs | Cost | Time |
+|-----------|-----------|------|------|
+| Issue data | 3,000 | ~$25 | 3 hours |
+| Code data (balanced) | 6,000 | ~$180 | 5 hours |
+| Code data (maximum) | 12,000 | ~$360 | 10 hours |
+| **Combined maximum** | **15,000** | **~$385** | **13 hours** |
+
+## Output Format
+
+Generated training data is in JSONL format compatible with Azure OpenAI fine-tuning:
+
+```json
+{
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are an expert in containerd..."
+    },
+    {
+      "role": "user", 
+      "content": "How do I configure containerd snapshotter?"
+    },
+    {
+      "role": "assistant",
+      "content": "To configure containerd snapshotter..."
+    }
+  ],
+  "metadata": {
+    "source": "code_file",
+    "file_path": "client/client.go",
+    "priority_score": 32.0
+  }
+}
+```
+
+## Monitoring Progress
+
+Check logs for real-time progress:
+
+```bash
+# Watch current generation
+tail -f output/code_generation.log
+tail -f output/issue_generation.log
+
+# Check allocation summary
+grep "Q&A Allocation Summary" output/*.log
+```
+
+This system creates comprehensive, high-quality training data for fine-tuning Azure OpenAI models on containerd expertise.
