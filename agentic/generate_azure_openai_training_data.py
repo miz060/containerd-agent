@@ -36,17 +36,19 @@ class AzureOpenAITrainingDataGenerator:
     def __init__(self, 
                  repo_path: str = "/workspace/upstream/containerd",
                  output_path: str = "/workspace/containerd-agent/output/containerd_training_data_azure.jsonl",
-                 max_files: int = 500,  # Increased from 50
-                 max_qa_per_file: int = 12,  # Increased for better coverage
+                 max_files: int = 500,  # Overall limit
+                 max_qa_per_file: int = 12,  # Q&A pairs per file
                  azure_endpoint: str = None,
                  azure_deployment: str = "gpt-4o",
-                 batch_size: int = 10):
+                 batch_size: int = 10,
+                 max_files_per_minute: int = 6):  # New: Rate limiting parameter
         
         self.repo_path = Path(repo_path)
         self.output_path = Path(output_path)
         self.max_files = max_files
         self.max_qa_per_file = max_qa_per_file
         self.batch_size = batch_size
+        self.max_files_per_minute = max_files_per_minute
         
         # Azure OpenAI configuration
         self.azure_endpoint = azure_endpoint or os.getenv("AZURE_OPENAI_ENDPOINT")
@@ -391,6 +393,7 @@ IMPORTANT: Generate exactly {max_qa_pairs} question-answer pairs, no more, no le
         print(f"Output: {self.output_path}")
         print(f"Max files: {self.max_files}")
         print(f"Max Q&A per file: {self.max_qa_per_file}")
+        print(f"Rate limit: {self.max_files_per_minute} files/minute")
         print(f"Azure deployment: {self.azure_deployment}")
         
         # Scan repository
@@ -400,24 +403,35 @@ IMPORTANT: Generate exactly {max_qa_pairs} question-answer pairs, no more, no le
             print("No Go files found to process!")
             return
         
-        # Process files in batches
+        # Process files with rate limiting
         all_qa_pairs = []
+        files_processed_in_current_minute = 0
+        minute_start_time = time.time()
         
-        for i in range(0, len(files_to_process), self.batch_size):
-            batch = files_to_process[i:i + self.batch_size]
-            print(f"\nProcessing batch {i//self.batch_size + 1}/{(len(files_to_process) + self.batch_size - 1)//self.batch_size}")
+        for i, file_info in enumerate(files_to_process):
+            print(f"Processing file {i+1}/{len(files_to_process)}: {Path(file_info.path).relative_to(self.repo_path)}")
             
-            for file_info in batch:
-                print(f"  Processing: {Path(file_info.path).relative_to(self.repo_path)}")
+            # Check if we need to wait for the next minute
+            if files_processed_in_current_minute >= self.max_files_per_minute:
+                elapsed_time = time.time() - minute_start_time
+                if elapsed_time < 60:
+                    wait_time = 60 - elapsed_time
+                    print(f"  Rate limit reached ({self.max_files_per_minute} files/minute). Waiting {wait_time:.1f} seconds...")
+                    time.sleep(wait_time)
                 
-                qa_pairs = self.process_file(file_info)
-                all_qa_pairs.extend(qa_pairs)
-                
-                self.stats['files_processed'] += 1
-                self.stats['qa_pairs_generated'] += len(qa_pairs)
-                
-                # Add delay to avoid rate limiting
-                time.sleep(1)
+                # Reset counters for the new minute
+                files_processed_in_current_minute = 0
+                minute_start_time = time.time()
+            
+            qa_pairs = self.process_file(file_info)
+            all_qa_pairs.extend(qa_pairs)
+            
+            self.stats['files_processed'] += 1
+            self.stats['qa_pairs_generated'] += len(qa_pairs)
+            files_processed_in_current_minute += 1
+            
+            # Add small delay between requests to avoid overwhelming the API
+            time.sleep(1)
         
         # Write to JSONL file
         with open(self.output_path, 'w', encoding='utf-8') as f:
@@ -431,7 +445,8 @@ IMPORTANT: Generate exactly {max_qa_pairs} question-answer pairs, no more, no le
                 'repo_path': str(self.repo_path),
                 'azure_deployment': self.azure_deployment,
                 'max_files': self.max_files,
-                'max_qa_per_file': self.max_qa_per_file
+                'max_qa_per_file': self.max_qa_per_file,
+                'max_files_per_minute': self.max_files_per_minute
             },
             'stats': self.stats,
             'files_processed': [
@@ -465,11 +480,12 @@ def main():
     parser = argparse.ArgumentParser(description='Generate containerd training data using Azure OpenAI')
     parser.add_argument('--repo-path', default='/workspace/upstream/containerd', help='Path to containerd repository')
     parser.add_argument('--output-path', default='/workspace/containerd-agent/output/containerd_training_data_azure.jsonl', help='Output JSONL file path')
-    parser.add_argument('--max-files', type=int, default=500, help='Maximum number of files to process')
+    parser.add_argument('--max-files', type=int, default=500, help='Maximum number of files to process (overall limit)')
     parser.add_argument('--max-qa-per-file', type=int, default=12, help='Maximum Q&A pairs per file')
+    parser.add_argument('--max-files-per-minute', type=int, default=6, help='Maximum files to process per minute (rate limiting)')
     parser.add_argument('--azure-endpoint', help='Azure OpenAI endpoint')
     parser.add_argument('--azure-deployment', default='gpt-4o', help='Azure OpenAI deployment name')
-    parser.add_argument('--batch-size', type=int, default=10, help='Batch size for processing')
+    parser.add_argument('--batch-size', type=int, default=10, help='Batch size for processing (deprecated, use --max-files-per-minute)')
     
     args = parser.parse_args()
     
@@ -478,6 +494,7 @@ def main():
         output_path=args.output_path,
         max_files=args.max_files,
         max_qa_per_file=args.max_qa_per_file,
+        max_files_per_minute=args.max_files_per_minute,
         azure_endpoint=args.azure_endpoint,
         azure_deployment=args.azure_deployment,
         batch_size=args.batch_size

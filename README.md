@@ -29,11 +29,24 @@ This system generates high-quality fine-tuning data for Azure OpenAI by analyzin
 
 5. **Generate training data**:
    ```bash
-   # Small test (2 files)
-   python3 agentic/generate_azure_openai_training_data.py --max-files 2 --max-qa-per-file 3
+   # Small test with rate limiting (3 files per minute)
+   python3 agentic/generate_azure_openai_training_data.py --max-files 10 --max-qa-per-file 3 --max-files-per-minute 3
    
-   # Production run (500 files)
-   python3 agentic/generate_azure_openai_training_data.py --max-files 500 --max-qa-per-file 12
+   # Production run with TPM quota respect (6 files per minute for 100K TPM)
+   python3 agentic/generate_azure_openai_training_data.py --max-files 500 --max-qa-per-file 12 --max-files-per-minute 6
+   ```
+
+6. **Full repository processing (long-running job)**:
+   ```bash
+   # Process all containerd files safely in background (~2.5 hours)
+   nohup python3 -u agentic/generate_azure_openai_training_data.py \
+     --max-files 855 \
+     --max-qa-per-file 5 \
+     --max-files-per-minute 6 \
+     --output-path output/containerd_full_training_data.jsonl \
+     > output/generation.log 2>&1 &
+   
+   echo "Background job started. PID: $!"
    ```
 
 ## What's Included
