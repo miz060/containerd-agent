@@ -11,6 +11,7 @@ import re
 import time
 import random
 import hashlib
+import sys
 from pathlib import Path
 from typing import Dict, List, Any, Optional
 from dataclasses import dataclass
@@ -19,6 +20,10 @@ from collections import defaultdict
 # Azure OpenAI imports
 from openai import AzureOpenAI
 from azure.identity import AzureCliCredential, get_bearer_token_provider
+
+# Add utils directory to path
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from utils.qa_allocation import calculate_file_qa_allocation, print_allocation_summary, validate_qa_allocation
 
 @dataclass
 class FileInfo:
@@ -37,16 +42,16 @@ class AzureOpenAITrainingDataGenerator:
                  repo_path: str = "/workspace/upstream/containerd",
                  output_path: str = "/workspace/containerd-agent/output/containerd_training_data_azure.jsonl",
                  max_files: int = 500,  # Overall limit
-                 max_qa_per_file: int = 12,  # Q&A pairs per file
+                 max_qa_entries: int = 1500,  # Total Q&A pairs limit (replaces max_qa_per_file)
                  azure_endpoint: str = None,
                  azure_deployment: str = "gpt-4o",
                  batch_size: int = 10,
-                 max_files_per_minute: int = 6):  # New: Rate limiting parameter
+                 max_files_per_minute: int = 6):  # Rate limiting parameter
         
         self.repo_path = Path(repo_path)
         self.output_path = Path(output_path)
         self.max_files = max_files
-        self.max_qa_per_file = max_qa_per_file
+        self.max_qa_entries = max_qa_entries  # New: Total Q&A limit
         self.batch_size = batch_size
         self.max_files_per_minute = max_files_per_minute
         
@@ -240,7 +245,7 @@ class AzureOpenAITrainingDataGenerator:
         
         return go_files[:self.max_files]
 
-    def generate_training_prompt(self, file_info: FileInfo, file_content: str) -> str:
+    def generate_training_prompt(self, file_info: FileInfo, file_content: str, qa_count: int = 3) -> str:
         """Generate a comprehensive prompt for Azure OpenAI to analyze Go code"""
         relative_path = Path(file_info.path).relative_to(self.repo_path)
         
@@ -258,7 +263,7 @@ SOURCE CODE:
 {file_content}
 ```
 
-Generate exactly {max_qa_pairs} diverse question-answer pairs that would help train an AI assistant to be an expert in containerd. Focus on:
+Generate exactly {qa_count} diverse question-answer pairs that would help train an AI assistant to be an expert in containerd. Focus on:
 
 1. **File Purpose**: What does this file do in the containerd architecture?
 2. **Key Functions**: What are the most important exported functions and what do they do?
@@ -283,7 +288,7 @@ Example format:
 ]
 
 Generate questions that would actually be asked by developers working with containerd, not generic questions.
-IMPORTANT: Generate exactly {max_qa_pairs} question-answer pairs, no more, no less.
+IMPORTANT: Generate exactly {qa_count} question-answer pairs, no more, no less.
 """.format(
             relative_path=relative_path,
             package=file_info.package,
@@ -291,7 +296,7 @@ IMPORTANT: Generate exactly {max_qa_pairs} question-answer pairs, no more, no le
             has_structs=file_info.has_structs,
             has_interfaces=file_info.has_interfaces,
             file_content=file_content,
-            max_qa_pairs=self.max_qa_per_file
+            qa_count=qa_count
         )
         return prompt
 
@@ -333,7 +338,7 @@ IMPORTANT: Generate exactly {max_qa_pairs} question-answer pairs, no more, no le
             self.stats['errors'] += 1
             return None
 
-    def process_file(self, file_info: FileInfo) -> List[Dict[str, Any]]:
+    def process_file(self, file_info: FileInfo, qa_count: int = 3) -> List[Dict[str, Any]]:
         """Process a single file and generate training data"""
         try:
             with open(file_info.path, 'r', encoding='utf-8') as f:
@@ -345,7 +350,7 @@ IMPORTANT: Generate exactly {max_qa_pairs} question-answer pairs, no more, no le
         if len(content) > 8000:
             content = content[:8000] + "\n// ... (file truncated for analysis)"
         
-        prompt = self.generate_training_prompt(file_info, content)
+        prompt = self.generate_training_prompt(file_info, content, qa_count)
         qa_pairs = self.call_azure_openai(prompt)
         
         if not qa_pairs:
@@ -379,7 +384,13 @@ IMPORTANT: Generate exactly {max_qa_pairs} question-answer pairs, no more, no le
                         "role": "assistant", 
                         "content": qa['answer']
                     }
-                ]
+                ],
+                "metadata": {
+                    "source": "code_file",
+                    "file_path": str(Path(file_info.path).relative_to(self.repo_path)),
+                    "package": file_info.package,
+                    "priority_score": file_info.priority_score
+                }
             }
             
             jsonl_entries.append(jsonl_entry)
@@ -392,7 +403,7 @@ IMPORTANT: Generate exactly {max_qa_pairs} question-answer pairs, no more, no le
         print(f"Repository: {self.repo_path}")
         print(f"Output: {self.output_path}")
         print(f"Max files: {self.max_files}")
-        print(f"Max Q&A per file: {self.max_qa_per_file}")
+        print(f"Max Q&A entries: {self.max_qa_entries}")
         print(f"Rate limit: {self.max_files_per_minute} files/minute")
         print(f"Azure deployment: {self.azure_deployment}")
         
@@ -403,13 +414,53 @@ IMPORTANT: Generate exactly {max_qa_pairs} question-answer pairs, no more, no le
             print("No Go files found to process!")
             return
         
+        # Calculate Q&A allocation based on file priorities
+        files_for_allocation = []
+        for file_info in files_to_process:
+            files_for_allocation.append({
+                'path': file_info.path,
+                'priority_score': file_info.priority_score,
+                'package': file_info.package,
+                'function_count': file_info.function_count,
+                'title': f"{file_info.package}/{Path(file_info.path).name}"
+            })
+        
+        qa_allocation = calculate_file_qa_allocation(
+            files_data=files_for_allocation,
+            max_qa_entries=self.max_qa_entries,
+            max_qa_per_file=20,  # Max Q&A per individual file
+            priority_field='priority_score',
+            file_path_field='path'
+        )
+        
+        # Validate allocation
+        if not validate_qa_allocation(qa_allocation, self.max_qa_entries, max_qa_per_item=20):
+            print("❌ Q&A allocation validation failed!")
+            return
+        
+        # Print allocation summary
+        print_allocation_summary(
+            items=files_for_allocation,
+            allocation=qa_allocation,
+            priority_field='priority_score',
+            id_field='path',
+            title_field='title'
+        )
+        
         # Process files with rate limiting
         all_qa_pairs = []
         files_processed_in_current_minute = 0
         minute_start_time = time.time()
         
         for i, file_info in enumerate(files_to_process):
-            print(f"Processing file {i+1}/{len(files_to_process)}: {Path(file_info.path).relative_to(self.repo_path)}")
+            file_path = file_info.path
+            qa_count = qa_allocation.get(file_path, 0)
+            
+            if qa_count == 0:
+                print(f"Skipping file {i+1}/{len(files_to_process)}: {Path(file_path).relative_to(self.repo_path)} (no Q&A allocated)")
+                continue
+            
+            print(f"Processing file {i+1}/{len(files_to_process)}: {Path(file_path).relative_to(self.repo_path)} ({qa_count} Q&A pairs)")
             
             # Check if we need to wait for the next minute
             if files_processed_in_current_minute >= self.max_files_per_minute:
@@ -423,7 +474,7 @@ IMPORTANT: Generate exactly {max_qa_pairs} question-answer pairs, no more, no le
                 files_processed_in_current_minute = 0
                 minute_start_time = time.time()
             
-            qa_pairs = self.process_file(file_info)
+            qa_pairs = self.process_file(file_info, qa_count)
             all_qa_pairs.extend(qa_pairs)
             
             self.stats['files_processed'] += 1
@@ -445,18 +496,20 @@ IMPORTANT: Generate exactly {max_qa_pairs} question-answer pairs, no more, no le
                 'repo_path': str(self.repo_path),
                 'azure_deployment': self.azure_deployment,
                 'max_files': self.max_files,
-                'max_qa_per_file': self.max_qa_per_file,
+                'max_qa_entries': self.max_qa_entries,
                 'max_files_per_minute': self.max_files_per_minute
             },
             'stats': self.stats,
+            'qa_allocation': qa_allocation,
             'files_processed': [
                 {
                     'path': str(Path(f.path).relative_to(self.repo_path)),
                     'package': f.package,
                     'priority_score': f.priority_score,
-                    'function_count': f.function_count
+                    'function_count': f.function_count,
+                    'qa_pairs_allocated': qa_allocation.get(f.path, 0)
                 }
-                for f in files_to_process[:self.stats['files_processed']]
+                for f in files_to_process if qa_allocation.get(f.path, 0) > 0
             ]
         }
         
@@ -481,11 +534,11 @@ def main():
     parser.add_argument('--repo-path', default='/workspace/upstream/containerd', help='Path to containerd repository')
     parser.add_argument('--output-path', default='/workspace/containerd-agent/output/containerd_training_data_azure.jsonl', help='Output JSONL file path')
     parser.add_argument('--max-files', type=int, default=500, help='Maximum number of files to process (overall limit)')
-    parser.add_argument('--max-qa-per-file', type=int, default=12, help='Maximum Q&A pairs per file')
+    parser.add_argument('--max-qa-entries', type=int, default=1500, help='Maximum total Q&A pairs to generate across all files')
     parser.add_argument('--max-files-per-minute', type=int, default=6, help='Maximum files to process per minute (rate limiting)')
     parser.add_argument('--azure-endpoint', help='Azure OpenAI endpoint')
     parser.add_argument('--azure-deployment', default='gpt-4o', help='Azure OpenAI deployment name')
-    parser.add_argument('--batch-size', type=int, default=10, help='Batch size for processing (deprecated, use --max-files-per-minute)')
+    parser.add_argument('--batch-size', type=int, default=10, help='Batch size for processing (deprecated)')
     
     args = parser.parse_args()
     
@@ -493,7 +546,7 @@ def main():
         repo_path=args.repo_path,
         output_path=args.output_path,
         max_files=args.max_files,
-        max_qa_per_file=args.max_qa_per_file,
+        max_qa_entries=args.max_qa_entries,
         max_files_per_minute=args.max_files_per_minute,
         azure_endpoint=args.azure_endpoint,
         azure_deployment=args.azure_deployment,

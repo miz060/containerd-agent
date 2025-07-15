@@ -8,14 +8,16 @@ containerd-agent/
 ├── .gitignore                         # Git ignore file (excludes personal config)
 ├── 
 ├── code-scanner/                      # Azure OpenAI-powered code analysis
-│   ├── generate_azure_openai_training_data.py  # Main generator
-│   ├── test_azure_openai_generator.py          # Test script
+│   ├── generate_code_training_data.py  # Main generator
+│   ├── test_code_training_generator.py          # Test script
 │   └── hello_world.template.py                 # Simple test template
 ├── 
 ├── issue-miner/                       # GitHub issues training data generation
 │   ├── fetch_github_issues.py         # Fetch and prioritize GitHub issues
 │   └── generate_issue_training_data.py # Generate training data from issues
 ├── 
+├── utils/                             # Common utilities
+│   └── qa_allocation.py                # Q&A allocation utility
 └── output/                            # Generated training data
     ├── *.jsonl                        # Training data files
     ├── *.metadata.json               # Generation metadata
@@ -53,7 +55,7 @@ cp .env.template .env
 # Edit .env with your Azure OpenAI endpoint
 
 # Generate training data from source code
-python3 code-scanner/generate_azure_openai_training_data.py --max-files 500
+python3 code-scanner/generate_code_training_data.py --max-files 500
 ```
 
 ### GitHub Issues Analysis

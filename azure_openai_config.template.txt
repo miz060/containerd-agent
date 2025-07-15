@@ -14,21 +14,21 @@ export AZURE_OPENAI_DEPLOYMENT="gpt-4o"
 ## Usage Examples
 
 # Basic usage with 500 files (recommended for full coverage)
-python3 code-scanner/generate_azure_openai_training_data.py \
+python3 code-scanner/generate_code_training_data.py \
   --repo-path /workspace/upstream/containerd \
   --output-path output/containerd_training_data_azure.jsonl \
   --max-files 500 \
   --max-qa-per-file 12
 
 # Large scale processing (for comprehensive training data)
-python3 code-scanner/generate_azure_openai_training_data.py \
+python3 code-scanner/generate_code_training_data.py \
   --repo-path /workspace/upstream/containerd \
   --output-path output/containerd_training_data_large.jsonl \
   --max-files 1000 \
   --max-qa-per-file 15
 
 # Cost-optimized processing (for budget-conscious scenarios)
-python3 code-scanner/generate_azure_openai_training_data.py \
+python3 code-scanner/generate_code_training_data.py \
   --repo-path /workspace/upstream/containerd \
   --output-path output/containerd_training_data_cost_optimized.jsonl \
   --max-files 200 \

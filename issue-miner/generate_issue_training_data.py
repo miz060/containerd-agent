@@ -12,6 +12,9 @@ from typing import List, Dict, Any, Optional
 import requests
 from openai import AzureOpenAI
 from azure.identity import AzureCliCredential, get_bearer_token_provider
+import sys
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from utils.qa_allocation import calculate_qa_allocation, print_allocation_summary
 
 
 class IssueTrainingDataGenerator:
@@ -166,50 +169,12 @@ class IssueTrainingDataGenerator:
     
     def _calculate_qa_allocation(self, issues: List[Dict[str, Any]], max_qa_entries: int) -> Dict[int, int]:
         """Calculate weighted allocation of Q&A pairs based on priority scores"""
-        if not issues:
-            return {}
-        
-        # Sort issues by priority score in descending order to ensure higher priority gets more
-        sorted_issues = sorted(issues, key=lambda x: x["priority_score"], reverse=True)
-        
-        # Calculate total priority score
-        total_priority = sum(issue["priority_score"] for issue in sorted_issues)
-        
-        # Calculate weighted allocation
-        allocation = {}
-        allocated_so_far = 0
-        
-        # First pass: calculate proportional allocation
-        for issue in sorted_issues:
-            weight = issue["priority_score"] / total_priority
-            qa_count = max(1, int(weight * max_qa_entries))  # Minimum 1 Q&A per issue
-            allocation[issue["number"]] = qa_count
-            allocated_so_far += qa_count
-        
-        # Second pass: adjust if we've exceeded the limit
-        if allocated_so_far > max_qa_entries:
-            # Reduce allocation starting from lowest priority issues
-            excess = allocated_so_far - max_qa_entries
-            for issue in reversed(sorted_issues):  # Start from lowest priority
-                if excess <= 0:
-                    break
-                issue_num = issue["number"]
-                current_count = allocation[issue_num]
-                reduction = min(excess, current_count - 1)  # Keep at least 1
-                allocation[issue_num] = current_count - reduction
-                excess -= reduction
-        
-        # Third pass: distribute any remaining slots to highest priority issues
-        elif allocated_so_far < max_qa_entries:
-            remaining = max_qa_entries - allocated_so_far
-            for issue in sorted_issues:  # Start from highest priority
-                if remaining <= 0:
-                    break
-                issue_num = issue["number"]
-                allocation[issue_num] += 1
-                remaining -= 1
-        
-        return allocation
+        return calculate_qa_allocation(
+            items=issues,
+            max_qa_entries=max_qa_entries,
+            priority_field="priority_score",
+            id_field="number"
+        )
     
     def _create_training_prompt(self, issue_data: Dict[str, Any], qa_count: int = 3) -> str:
         """Create prompt for GPT-4o to generate training data"""
@@ -480,23 +445,23 @@ Format:
         
         # Calculate weighted allocation of Q&A pairs
         qa_allocation = self._calculate_qa_allocation(issues, max_qa_entries)
-        total_allocated = sum(qa_allocation.values())
-        print(f"📊 Allocated {total_allocated} Q&A pairs across {len(issues)} issues")
+        
+        # Print allocation summary using utility function
+        print_allocation_summary(
+            items=issues,
+            allocation=qa_allocation,
+            priority_field="priority_score",
+            id_field="number",
+            title_field="title",
+            max_display=20
+        )
         
         # Estimate time and cost
+        total_allocated = sum(qa_allocation.values())
         estimated_time_hours = len(issues) / (self.max_issues_per_minute * 60)
         estimated_cost = total_allocated * 0.20  # Rough estimate: $0.20 per Q&A pair
         print(f"⏱️  Estimated processing time: {estimated_time_hours:.1f} hours")
         print(f"💰 Estimated cost: ${estimated_cost:.2f}")
-        
-        # Show allocation summary
-        print(f"\n📈 Q&A Allocation Summary (Top 20):")
-        for issue in issues[:20]:  # Show top 20
-            issue_num = issue["number"]
-            if issue_num in qa_allocation:
-                print(f"   Issue #{issue_num}: {qa_allocation[issue_num]} Q&A pairs (priority: {issue['priority_score']:.1f})")
-        if len(issues) > 20:
-            print(f"   ... and {len(issues) - 20} more issues")
         
         print(f"\n🚀 Starting training data generation at {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}...")
         start_time = time.time()
