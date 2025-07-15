@@ -85,19 +85,19 @@ def show_usage():
     print("   az login")
     
     print("\n2. Test the generator:")
-    print("   python3 agentic/test_azure_openai_generator.py")
+    print("   python3 code-scanner/test_azure_openai_generator.py")
     
     print("\n3. Small test run (2 files):")
-    print("   python3 agentic/generate_azure_openai_training_data.py --max-files 2 --max-qa-per-file 3")
+    print("   python3 code-scanner/generate_azure_openai_training_data.py --max-files 2 --max-qa-per-file 3")
     
     print("\n4. Medium run (50 files):")
-    print("   python3 agentic/generate_azure_openai_training_data.py --max-files 50 --max-qa-per-file 8")
+    print("   python3 code-scanner/generate_azure_openai_training_data.py --max-files 50 --max-qa-per-file 8")
     
     print("\n5. Full run (500 files):")
-    print("   python3 agentic/generate_azure_openai_training_data.py --max-files 500 --max-qa-per-file 12")
+    print("   python3 code-scanner/generate_azure_openai_training_data.py --max-files 500 --max-qa-per-file 12")
     
     print("\n6. Large scale (1000 files):")
-    print("   python3 agentic/generate_azure_openai_training_data.py --max-files 1000 --max-qa-per-file 15")
+    print("   python3 code-scanner/generate_azure_openai_training_data.py --max-files 1000 --max-qa-per-file 15")
 
 if __name__ == "__main__":
     print("🧪 Testing Azure OpenAI Training Data Generator")

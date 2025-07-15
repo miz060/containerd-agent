@@ -7,7 +7,7 @@ containerd-agent/
 ├── .env.template                       # Environment template (safe to commit)
 ├── .gitignore                         # Git ignore file (excludes personal config)
 ├── 
-├── agentic/                           # Azure OpenAI-powered training data generation
+├── code-scanner/                          # Azure OpenAI-powered training data generation
 │   ├── generate_azure_openai_training_data.py  # Main generator
 │   ├── test_azure_openai_generator.py          # Test script
 │   └── hello_world.template.py                 # Simple test template
@@ -20,7 +20,7 @@ containerd-agent/
 
 ## Key Components
 
-### `/agentic/` - Training Data Generation
+### `/code-scanner/` - Training Data Generation
 - Uses Azure OpenAI GPT-4 to analyze code repositories
 - Generates high-quality Q&A pairs for fine-tuning
 - Can process 500+ files to create comprehensive datasets
@@ -43,5 +43,5 @@ cp .env.template .env
 # Edit .env with your Azure OpenAI endpoint
 
 # Generate training data
-python3 agentic/generate_azure_openai_training_data.py --max-files 500
+python3 code-scanner/generate_azure_openai_training_data.py --max-files 500
 ```
