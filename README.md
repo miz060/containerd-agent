@@ -56,9 +56,41 @@ This system generates high-quality fine-tuning data for Azure OpenAI by analyzin
    echo "Background job started. PID: $!"
    ```
 
+## GitHub Issues Training Data Generation
+
+Generate training data from GitHub issues using the same Azure OpenAI approach:
+
+### 1. **Fetch GitHub Issues**:
+```bash
+# Fetch ALL issues from last 2 years (prioritized by bugs, questions, maintainer responses)
+python3 issue-miner/prioritize_github_issues.py --output-path output/github_issues_metadata.json
+
+# Or limit to top 500 issues
+python3 issue-miner/prioritize_github_issues.py --max-issues 500 --output-path output/github_issues_metadata.json
+```
+
+### 2. **Generate Training Data from Issues**:
+```bash
+# Small test (10 issues)
+python3 issue-miner/generate_issue_training_data.py --max-issues 10 --max-issues-per-minute 3
+
+# Production run (100 issues)
+python3 issue-miner/generate_issue_training_data.py --max-issues 100 --max-issues-per-minute 6
+```
+
+### 3. **Combined approach** (recommended for comprehensive training):
+```bash
+# First fetch issues
+python3 issue-miner/prioritize_github_issues.py --max-issues 200
+
+# Then generate training data
+python3 issue-miner/generate_issue_training_data.py --max-issues 100
+```
+
 ## What's Included
 
 - **`code-scanner/`**: Scripts for AI-powered training data generation from code repositories
+- **`issue-miner/`**: Scripts for mining GitHub issues and generating training data from issue conversations
 - **`static/`**: Template-based training data generation (faster, less detailed)
 - **`output/`**: Generated JSONL files and metadata
 - **Templates**: Safe configuration templates (`.env.template`, `azure_openai_config.template.txt`)

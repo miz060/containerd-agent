@@ -51,3 +51,21 @@ python3 code-scanner/generate_azure_openai_training_data.py \
 # - High-quality answers with proper technical depth
 # - Better coverage of edge cases and integration points
 # - Azure AD authentication (no API key management needed)
+
+## GitHub Issues Analysis Examples
+
+# Fetch GitHub issues (prioritized by bugs, questions, maintainer responses)
+python3 issue-miner/prioritize_github_issues.py \
+  --max-issues 500 \
+  --output-path output/github_issues_metadata.json
+
+# Generate training data from issues
+python3 issue-miner/generate_issue_training_data.py \
+  --issues-metadata output/github_issues_metadata.json \
+  --output-path output/github_issues_training_data.jsonl \
+  --max-issues 100 \
+  --max-issues-per-minute 6
+
+# Combined approach (recommended for comprehensive training)
+python3 issue-miner/prioritize_github_issues.py --max-issues 200
+python3 issue-miner/generate_issue_training_data.py --max-issues 100

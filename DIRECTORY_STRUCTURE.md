@@ -7,10 +7,14 @@ containerd-agent/
 ├── .env.template                       # Environment template (safe to commit)
 ├── .gitignore                         # Git ignore file (excludes personal config)
 ├── 
-├── code-scanner/                          # Azure OpenAI-powered training data generation
+├── code-scanner/                      # Azure OpenAI-powered code analysis
 │   ├── generate_azure_openai_training_data.py  # Main generator
 │   ├── test_azure_openai_generator.py          # Test script
 │   └── hello_world.template.py                 # Simple test template
+├── 
+├── issue-miner/                       # GitHub issues training data generation
+│   ├── fetch_github_issues.py         # Fetch and prioritize GitHub issues
+│   └── generate_issue_training_data.py # Generate training data from issues
 ├── 
 └── output/                            # Generated training data
     ├── *.jsonl                        # Training data files
@@ -20,10 +24,15 @@ containerd-agent/
 
 ## Key Components
 
-### `/code-scanner/` - Training Data Generation
-- Uses Azure OpenAI GPT-4 to analyze code repositories
-- Generates high-quality Q&A pairs for fine-tuning
+### `/code-scanner/` - Source Code Analysis
+- Uses Azure OpenAI GPT-4 to analyze Go source code
+- Generates Q&A pairs about functions, architecture, and usage
 - Can process 500+ files to create comprehensive datasets
+
+### `/issue-miner/` - GitHub Issues Analysis  
+- Fetches and prioritizes GitHub issues from last 2 years
+- Uses Azure OpenAI GPT-4 to extract training data from issue discussions
+- Focuses on bugs, questions, and feature requests with maintainer responses
 
 ### `/output/` - Generated Results
 - JSONL files ready for Azure OpenAI fine-tuning
@@ -37,11 +46,21 @@ containerd-agent/
 
 ## Usage
 
+### Code Analysis
 ```bash
 # Setup
 cp .env.template .env
 # Edit .env with your Azure OpenAI endpoint
 
-# Generate training data
+# Generate training data from source code
 python3 code-scanner/generate_azure_openai_training_data.py --max-files 500
+```
+
+### GitHub Issues Analysis
+```bash
+# Fetch and prioritize issues
+python3 issue-miner/prioritize_github_issues.py --max-issues 200
+
+# Generate training data from issues
+python3 issue-miner/generate_issue_training_data.py --max-issues 100
 ```
