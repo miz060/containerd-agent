@@ -18,7 +18,7 @@ from collections import defaultdict
 
 # Azure OpenAI imports
 from openai import AzureOpenAI
-from azure.identity import DefaultAzureCredential, get_bearer_token_provider
+from azure.identity import AzureCliCredential, get_bearer_token_provider
 
 @dataclass
 class FileInfo:
@@ -58,9 +58,9 @@ class AzureOpenAITrainingDataGenerator:
                 "Example: export AZURE_OPENAI_ENDPOINT='https://your-resource-name.openai.azure.com/'"
             )
         
-        # Initialize Azure OpenAI client with Azure AD authentication
+        # Initialize Azure OpenAI client with Azure CLI authentication
         token_provider = get_bearer_token_provider(
-            DefaultAzureCredential(), 
+            AzureCliCredential(), 
             "https://cognitiveservices.azure.com/.default"
         )
         
@@ -242,14 +242,14 @@ class AzureOpenAITrainingDataGenerator:
         """Generate a comprehensive prompt for Azure OpenAI to analyze Go code"""
         relative_path = Path(file_info.path).relative_to(self.repo_path)
         
-        prompt = f"""
+        prompt = """
 You are an expert in containerd and Go programming. Analyze the following Go source code file and generate high-quality training data for fine-tuning a containerd expert assistant.
 
 File: {relative_path}
-Package: {file_info.package}
-Functions: {file_info.function_count}
-Has Structs: {file_info.has_structs}
-Has Interfaces: {file_info.has_interfaces}
+Package: {package}
+Functions: {function_count}
+Has Structs: {has_structs}
+Has Interfaces: {has_interfaces}
 
 SOURCE CODE:
 ```go
@@ -265,7 +265,6 @@ Generate 8-12 diverse question-answer pairs that would help train an AI assistan
 5. **Usage Patterns**: How would developers typically use this code?
 6. **Technical Details**: Important implementation details, algorithms, or design patterns
 7. **Error Handling**: How does this code handle errors and edge cases?
-8. **Performance**: Any performance considerations or optimizations
 
 Each question should be specific, technical, and practical for someone working with containerd. Each answer should be comprehensive, accurate, and demonstrate deep understanding of both the code and containerd architecture.
 
@@ -275,14 +274,21 @@ Return the response as a JSON array of objects, where each object has:
 
 Example format:
 [
-  {
+  {{
     "question": "What is the purpose of the X function in this file?",
     "answer": "The X function serves as... It handles... and integrates with..."
-  }
+  }}
 ]
 
 Generate questions that would actually be asked by developers working with containerd, not generic questions.
-"""
+""".format(
+            relative_path=relative_path,
+            package=file_info.package,
+            function_count=file_info.function_count,
+            has_structs=file_info.has_structs,
+            has_interfaces=file_info.has_interfaces,
+            file_content=file_content
+        )
         return prompt
 
     def call_azure_openai(self, prompt: str) -> Optional[List[Dict[str, str]]]:

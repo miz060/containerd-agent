@@ -67,14 +67,9 @@ config.json
 .env.local
 .env.production
 .env.development
-agentic/hello_world.py
 
-# Output files (generated data)
-output/
-*.jsonl
 *.metadata.json
 *cost_report*.txt
-test_output.jsonl
 
 # OS
 .DS_Store
