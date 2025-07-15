@@ -1,0 +1,5150 @@
+{
+  "generation_info": {
+    "timestamp": 1752549254.3121789,
+    "repo_path": "/workspace/upstream/containerd",
+    "azure_deployment": "gpt-4o",
+    "max_files": 855,
+    "max_qa_per_file": 5,
+    "max_files_per_minute": 6
+  },
+  "stats": {
+    "total_files_scanned": 855,
+    "files_processed": 855,
+    "qa_pairs_generated": 4014,
+    "api_calls_made": 855,
+    "errors": 10,
+    "duplicates_avoided": 211
+  },
+  "files_processed": [
+    {
+      "path": "client/image.go",
+      "package": "client",
+      "priority_score": 32,
+      "function_count": 8
+    },
+    {
+      "path": "client/client.go",
+      "package": "client",
+      "priority_score": 32,
+      "function_count": 7
+    },
+    {
+      "path": "client/container.go",
+      "package": "client",
+      "priority_score": 31,
+      "function_count": 3
+    },
+    {
+      "path": "client/task.go",
+      "package": "client",
+      "priority_score": 31,
+      "function_count": 3
+    },
+    {
+      "path": "core/images/image.go",
+      "package": "images",
+      "priority_score": 28,
+      "function_count": 10
+    },
+    {
+      "path": "core/runtime/task.go",
+      "package": "runtime",
+      "priority_score": 27,
+      "function_count": 0
+    },
+    {
+      "path": "client/client_opts.go",
+      "package": "client",
+      "priority_score": 26,
+      "function_count": 22
+    },
+    {
+      "path": "client/services.go",
+      "package": "client",
+      "priority_score": 26,
+      "function_count": 16
+    },
+    {
+      "path": "pkg/oci/client.go",
+      "package": "oci",
+      "priority_score": 26,
+      "function_count": 0
+    },
+    {
+      "path": "client/container_opts.go",
+      "package": "client",
+      "priority_score": 25,
+      "function_count": 18
+    },
+    {
+      "path": "client/task_opts.go",
+      "package": "client",
+      "priority_score": 25,
+      "function_count": 13
+    },
+    {
+      "path": "pkg/ttrpcutil/client.go",
+      "package": "ttrpcutil",
+      "priority_score": 25,
+      "function_count": 1
+    },
+    {
+      "path": "client/container_checkpoint_opts.go",
+      "package": "client",
+      "priority_score": 23,
+      "function_count": 6
+    },
+    {
+      "path": "client/events.go",
+      "package": "client",
+      "priority_score": 23,
+      "function_count": 1
+    },
+    {
+      "path": "client/import.go",
+      "package": "client",
+      "priority_score": 23,
+      "function_count": 11
+    },
+    {
+      "path": "client/install_opts.go",
+      "package": "client",
+      "priority_score": 23,
+      "function_count": 3
+    },
+    {
+      "path": "client/process.go",
+      "package": "client",
+      "priority_score": 23,
+      "function_count": 1
+    },
+    {
+      "path": "client/sandbox.go",
+      "package": "client",
+      "priority_score": 23,
+      "function_count": 4
+    },
+    {
+      "path": "client/container_restore_opts.go",
+      "package": "client",
+      "priority_score": 22,
+      "function_count": 4
+    },
+    {
+      "path": "client/diff.go",
+      "package": "client",
+      "priority_score": 22,
+      "function_count": 1
+    },
+    {
+      "path": "cmd/containerd-shim-runc-v2/runc/container.go",
+      "package": "runc",
+      "priority_score": 22,
+      "function_count": 7
+    },
+    {
+      "path": "cmd/containerd-shim-runc-v2/task/service.go",
+      "package": "task",
+      "priority_score": 22,
+      "function_count": 1
+    },
+    {
+      "path": "cmd/ctr/commands/client.go",
+      "package": "commands",
+      "priority_score": 22,
+      "function_count": 2
+    },
+    {
+      "path": "plugins/services/transfer/service.go",
+      "package": "transfer",
+      "priority_score": 22,
+      "function_count": 2
+    },
+    {
+      "path": "plugins/services/warning/service.go",
+      "package": "warning",
+      "priority_score": 22,
+      "function_count": 1
+    },
+    {
+      "path": "client/container_opts_unix.go",
+      "package": "client",
+      "priority_score": 21,
+      "function_count": 7
+    },
+    {
+      "path": "client/grpc.go",
+      "package": "client",
+      "priority_score": 21,
+      "function_count": 1
+    },
+    {
+      "path": "client/namespaces.go",
+      "package": "client",
+      "priority_score": 21,
+      "function_count": 1
+    },
+    {
+      "path": "client/containerstore.go",
+      "package": "client",
+      "priority_score": 21,
+      "function_count": 4
+    },
+    {
+      "path": "client/image_store.go",
+      "package": "client",
+      "priority_score": 21,
+      "function_count": 4
+    },
+    {
+      "path": "client/snapshotter_opts_unix.go",
+      "package": "client",
+      "priority_score": 21,
+      "function_count": 2
+    },
+    {
+      "path": "core/content/helpers.go",
+      "package": "content",
+      "priority_score": 21,
+      "function_count": 11
+    },
+    {
+      "path": "client/export.go",
+      "package": "client",
+      "priority_score": 20,
+      "function_count": 0
+    },
+    {
+      "path": "client/install.go",
+      "package": "client",
+      "priority_score": 20,
+      "function_count": 0
+    },
+    {
+      "path": "client/lease.go",
+      "package": "client",
+      "priority_score": 20,
+      "function_count": 0
+    },
+    {
+      "path": "client/signals.go",
+      "package": "client",
+      "priority_score": 20,
+      "function_count": 2
+    },
+    {
+      "path": "client/snapshotter_opts_windows.go",
+      "package": "client",
+      "priority_score": 20,
+      "function_count": 1
+    },
+    {
+      "path": "client/task_opts_unix.go",
+      "package": "client",
+      "priority_score": 20,
+      "function_count": 5
+    },
+    {
+      "path": "client/transfer.go",
+      "package": "client",
+      "priority_score": 20,
+      "function_count": 0
+    },
+    {
+      "path": "client/oss_fuzz.go",
+      "package": "client",
+      "priority_score": 20,
+      "function_count": 0
+    },
+    {
+      "path": "client/pull.go",
+      "package": "client",
+      "priority_score": 20,
+      "function_count": 0
+    },
+    {
+      "path": "cmd/containerd-stress/main.go",
+      "package": "main",
+      "priority_score": 20,
+      "function_count": 6
+    },
+    {
+      "path": "core/content/testsuite/testsuite.go",
+      "package": "testsuite",
+      "priority_score": 20,
+      "function_count": 30
+    },
+    {
+      "path": "core/diff/diff.go",
+      "package": "diff",
+      "priority_score": 20,
+      "function_count": 7
+    },
+    {
+      "path": "core/diff/stream.go",
+      "package": "diff",
+      "priority_score": 20,
+      "function_count": 7
+    },
+    {
+      "path": "core/remotes/docker/resolver.go",
+      "package": "docker",
+      "priority_score": 20,
+      "function_count": 9
+    },
+    {
+      "path": "core/runtime/v2/shim.go",
+      "package": "v2",
+      "priority_score": 20,
+      "function_count": 9
+    },
+    {
+      "path": "core/transfer/registry/registry.go",
+      "package": "registry",
+      "priority_score": 20,
+      "function_count": 6
+    },
+    {
+      "path": "internal/cri/server/service.go",
+      "package": "server",
+      "priority_score": 20,
+      "function_count": 3
+    },
+    {
+      "path": "internal/cri/server/images/service.go",
+      "package": "images",
+      "priority_score": 20,
+      "function_count": 1
+    },
+    {
+      "path": "plugins/services/containers/service.go",
+      "package": "containers",
+      "priority_score": 20,
+      "function_count": 1
+    },
+    {
+      "path": "plugins/services/diff/service.go",
+      "package": "diff",
+      "priority_score": 20,
+      "function_count": 1
+    },
+    {
+      "path": "plugins/services/events/service.go",
+      "package": "events",
+      "priority_score": 20,
+      "function_count": 4
+    },
+    {
+      "path": "plugins/services/healthcheck/service.go",
+      "package": "healthcheck",
+      "priority_score": 20,
+      "function_count": 2
+    },
+    {
+      "path": "plugins/services/images/service.go",
+      "package": "images",
+      "priority_score": 20,
+      "function_count": 1
+    },
+    {
+      "path": "plugins/services/introspection/service.go",
+      "package": "introspection",
+      "priority_score": 20,
+      "function_count": 1
+    },
+    {
+      "path": "plugins/services/leases/service.go",
+      "package": "leases",
+      "priority_score": 20,
+      "function_count": 2
+    },
+    {
+      "path": "plugins/services/namespaces/service.go",
+      "package": "namespaces",
+      "priority_score": 20,
+      "function_count": 1
+    },
+    {
+      "path": "plugins/services/opt/service.go",
+      "package": "opt",
+      "priority_score": 20,
+      "function_count": 1
+    },
+    {
+      "path": "plugins/services/snapshots/service.go",
+      "package": "snapshots",
+      "priority_score": 20,
+      "function_count": 2
+    },
+    {
+      "path": "plugins/services/streaming/service.go",
+      "package": "streaming",
+      "priority_score": 20,
+      "function_count": 1
+    },
+    {
+      "path": "plugins/services/tasks/service.go",
+      "package": "tasks",
+      "priority_score": 20,
+      "function_count": 1
+    },
+    {
+      "path": "plugins/services/version/service.go",
+      "package": "version",
+      "priority_score": 20,
+      "function_count": 2
+    },
+    {
+      "path": "cmd/containerd/server/server.go",
+      "package": "server",
+      "priority_score": 19,
+      "function_count": 5
+    },
+    {
+      "path": "core/containers/containers.go",
+      "package": "containers",
+      "priority_score": 19,
+      "function_count": 0
+    },
+    {
+      "path": "core/content/content.go",
+      "package": "content",
+      "priority_score": 19,
+      "function_count": 3
+    },
+    {
+      "path": "core/events/events.go",
+      "package": "events",
+      "priority_score": 19,
+      "function_count": 0
+    },
+    {
+      "path": "core/events/proxy/remote_events.go",
+      "package": "proxy",
+      "priority_score": 19,
+      "function_count": 1
+    },
+    {
+      "path": "core/images/handlers.go",
+      "package": "images",
+      "priority_score": 19,
+      "function_count": 9
+    },
+    {
+      "path": "core/images/archive/exporter.go",
+      "package": "archive",
+      "priority_score": 19,
+      "function_count": 19
+    },
+    {
+      "path": "core/images/converter/converter.go",
+      "package": "converter",
+      "priority_score": 19,
+      "function_count": 5
+    },
+    {
+      "path": "core/leases/lease.go",
+      "package": "leases",
+      "priority_score": 19,
+      "function_count": 4
+    },
+    {
+      "path": "core/metadata/buckets.go",
+      "package": "also",
+      "priority_score": 19,
+      "function_count": 22
+    },
+    {
+      "path": "core/metadata/bolt.go",
+      "package": "metadata",
+      "priority_score": 19,
+      "function_count": 3
+    },
+    {
+      "path": "core/metadata/gc.go",
+      "package": "metadata",
+      "priority_score": 19,
+      "function_count": 4
+    },
+    {
+      "path": "core/metrics/cgroups/v1/cgroups.go",
+      "package": "v1",
+      "priority_score": 19,
+      "function_count": 1
+    },
+    {
+      "path": "core/mount/mount_linux.go",
+      "package": "mount",
+      "priority_score": 19,
+      "function_count": 12
+    },
+    {
+      "path": "core/remotes/handlers.go",
+      "package": "remotes",
+      "priority_score": 19,
+      "function_count": 11
+    },
+    {
+      "path": "core/remotes/resolver.go",
+      "package": "remotes",
+      "priority_score": 19,
+      "function_count": 1
+    },
+    {
+      "path": "core/remotes/docker/status.go",
+      "package": "docker",
+      "priority_score": 19,
+      "function_count": 1
+    },
+    {
+      "path": "core/remotes/docker/errcode.go",
+      "package": "docker",
+      "priority_score": 19,
+      "function_count": 1
+    },
+    {
+      "path": "core/runtime/monitor.go",
+      "package": "runtime",
+      "priority_score": 19,
+      "function_count": 2
+    },
+    {
+      "path": "core/runtime/runtime.go",
+      "package": "runtime",
+      "priority_score": 19,
+      "function_count": 0
+    },
+    {
+      "path": "core/runtime/v2/bridge.go",
+      "package": "v2",
+      "priority_score": 19,
+      "function_count": 1
+    },
+    {
+      "path": "core/sandbox/controller.go",
+      "package": "sandbox",
+      "priority_score": 19,
+      "function_count": 5
+    },
+    {
+      "path": "core/sandbox/store.go",
+      "package": "sandbox",
+      "priority_score": 19,
+      "function_count": 0
+    },
+    {
+      "path": "core/snapshots/snapshotter.go",
+      "package": "snapshots",
+      "priority_score": 19,
+      "function_count": 3
+    },
+    {
+      "path": "core/snapshots/storage/bolt.go",
+      "package": "storage",
+      "priority_score": 19,
+      "function_count": 24
+    },
+    {
+      "path": "core/snapshots/storage/metastore.go",
+      "package": "uses",
+      "priority_score": 19,
+      "function_count": 1
+    },
+    {
+      "path": "core/transfer/transfer.go",
+      "package": "transfer",
+      "priority_score": 19,
+      "function_count": 1
+    },
+    {
+      "path": "core/transfer/image/imagestore.go",
+      "package": "image",
+      "priority_score": 19,
+      "function_count": 15
+    },
+    {
+      "path": "core/transfer/local/progress.go",
+      "package": "local",
+      "priority_score": 19,
+      "function_count": 2
+    },
+    {
+      "path": "core/transfer/proxy/transfer.go",
+      "package": "proxy",
+      "priority_score": 19,
+      "function_count": 1
+    },
+    {
+      "path": "internal/cri/store/image/image.go",
+      "package": "image",
+      "priority_score": 19,
+      "function_count": 1
+    },
+    {
+      "path": "pkg/cio/io.go",
+      "package": "cio",
+      "priority_score": 19,
+      "function_count": 13
+    },
+    {
+      "path": "pkg/oci/spec_opts.go",
+      "package": "oci",
+      "priority_score": 19,
+      "function_count": 92
+    },
+    {
+      "path": "plugins/services/content/service.go",
+      "package": "content",
+      "priority_score": 19,
+      "function_count": 1
+    },
+    {
+      "path": "api/doc.go",
+      "package": "api",
+      "priority_score": 18,
+      "function_count": 0
+    },
+    {
+      "path": "api/events/doc.go",
+      "package": "events",
+      "priority_score": 18,
+      "function_count": 0
+    },
+    {
+      "path": "api/runtime/sandbox/v1/doc.go",
+      "package": "sandbox",
+      "priority_score": 18,
+      "function_count": 0
+    },
+    {
+      "path": "api/runtime/task/v2/doc.go",
+      "package": "task",
+      "priority_score": 18,
+      "function_count": 0
+    },
+    {
+      "path": "api/runtime/task/v3/doc.go",
+      "package": "task",
+      "priority_score": 18,
+      "function_count": 0
+    },
+    {
+      "path": "api/services/containers/v1/doc.go",
+      "package": "containers",
+      "priority_score": 18,
+      "function_count": 0
+    },
+    {
+      "path": "api/services/content/v1/doc.go",
+      "package": "content",
+      "priority_score": 18,
+      "function_count": 0
+    },
+    {
+      "path": "api/services/diff/v1/doc.go",
+      "package": "diff",
+      "priority_score": 18,
+      "function_count": 0
+    },
+    {
+      "path": "api/services/events/v1/doc.go",
+      "package": "events",
+      "priority_score": 18,
+      "function_count": 0
+    },
+    {
+      "path": "api/services/images/v1/docs.go",
+      "package": "images",
+      "priority_score": 18,
+      "function_count": 0
+    },
+    {
+      "path": "api/services/introspection/v1/doc.go",
+      "package": "introspection",
+      "priority_score": 18,
+      "function_count": 0
+    },
+    {
+      "path": "api/services/leases/v1/doc.go",
+      "package": "leases",
+      "priority_score": 18,
+      "function_count": 0
+    },
+    {
+      "path": "api/services/namespaces/v1/doc.go",
+      "package": "namespaces",
+      "priority_score": 18,
+      "function_count": 0
+    },
+    {
+      "path": "api/services/sandbox/v1/doc.go",
+      "package": "sandbox",
+      "priority_score": 18,
+      "function_count": 0
+    },
+    {
+      "path": "api/services/snapshots/v1/doc.go",
+      "package": "snapshots",
+      "priority_score": 18,
+      "function_count": 0
+    },
+    {
+      "path": "api/services/streaming/v1/doc.go",
+      "package": "streaming",
+      "priority_score": 18,
+      "function_count": 0
+    },
+    {
+      "path": "api/services/tasks/v1/doc.go",
+      "package": "tasks",
+      "priority_score": 18,
+      "function_count": 0
+    },
+    {
+      "path": "api/services/transfer/v1/doc.go",
+      "package": "transfer",
+      "priority_score": 18,
+      "function_count": 0
+    },
+    {
+      "path": "api/services/ttrpc/events/v1/doc.go",
+      "package": "events",
+      "priority_score": 18,
+      "function_count": 0
+    },
+    {
+      "path": "api/services/version/v1/doc.go",
+      "package": "version",
+      "priority_score": 18,
+      "function_count": 0
+    },
+    {
+      "path": "api/types/doc.go",
+      "package": "types",
+      "priority_score": 18,
+      "function_count": 0
+    },
+    {
+      "path": "api/types/platform_helpers.go",
+      "package": "types",
+      "priority_score": 18,
+      "function_count": 2
+    },
+    {
+      "path": "api/types/runc/options/doc.go",
+      "package": "options",
+      "priority_score": 18,
+      "function_count": 0
+    },
+    {
+      "path": "api/types/runtimeoptions/v1/doc.go",
+      "package": "runtimeoptions",
+      "priority_score": 18,
+      "function_count": 0
+    },
+    {
+      "path": "api/types/task/doc.go",
+      "package": "task",
+      "priority_score": 18,
+      "function_count": 0
+    },
+    {
+      "path": "api/types/transfer/doc.go",
+      "package": "transfer",
+      "priority_score": 18,
+      "function_count": 0
+    },
+    {
+      "path": "core/images/importexport.go",
+      "package": "images",
+      "priority_score": 18,
+      "function_count": 0
+    },
+    {
+      "path": "core/images/mediatypes.go",
+      "package": "images",
+      "priority_score": 18,
+      "function_count": 12
+    },
+    {
+      "path": "core/images/archive/importer.go",
+      "package": "archive",
+      "priority_score": 18,
+      "function_count": 8
+    },
+    {
+      "path": "core/images/converter/default.go",
+      "package": "converter",
+      "priority_score": 18,
+      "function_count": 8
+    },
+    {
+      "path": "core/images/imagetest/content.go",
+      "package": "imagetest",
+      "priority_score": 18,
+      "function_count": 7
+    },
+    {
+      "path": "core/introspection/introspection.go",
+      "package": "introspection",
+      "priority_score": 18,
+      "function_count": 0
+    },
+    {
+      "path": "core/metadata/content.go",
+      "package": "metadata",
+      "priority_score": 18,
+      "function_count": 8
+    },
+    {
+      "path": "core/metadata/images.go",
+      "package": "metadata",
+      "priority_score": 18,
+      "function_count": 6
+    },
+    {
+      "path": "core/metadata/leases.go",
+      "package": "metadata",
+      "priority_score": 18,
+      "function_count": 10
+    },
+    {
+      "path": "core/metadata/boltutil/helpers.go",
+      "package": "boltutil",
+      "priority_score": 18,
+      "function_count": 12
+    },
+    {
+      "path": "core/metrics/cgroups/common/type.go",
+      "package": "common",
+      "priority_score": 18,
+      "function_count": 0
+    },
+    {
+      "path": "core/mount/losetup_linux.go",
+      "package": "mount",
+      "priority_score": 18,
+      "function_count": 6
+    },
+    {
+      "path": "core/mount/mount.go",
+      "package": "mount",
+      "priority_score": 18,
+      "function_count": 7
+    },
+    {
+      "path": "core/remotes/docker/authorizer.go",
+      "package": "docker",
+      "priority_score": 18,
+      "function_count": 9
+    },
+    {
+      "path": "core/remotes/docker/registry.go",
+      "package": "docker",
+      "priority_score": 18,
+      "function_count": 8
+    },
+    {
+      "path": "core/remotes/docker/auth/parse.go",
+      "package": "auth",
+      "priority_score": 18,
+      "function_count": 6
+    },
+    {
+      "path": "core/remotes/docker/config/hosts.go",
+      "package": "config",
+      "priority_score": 18,
+      "function_count": 10
+    },
+    {
+      "path": "core/remotes/docker/schema1/converter.go",
+      "package": "schema1",
+      "priority_score": 18,
+      "function_count": 7
+    },
+    {
+      "path": "core/runtime/nsmap.go",
+      "package": "runtime",
+      "priority_score": 18,
+      "function_count": 1
+    },
+    {
+      "path": "core/runtime/restart/restart.go",
+      "package": "restart",
+      "priority_score": 18,
+      "function_count": 8
+    },
+    {
+      "path": "core/snapshots/testsuite/testsuite.go",
+      "package": "testsuite",
+      "priority_score": 18,
+      "function_count": 20
+    },
+    {
+      "path": "core/streaming/streaming.go",
+      "package": "streaming",
+      "priority_score": 18,
+      "function_count": 0
+    },
+    {
+      "path": "core/transfer/archive/exporter.go",
+      "package": "archive",
+      "priority_score": 18,
+      "function_count": 6
+    },
+    {
+      "path": "internal/nri/container.go",
+      "package": "nri",
+      "priority_score": 18,
+      "function_count": 2
+    },
+    {
+      "path": "pkg/archive/tar_opts.go",
+      "package": "archive",
+      "priority_score": 18,
+      "function_count": 6
+    },
+    {
+      "path": "pkg/archive/compression/compression.go",
+      "package": "compression",
+      "priority_score": 18,
+      "function_count": 9
+    },
+    {
+      "path": "pkg/shim/shim.go",
+      "package": "shim",
+      "priority_score": 18,
+      "function_count": 9
+    },
+    {
+      "path": "cmd/containerd/command/main.go",
+      "package": "command",
+      "priority_score": 17,
+      "function_count": 7
+    },
+    {
+      "path": "cmd/containerd/command/service_windows.go",
+      "package": "command",
+      "priority_score": 17,
+      "function_count": 9
+    },
+    {
+      "path": "core/content/proxy/content_reader.go",
+      "package": "proxy",
+      "priority_score": 17,
+      "function_count": 0
+    },
+    {
+      "path": "core/content/proxy/content_store.go",
+      "package": "proxy",
+      "priority_score": 17,
+      "function_count": 3
+    },
+    {
+      "path": "core/content/proxy/content_writer.go",
+      "package": "proxy",
+      "priority_score": 17,
+      "function_count": 0
+    },
+    {
+      "path": "core/diff/stream_unix.go",
+      "package": "diff",
+      "priority_score": 17,
+      "function_count": 1
+    },
+    {
+      "path": "core/diff/stream_windows.go",
+      "package": "diff",
+      "priority_score": 17,
+      "function_count": 2
+    },
+    {
+      "path": "core/diff/apply/apply.go",
+      "package": "apply",
+      "priority_score": 17,
+      "function_count": 1
+    },
+    {
+      "path": "core/diff/proxy/differ.go",
+      "package": "proxy",
+      "priority_score": 17,
+      "function_count": 1
+    },
+    {
+      "path": "core/events/exchange/exchange.go",
+      "package": "exchange",
+      "priority_score": 17,
+      "function_count": 4
+    },
+    {
+      "path": "core/images/archive/reference.go",
+      "package": "archive",
+      "priority_score": 17,
+      "function_count": 8
+    },
+    {
+      "path": "core/images/imagetest/size.go",
+      "package": "imagetest",
+      "priority_score": 17,
+      "function_count": 2
+    },
+    {
+      "path": "core/images/usage/calculator.go",
+      "package": "usage",
+      "priority_score": 17,
+      "function_count": 4
+    },
+    {
+      "path": "core/introspection/proxy/remote.go",
+      "package": "introspectionproxy",
+      "priority_score": 17,
+      "function_count": 1
+    },
+    {
+      "path": "core/leases/context.go",
+      "package": "leases",
+      "priority_score": 17,
+      "function_count": 2
+    },
+    {
+      "path": "core/leases/proxy/manager.go",
+      "package": "proxy",
+      "priority_score": 17,
+      "function_count": 1
+    },
+    {
+      "path": "core/metadata/adaptors.go",
+      "package": "metadata",
+      "priority_score": 17,
+      "function_count": 7
+    },
+    {
+      "path": "core/metadata/containers.go",
+      "package": "metadata",
+      "priority_score": 17,
+      "function_count": 4
+    },
+    {
+      "path": "core/metadata/db.go",
+      "package": "metadata",
+      "priority_score": 17,
+      "function_count": 3
+    },
+    {
+      "path": "core/metadata/migrations.go",
+      "package": "metadata",
+      "priority_score": 17,
+      "function_count": 4
+    },
+    {
+      "path": "core/metadata/namespaces.go",
+      "package": "metadata",
+      "priority_score": 17,
+      "function_count": 2
+    },
+    {
+      "path": "core/metadata/sandbox.go",
+      "package": "metadata",
+      "priority_score": 17,
+      "function_count": 1
+    },
+    {
+      "path": "core/metadata/snapshot.go",
+      "package": "metadata",
+      "priority_score": 17,
+      "function_count": 5
+    },
+    {
+      "path": "core/metrics/cgroups/cgroups.go",
+      "package": "cgroups",
+      "priority_score": 17,
+      "function_count": 2
+    },
+    {
+      "path": "core/metrics/cgroups/v1/metric.go",
+      "package": "v1",
+      "priority_score": 17,
+      "function_count": 0
+    },
+    {
+      "path": "core/metrics/cgroups/v1/metrics.go",
+      "package": "v1",
+      "priority_score": 17,
+      "function_count": 2
+    },
+    {
+      "path": "core/metrics/cgroups/v1/oom.go",
+      "package": "v1",
+      "priority_score": 17,
+      "function_count": 2
+    },
+    {
+      "path": "core/metrics/cgroups/v2/cgroups.go",
+      "package": "v2",
+      "priority_score": 17,
+      "function_count": 1
+    },
+    {
+      "path": "core/metrics/cgroups/v2/metric.go",
+      "package": "v2",
+      "priority_score": 17,
+      "function_count": 0
+    },
+    {
+      "path": "core/metrics/cgroups/v2/metrics.go",
+      "package": "v2",
+      "priority_score": 17,
+      "function_count": 2
+    },
+    {
+      "path": "core/remotes/docker/fetcher.go",
+      "package": "docker",
+      "priority_score": 17,
+      "function_count": 0
+    },
+    {
+      "path": "core/remotes/docker/httpreadseeker.go",
+      "package": "docker",
+      "priority_score": 17,
+      "function_count": 1
+    },
+    {
+      "path": "core/remotes/docker/pusher.go",
+      "package": "docker",
+      "priority_score": 17,
+      "function_count": 3
+    },
+    {
+      "path": "core/remotes/docker/scope.go",
+      "package": "docker",
+      "priority_score": 17,
+      "function_count": 5
+    },
+    {
+      "path": "core/remotes/docker/auth/fetch.go",
+      "package": "auth",
+      "priority_score": 17,
+      "function_count": 3
+    },
+    {
+      "path": "core/remotes/errors/errors.go",
+      "package": "errors",
+      "priority_score": 17,
+      "function_count": 1
+    },
+    {
+      "path": "core/runtime/v2/bundle.go",
+      "package": "v2",
+      "priority_score": 17,
+      "function_count": 3
+    },
+    {
+      "path": "core/runtime/v2/bundle_linux.go",
+      "package": "v2",
+      "priority_score": 17,
+      "function_count": 2
+    },
+    {
+      "path": "core/runtime/v2/process.go",
+      "package": "v2",
+      "priority_score": 17,
+      "function_count": 1
+    },
+    {
+      "path": "core/runtime/v2/shim_windows.go",
+      "package": "v2",
+      "priority_score": 17,
+      "function_count": 2
+    },
+    {
+      "path": "core/runtime/v2/binary.go",
+      "package": "v2",
+      "priority_score": 17,
+      "function_count": 1
+    },
+    {
+      "path": "core/runtime/v2/shim_manager.go",
+      "package": "v2",
+      "priority_score": 17,
+      "function_count": 3
+    },
+    {
+      "path": "core/runtime/v2/task_manager.go",
+      "package": "v2",
+      "priority_score": 17,
+      "function_count": 4
+    },
+    {
+      "path": "core/runtime/v2/logging/logging.go",
+      "package": "logging",
+      "priority_score": 17,
+      "function_count": 0
+    },
+    {
+      "path": "core/sandbox/bridge.go",
+      "package": "sandbox",
+      "priority_score": 17,
+      "function_count": 1
+    },
+    {
+      "path": "core/sandbox/proxy/controller.go",
+      "package": "proxy",
+      "priority_score": 17,
+      "function_count": 1
+    },
+    {
+      "path": "core/sandbox/proxy/store.go",
+      "package": "proxy",
+      "priority_score": 17,
+      "function_count": 1
+    },
+    {
+      "path": "core/snapshots/proxy/convert.go",
+      "package": "proxy",
+      "priority_score": 17,
+      "function_count": 6
+    },
+    {
+      "path": "core/snapshots/proxy/proxy.go",
+      "package": "proxy",
+      "priority_score": 17,
+      "function_count": 1
+    },
+    {
+      "path": "core/snapshots/testsuite/issues.go",
+      "package": "testsuite",
+      "priority_score": 17,
+      "function_count": 7
+    },
+    {
+      "path": "core/streaming/proxy/streaming.go",
+      "package": "proxy",
+      "priority_score": 17,
+      "function_count": 1
+    },
+    {
+      "path": "core/transfer/archive/importer.go",
+      "package": "archive",
+      "priority_score": 17,
+      "function_count": 2
+    },
+    {
+      "path": "core/transfer/local/push.go",
+      "package": "local",
+      "priority_score": 17,
+      "function_count": 1
+    },
+    {
+      "path": "core/transfer/local/transfer.go",
+      "package": "local",
+      "priority_score": 17,
+      "function_count": 2
+    },
+    {
+      "path": "core/transfer/streaming/reader.go",
+      "package": "streaming",
+      "priority_score": 17,
+      "function_count": 1
+    },
+    {
+      "path": "core/transfer/streaming/writer.go",
+      "package": "streaming",
+      "priority_score": 17,
+      "function_count": 1
+    },
+    {
+      "path": "core/unpack/unpacker.go",
+      "package": "unpack",
+      "priority_score": 17,
+      "function_count": 5
+    },
+    {
+      "path": "internal/cri/store/container/container.go",
+      "package": "container",
+      "priority_score": 17,
+      "function_count": 5
+    },
+    {
+      "path": "pkg/archive/tar.go",
+      "package": "archive",
+      "priority_score": 17,
+      "function_count": 12
+    },
+    {
+      "path": "pkg/archive/tartest/tar.go",
+      "package": "tartest",
+      "priority_score": 17,
+      "function_count": 3
+    },
+    {
+      "path": "pkg/atomicfile/file.go",
+      "package": "atomicfile",
+      "priority_score": 17,
+      "function_count": 2
+    },
+    {
+      "path": "pkg/fifosync/fifo_unix.go",
+      "package": "fifosync",
+      "priority_score": 17,
+      "function_count": 3
+    },
+    {
+      "path": "pkg/filters/filter.go",
+      "package": "filters",
+      "priority_score": 17,
+      "function_count": 0
+    },
+    {
+      "path": "pkg/gc/gc.go",
+      "package": "gc",
+      "priority_score": 17,
+      "function_count": 3
+    },
+    {
+      "path": "pkg/imageverifier/image_verifier.go",
+      "package": "imageverifier",
+      "priority_score": 17,
+      "function_count": 0
+    },
+    {
+      "path": "pkg/namespaces/store.go",
+      "package": "namespaces",
+      "priority_score": 17,
+      "function_count": 0
+    },
+    {
+      "path": "pkg/os/os.go",
+      "package": "os",
+      "priority_score": 17,
+      "function_count": 0
+    },
+    {
+      "path": "pkg/shutdown/shutdown.go",
+      "package": "shutdown",
+      "priority_score": 17,
+      "function_count": 1
+    },
+    {
+      "path": "cmd/containerd-shim-runc-v2/main.go",
+      "package": "main",
+      "priority_score": 16,
+      "function_count": 1
+    },
+    {
+      "path": "cmd/containerd/main.go",
+      "package": "main",
+      "priority_score": 16,
+      "function_count": 1
+    },
+    {
+      "path": "cmd/ctr/main.go",
+      "package": "main",
+      "priority_score": 16,
+      "function_count": 1
+    },
+    {
+      "path": "cmd/ctr/app/main.go",
+      "package": "app",
+      "priority_score": 16,
+      "function_count": 2
+    },
+    {
+      "path": "cmd/gen-manpages/main.go",
+      "package": "main",
+      "priority_score": 16,
+      "function_count": 2
+    },
+    {
+      "path": "cmd/go-buildtag/main.go",
+      "package": "main",
+      "priority_score": 16,
+      "function_count": 2
+    },
+    {
+      "path": "cmd/protoc-gen-go-fieldpath/main.go",
+      "package": "main",
+      "priority_score": 16,
+      "function_count": 1
+    },
+    {
+      "path": "contrib/diffservice/service.go",
+      "package": "diffservice",
+      "priority_score": 16,
+      "function_count": 1
+    },
+    {
+      "path": "contrib/snapshotservice/service.go",
+      "package": "snapshotservice",
+      "priority_score": 16,
+      "function_count": 1
+    },
+    {
+      "path": "core/content/adaptor.go",
+      "package": "content",
+      "priority_score": 16,
+      "function_count": 2
+    },
+    {
+      "path": "core/diff/apply/apply_linux.go",
+      "package": "apply",
+      "priority_score": 16,
+      "function_count": 3
+    },
+    {
+      "path": "core/diff/apply/apply_other.go",
+      "package": "apply",
+      "priority_score": 16,
+      "function_count": 1
+    },
+    {
+      "path": "core/images/annotations.go",
+      "package": "images",
+      "priority_score": 16,
+      "function_count": 0
+    },
+    {
+      "path": "core/images/diffid.go",
+      "package": "images",
+      "priority_score": 16,
+      "function_count": 1
+    },
+    {
+      "path": "core/images/labels.go",
+      "package": "images",
+      "priority_score": 16,
+      "function_count": 0
+    },
+    {
+      "path": "core/images/converter/uncompress/uncompress.go",
+      "package": "uncompress",
+      "priority_score": 16,
+      "function_count": 3
+    },
+    {
+      "path": "core/leases/grpc.go",
+      "package": "leases",
+      "priority_score": 16,
+      "function_count": 2
+    },
+    {
+      "path": "core/leases/id.go",
+      "package": "leases",
+      "priority_score": 16,
+      "function_count": 2
+    },
+    {
+      "path": "core/metrics/metrics.go",
+      "package": "metrics",
+      "priority_score": 16,
+      "function_count": 1
+    },
+    {
+      "path": "core/metrics/cgroups/v1/blkio.go",
+      "package": "v1",
+      "priority_score": 16,
+      "function_count": 1
+    },
+    {
+      "path": "core/metrics/cgroups/v1/cpu.go",
+      "package": "v1",
+      "priority_score": 16,
+      "function_count": 0
+    },
+    {
+      "path": "core/metrics/cgroups/v1/hugetlb.go",
+      "package": "v1",
+      "priority_score": 16,
+      "function_count": 0
+    },
+    {
+      "path": "core/metrics/cgroups/v1/memory.go",
+      "package": "v1",
+      "priority_score": 16,
+      "function_count": 0
+    },
+    {
+      "path": "core/metrics/cgroups/v1/pids.go",
+      "package": "v1",
+      "priority_score": 16,
+      "function_count": 0
+    },
+    {
+      "path": "core/metrics/cgroups/v2/cpu.go",
+      "package": "v2",
+      "priority_score": 16,
+      "function_count": 0
+    },
+    {
+      "path": "core/metrics/cgroups/v2/io.go",
+      "package": "v2",
+      "priority_score": 16,
+      "function_count": 0
+    },
+    {
+      "path": "core/metrics/cgroups/v2/memory.go",
+      "package": "v2",
+      "priority_score": 16,
+      "function_count": 0
+    },
+    {
+      "path": "core/metrics/cgroups/v2/pids.go",
+      "package": "v2",
+      "priority_score": 16,
+      "function_count": 0
+    },
+    {
+      "path": "core/metrics/types/v1/types.go",
+      "package": "v1",
+      "priority_score": 16,
+      "function_count": 0
+    },
+    {
+      "path": "core/metrics/types/v2/types.go",
+      "package": "v2",
+      "priority_score": 16,
+      "function_count": 0
+    },
+    {
+      "path": "core/mount/fuse_linux.go",
+      "package": "mount",
+      "priority_score": 16,
+      "function_count": 2
+    },
+    {
+      "path": "core/mount/fuse_unsupported.go",
+      "package": "mount",
+      "priority_score": 16,
+      "function_count": 2
+    },
+    {
+      "path": "core/mount/lookup_unix.go",
+      "package": "mount",
+      "priority_score": 16,
+      "function_count": 1
+    },
+    {
+      "path": "core/mount/lookup_unsupported.go",
+      "package": "mount",
+      "priority_score": 16,
+      "function_count": 1
+    },
+    {
+      "path": "core/mount/mount_darwin.go",
+      "package": "mount",
+      "priority_score": 16,
+      "function_count": 0
+    },
+    {
+      "path": "core/mount/mount_freebsd.go",
+      "package": "mount",
+      "priority_score": 16,
+      "function_count": 0
+    },
+    {
+      "path": "core/mount/mount_idmapped_utils_linux.go",
+      "package": "mount",
+      "priority_score": 16,
+      "function_count": 1
+    },
+    {
+      "path": "core/mount/mount_idmapped_utils_linux_go122.go",
+      "package": "mount",
+      "priority_score": 16,
+      "function_count": 2
+    },
+    {
+      "path": "core/mount/mount_unix.go",
+      "package": "mount",
+      "priority_score": 16,
+      "function_count": 4
+    },
+    {
+      "path": "core/mount/mount_unsupported.go",
+      "package": "mount",
+      "priority_score": 16,
+      "function_count": 3
+    },
+    {
+      "path": "core/mount/mount_windows.go",
+      "package": "mount",
+      "priority_score": 16,
+      "function_count": 3
+    },
+    {
+      "path": "core/mount/mountinfo.go",
+      "package": "mount",
+      "priority_score": 16,
+      "function_count": 0
+    },
+    {
+      "path": "core/mount/temp.go",
+      "package": "mount",
+      "priority_score": 16,
+      "function_count": 5
+    },
+    {
+      "path": "core/mount/mount_idmapped_linux.go",
+      "package": "mount",
+      "priority_score": 16,
+      "function_count": 3
+    },
+    {
+      "path": "core/mount/temp_unix.go",
+      "package": "mount",
+      "priority_score": 16,
+      "function_count": 2
+    },
+    {
+      "path": "core/mount/temp_unsupported.go",
+      "package": "mount",
+      "priority_score": 16,
+      "function_count": 2
+    },
+    {
+      "path": "core/remotes/docker/converter.go",
+      "package": "docker",
+      "priority_score": 16,
+      "function_count": 1
+    },
+    {
+      "path": "core/remotes/docker/errdesc.go",
+      "package": "docker",
+      "priority_score": 16,
+      "function_count": 4
+    },
+    {
+      "path": "core/remotes/docker/handler.go",
+      "package": "docker",
+      "priority_score": 16,
+      "function_count": 5
+    },
+    {
+      "path": "core/remotes/docker/resolver_unix.go",
+      "package": "docker",
+      "priority_score": 16,
+      "function_count": 1
+    },
+    {
+      "path": "core/remotes/docker/resolver_windows.go",
+      "package": "docker",
+      "priority_score": 16,
+      "function_count": 1
+    },
+    {
+      "path": "core/remotes/docker/converter_fuzz.go",
+      "package": "docker",
+      "priority_score": 16,
+      "function_count": 1
+    },
+    {
+      "path": "core/remotes/docker/fetcher_fuzz.go",
+      "package": "docker",
+      "priority_score": 16,
+      "function_count": 1
+    },
+    {
+      "path": "core/remotes/docker/config/config_unix.go",
+      "package": "config",
+      "priority_score": 16,
+      "function_count": 2
+    },
+    {
+      "path": "core/remotes/docker/config/config_windows.go",
+      "package": "config",
+      "priority_score": 16,
+      "function_count": 2
+    },
+    {
+      "path": "core/remotes/docker/config/docker_fuzzer_internal.go",
+      "package": "config",
+      "priority_score": 16,
+      "function_count": 1
+    },
+    {
+      "path": "core/runtime/events.go",
+      "package": "runtime",
+      "priority_score": 16,
+      "function_count": 1
+    },
+    {
+      "path": "core/runtime/typeurl.go",
+      "package": "runtime",
+      "priority_score": 16,
+      "function_count": 1
+    },
+    {
+      "path": "core/runtime/opts/opts_linux.go",
+      "package": "opts",
+      "priority_score": 16,
+      "function_count": 1
+    },
+    {
+      "path": "core/runtime/v2/bundle_default.go",
+      "package": "v2",
+      "priority_score": 16,
+      "function_count": 1
+    },
+    {
+      "path": "core/runtime/v2/manager_unix.go",
+      "package": "v2",
+      "priority_score": 16,
+      "function_count": 1
+    },
+    {
+      "path": "core/runtime/v2/manager_windows.go",
+      "package": "v2",
+      "priority_score": 16,
+      "function_count": 1
+    },
+    {
+      "path": "core/runtime/v2/shim_unix.go",
+      "package": "v2",
+      "priority_score": 16,
+      "function_count": 2
+    },
+    {
+      "path": "core/runtime/v2/shim_load.go",
+      "package": "v2",
+      "priority_score": 16,
+      "function_count": 1
+    },
+    {
+      "path": "core/runtime/v2/logging/logging_unix.go",
+      "package": "logging",
+      "priority_score": 16,
+      "function_count": 1
+    },
+    {
+      "path": "core/runtime/v2/logging/logging_windows.go",
+      "package": "logging",
+      "priority_score": 16,
+      "function_count": 2
+    },
+    {
+      "path": "core/sandbox/helpers.go",
+      "package": "sandbox",
+      "priority_score": 16,
+      "function_count": 2
+    },
+    {
+      "path": "core/snapshots/benchsuite/benchmark.go",
+      "package": "benchsuite",
+      "priority_score": 16,
+      "function_count": 0
+    },
+    {
+      "path": "core/snapshots/testsuite/helpers.go",
+      "package": "testsuite",
+      "priority_score": 16,
+      "function_count": 5
+    },
+    {
+      "path": "core/snapshots/testsuite/testsuite_unix.go",
+      "package": "testsuite",
+      "priority_score": 16,
+      "function_count": 1
+    },
+    {
+      "path": "core/snapshots/testsuite/testsuite_windows.go",
+      "package": "testsuite",
+      "priority_score": 16,
+      "function_count": 1
+    },
+    {
+      "path": "core/transfer/local/export.go",
+      "package": "local",
+      "priority_score": 16,
+      "function_count": 0
+    },
+    {
+      "path": "core/transfer/local/tag.go",
+      "package": "local",
+      "priority_score": 16,
+      "function_count": 0
+    },
+    {
+      "path": "core/transfer/local/import.go",
+      "package": "local",
+      "priority_score": 16,
+      "function_count": 1
+    },
+    {
+      "path": "core/transfer/local/pull.go",
+      "package": "local",
+      "priority_score": 16,
+      "function_count": 2
+    },
+    {
+      "path": "core/transfer/plugins/plugins.go",
+      "package": "plugins",
+      "priority_score": 16,
+      "function_count": 2
+    },
+    {
+      "path": "core/transfer/streaming/stream.go",
+      "package": "streaming",
+      "priority_score": 16,
+      "function_count": 3
+    },
+    {
+      "path": "internal/cri/opts/container.go",
+      "package": "opts",
+      "priority_score": 16,
+      "function_count": 3
+    },
+    {
+      "path": "pkg/archive/tar_unix.go",
+      "package": "archive",
+      "priority_score": 16,
+      "function_count": 11
+    },
+    {
+      "path": "pkg/archive/tar_windows.go",
+      "package": "archive",
+      "priority_score": 16,
+      "function_count": 12
+    },
+    {
+      "path": "pkg/filters/adaptor.go",
+      "package": "filters",
+      "priority_score": 16,
+      "function_count": 0
+    },
+    {
+      "path": "pkg/filters/scanner.go",
+      "package": "filters",
+      "priority_score": 16,
+      "function_count": 8
+    },
+    {
+      "path": "pkg/netns/netns_linux.go",
+      "package": "netns",
+      "priority_score": 16,
+      "function_count": 7
+    },
+    {
+      "path": "pkg/oci/spec.go",
+      "package": "oci",
+      "priority_score": 16,
+      "function_count": 12
+    },
+    {
+      "path": "pkg/oom/oom.go",
+      "package": "oom",
+      "priority_score": 16,
+      "function_count": 0
+    },
+    {
+      "path": "pkg/rootfs/apply.go",
+      "package": "rootfs",
+      "priority_score": 16,
+      "function_count": 6
+    },
+    {
+      "path": "pkg/rootfs/init.go",
+      "package": "rootfs",
+      "priority_score": 16,
+      "function_count": 2
+    },
+    {
+      "path": "pkg/shim/util.go",
+      "package": "shim",
+      "priority_score": 16,
+      "function_count": 8
+    },
+    {
+      "path": "pkg/shim/util_unix.go",
+      "package": "shim",
+      "priority_score": 16,
+      "function_count": 13
+    },
+    {
+      "path": "pkg/stdio/platform.go",
+      "package": "stdio",
+      "priority_score": 16,
+      "function_count": 0
+    },
+    {
+      "path": "pkg/tracing/tracing.go",
+      "package": "tracing",
+      "priority_score": 16,
+      "function_count": 7
+    },
+    {
+      "path": "pkg/tracing/plugin/otlp.go",
+      "package": "plugin",
+      "priority_score": 16,
+      "function_count": 6
+    },
+    {
+      "path": "cmd/containerd-shim-runc-v2/process/exec_state.go",
+      "package": "process",
+      "priority_score": 15,
+      "function_count": 0
+    },
+    {
+      "path": "cmd/containerd-shim-runc-v2/process/init_state.go",
+      "package": "process",
+      "priority_score": 15,
+      "function_count": 0
+    },
+    {
+      "path": "cmd/containerd/command/service_unsupported.go",
+      "package": "command",
+      "priority_score": 15,
+      "function_count": 4
+    },
+    {
+      "path": "pkg/archive/tar_opts_windows.go",
+      "package": "archive",
+      "priority_score": 15,
+      "function_count": 7
+    },
+    {
+      "path": "pkg/archive/tarheader/tarheader.go",
+      "package": "tarheader",
+      "priority_score": 15,
+      "function_count": 1
+    },
+    {
+      "path": "pkg/cio/io_unix.go",
+      "package": "cio",
+      "priority_score": 15,
+      "function_count": 6
+    },
+    {
+      "path": "pkg/cio/io_windows.go",
+      "package": "cio",
+      "priority_score": 15,
+      "function_count": 6
+    },
+    {
+      "path": "pkg/dialer/dialer.go",
+      "package": "dialer",
+      "priority_score": 15,
+      "function_count": 2
+    },
+    {
+      "path": "pkg/display/manifest_printer.go",
+      "package": "display",
+      "priority_score": 15,
+      "function_count": 4
+    },
+    {
+      "path": "pkg/filters/parser.go",
+      "package": "filters",
+      "priority_score": 15,
+      "function_count": 2
+    },
+    {
+      "path": "pkg/imageverifier/bindir/processes_unix.go",
+      "package": "bindir",
+      "priority_score": 15,
+      "function_count": 1
+    },
+    {
+      "path": "pkg/imageverifier/bindir/processes_windows.go",
+      "package": "bindir",
+      "priority_score": 15,
+      "function_count": 1
+    },
+    {
+      "path": "pkg/imageverifier/bindir/bindir.go",
+      "package": "bindir",
+      "priority_score": 15,
+      "function_count": 1
+    },
+    {
+      "path": "pkg/ioutil/read_closer.go",
+      "package": "ioutil",
+      "priority_score": 15,
+      "function_count": 1
+    },
+    {
+      "path": "pkg/ioutil/write_closer.go",
+      "package": "ioutil",
+      "priority_score": 15,
+      "function_count": 3
+    },
+    {
+      "path": "pkg/ioutil/writer_group.go",
+      "package": "ioutil",
+      "priority_score": 15,
+      "function_count": 1
+    },
+    {
+      "path": "pkg/kernelversion/kernel_linux.go",
+      "package": "kernelversion",
+      "priority_score": 15,
+      "function_count": 3
+    },
+    {
+      "path": "pkg/namespaces/context.go",
+      "package": "namespaces",
+      "priority_score": 15,
+      "function_count": 4
+    },
+    {
+      "path": "pkg/netns/netns_other.go",
+      "package": "netns",
+      "priority_score": 15,
+      "function_count": 3
+    },
+    {
+      "path": "pkg/netns/netns_windows.go",
+      "package": "netns",
+      "priority_score": 15,
+      "function_count": 3
+    },
+    {
+      "path": "pkg/oci/spec_opts_windows.go",
+      "package": "oci",
+      "priority_score": 15,
+      "function_count": 6
+    },
+    {
+      "path": "pkg/oom/v1/v1.go",
+      "package": "v1",
+      "priority_score": 15,
+      "function_count": 2
+    },
+    {
+      "path": "pkg/oom/v2/v2.go",
+      "package": "v2",
+      "priority_score": 15,
+      "function_count": 1
+    },
+    {
+      "path": "pkg/os/testing/fake_os.go",
+      "package": "testing",
+      "priority_score": 15,
+      "function_count": 1
+    },
+    {
+      "path": "pkg/progress/writer.go",
+      "package": "progress",
+      "priority_score": 15,
+      "function_count": 3
+    },
+    {
+      "path": "pkg/reference/reference.go",
+      "package": "reference",
+      "priority_score": 15,
+      "function_count": 1
+    },
+    {
+      "path": "pkg/shim/publisher.go",
+      "package": "shim",
+      "priority_score": 15,
+      "function_count": 2
+    },
+    {
+      "path": "pkg/shim/shim_unix.go",
+      "package": "shim",
+      "priority_score": 15,
+      "function_count": 6
+    },
+    {
+      "path": "pkg/shim/shim_windows.go",
+      "package": "shim",
+      "priority_score": 15,
+      "function_count": 8
+    },
+    {
+      "path": "pkg/stdio/stdio.go",
+      "package": "stdio",
+      "priority_score": 15,
+      "function_count": 0
+    },
+    {
+      "path": "pkg/sys/filesys_windows.go",
+      "package": "sys",
+      "priority_score": 15,
+      "function_count": 6
+    },
+    {
+      "path": "pkg/sys/reaper/reaper_unix.go",
+      "package": "reaper",
+      "priority_score": 15,
+      "function_count": 4
+    },
+    {
+      "path": "pkg/tracing/log.go",
+      "package": "tracing",
+      "priority_score": 15,
+      "function_count": 2
+    },
+    {
+      "path": "pkg/tracing/plugin/ttrpc.go",
+      "package": "plugin",
+      "priority_score": 15,
+      "function_count": 1
+    },
+    {
+      "path": "plugins/snapshots/overlay/overlay.go",
+      "package": "overlay",
+      "priority_score": 15,
+      "function_count": 11
+    },
+    {
+      "path": "cmd/containerd-shim-runc-v2/process/utils.go",
+      "package": "process",
+      "priority_score": 14,
+      "function_count": 8
+    },
+    {
+      "path": "cmd/containerd-shim-runc-v2/process/process.go",
+      "package": "process",
+      "priority_score": 14,
+      "function_count": 0
+    },
+    {
+      "path": "cmd/containerd/server/config/config.go",
+      "package": "config",
+      "priority_score": 14,
+      "function_count": 7
+    },
+    {
+      "path": "cmd/ctr/commands/signals.go",
+      "package": "commands",
+      "priority_score": 14,
+      "function_count": 2
+    },
+    {
+      "path": "cmd/ctr/commands/images/pull.go",
+      "package": "images",
+      "priority_score": 14,
+      "function_count": 7
+    },
+    {
+      "path": "cmd/ctr/commands/pprof/pprof.go",
+      "package": "pprof",
+      "priority_score": 14,
+      "function_count": 8
+    },
+    {
+      "path": "cmd/ctr/commands/tasks/tasks.go",
+      "package": "tasks",
+      "priority_score": 14,
+      "function_count": 0
+    },
+    {
+      "path": "cmd/protoc-gen-go-fieldpath/generator.go",
+      "package": "main",
+      "priority_score": 14,
+      "function_count": 6
+    },
+    {
+      "path": "internal/cri/nri/nri_api.go",
+      "package": "nri",
+      "priority_score": 14,
+      "function_count": 0
+    },
+    {
+      "path": "pkg/apparmor/apparmor.go",
+      "package": "apparmor",
+      "priority_score": 14,
+      "function_count": 1
+    },
+    {
+      "path": "pkg/apparmor/apparmor_linux.go",
+      "package": "apparmor",
+      "priority_score": 14,
+      "function_count": 1
+    },
+    {
+      "path": "pkg/apparmor/apparmor_unsupported.go",
+      "package": "apparmor",
+      "priority_score": 14,
+      "function_count": 1
+    },
+    {
+      "path": "pkg/archive/link_default.go",
+      "package": "archive",
+      "priority_score": 14,
+      "function_count": 1
+    },
+    {
+      "path": "pkg/archive/link_freebsd.go",
+      "package": "archive",
+      "priority_score": 14,
+      "function_count": 1
+    },
+    {
+      "path": "pkg/archive/tar_freebsd.go",
+      "package": "archive",
+      "priority_score": 14,
+      "function_count": 3
+    },
+    {
+      "path": "pkg/archive/tar_mostunix.go",
+      "package": "archive",
+      "priority_score": 14,
+      "function_count": 3
+    },
+    {
+      "path": "pkg/archive/tar_opts_linux.go",
+      "package": "archive",
+      "priority_score": 14,
+      "function_count": 1
+    },
+    {
+      "path": "pkg/archive/time.go",
+      "package": "archive",
+      "priority_score": 14,
+      "function_count": 3
+    },
+    {
+      "path": "pkg/archive/time_unix.go",
+      "package": "archive",
+      "priority_score": 14,
+      "function_count": 1
+    },
+    {
+      "path": "pkg/archive/time_windows.go",
+      "package": "archive",
+      "priority_score": 14,
+      "function_count": 1
+    },
+    {
+      "path": "pkg/archive/compression/compression_fuzzer.go",
+      "package": "compression",
+      "priority_score": 14,
+      "function_count": 1
+    },
+    {
+      "path": "pkg/archive/tarheader/tarheader_unix.go",
+      "package": "tarheader",
+      "priority_score": 14,
+      "function_count": 2
+    },
+    {
+      "path": "pkg/blockio/blockio_linux.go",
+      "package": "blockio",
+      "priority_score": 14,
+      "function_count": 4
+    },
+    {
+      "path": "pkg/blockio/blockio_nonlinux.go",
+      "package": "blockio",
+      "priority_score": 14,
+      "function_count": 4
+    },
+    {
+      "path": "pkg/cap/cap_linux.go",
+      "package": "cap",
+      "priority_score": 14,
+      "function_count": 5
+    },
+    {
+      "path": "pkg/cdi/oci_opt.go",
+      "package": "cdi",
+      "priority_score": 14,
+      "function_count": 1
+    },
+    {
+      "path": "pkg/deprecation/deprecation.go",
+      "package": "deprecation",
+      "priority_score": 14,
+      "function_count": 2
+    },
+    {
+      "path": "pkg/dialer/dialer_unix.go",
+      "package": "dialer",
+      "priority_score": 14,
+      "function_count": 3
+    },
+    {
+      "path": "pkg/dialer/dialer_windows.go",
+      "package": "dialer",
+      "priority_score": 14,
+      "function_count": 3
+    },
+    {
+      "path": "pkg/epoch/context.go",
+      "package": "epoch",
+      "priority_score": 14,
+      "function_count": 2
+    },
+    {
+      "path": "pkg/epoch/epoch.go",
+      "package": "epoch",
+      "priority_score": 14,
+      "function_count": 4
+    },
+    {
+      "path": "pkg/filters/quote.go",
+      "package": "filters",
+      "priority_score": 14,
+      "function_count": 4
+    },
+    {
+      "path": "pkg/identifiers/validate.go",
+      "package": "identifiers",
+      "priority_score": 14,
+      "function_count": 3
+    },
+    {
+      "path": "pkg/labels/labels.go",
+      "package": "labels",
+      "priority_score": 14,
+      "function_count": 0
+    },
+    {
+      "path": "pkg/labels/validate.go",
+      "package": "labels",
+      "priority_score": 14,
+      "function_count": 1
+    },
+    {
+      "path": "pkg/namespaces/grpc.go",
+      "package": "namespaces",
+      "priority_score": 14,
+      "function_count": 2
+    },
+    {
+      "path": "pkg/namespaces/ttrpc.go",
+      "package": "namespaces",
+      "priority_score": 14,
+      "function_count": 3
+    },
+    {
+      "path": "pkg/oci/spec_opts_nonwindows.go",
+      "package": "oci",
+      "priority_score": 14,
+      "function_count": 1
+    },
+    {
+      "path": "pkg/oci/spec_opts_unix.go",
+      "package": "oci",
+      "priority_score": 14,
+      "function_count": 3
+    },
+    {
+      "path": "pkg/oci/mounts.go",
+      "package": "oci",
+      "priority_score": 14,
+      "function_count": 2
+    },
+    {
+      "path": "pkg/oci/mounts_freebsd.go",
+      "package": "oci",
+      "priority_score": 14,
+      "function_count": 2
+    },
+    {
+      "path": "pkg/oci/spec_opts_linux.go",
+      "package": "oci",
+      "priority_score": 14,
+      "function_count": 3
+    },
+    {
+      "path": "pkg/oci/spec_opts_nonlinux.go",
+      "package": "oci",
+      "priority_score": 14,
+      "function_count": 0
+    },
+    {
+      "path": "pkg/oci/utils_unix.go",
+      "package": "oci",
+      "priority_score": 14,
+      "function_count": 3
+    },
+    {
+      "path": "pkg/os/mount_linux.go",
+      "package": "os",
+      "priority_score": 14,
+      "function_count": 0
+    },
+    {
+      "path": "pkg/os/mount_other.go",
+      "package": "os",
+      "priority_score": 14,
+      "function_count": 0
+    },
+    {
+      "path": "pkg/os/mount_unix.go",
+      "package": "os",
+      "priority_score": 14,
+      "function_count": 0
+    },
+    {
+      "path": "pkg/os/mount_windows.go",
+      "package": "os",
+      "priority_score": 14,
+      "function_count": 0
+    },
+    {
+      "path": "pkg/os/os_unix.go",
+      "package": "os",
+      "priority_score": 14,
+      "function_count": 0
+    },
+    {
+      "path": "pkg/os/os_windows.go",
+      "package": "os",
+      "priority_score": 14,
+      "function_count": 3
+    },
+    {
+      "path": "pkg/progress/bar.go",
+      "package": "progress",
+      "priority_score": 14,
+      "function_count": 0
+    },
+    {
+      "path": "pkg/progress/doc.go",
+      "package": "progress",
+      "priority_score": 14,
+      "function_count": 0
+    },
+    {
+      "path": "pkg/progress/escape.go",
+      "package": "progress",
+      "priority_score": 14,
+      "function_count": 0
+    },
+    {
+      "path": "pkg/progress/humaans.go",
+      "package": "progress",
+      "priority_score": 14,
+      "function_count": 1
+    },
+    {
+      "path": "pkg/protobuf/compare.go",
+      "package": "protobuf",
+      "priority_score": 14,
+      "function_count": 0
+    },
+    {
+      "path": "pkg/protobuf/timestamp.go",
+      "package": "protobuf",
+      "priority_score": 14,
+      "function_count": 2
+    },
+    {
+      "path": "pkg/protobuf/proto/proto.go",
+      "package": "proto",
+      "priority_score": 14,
+      "function_count": 2
+    },
+    {
+      "path": "pkg/protobuf/types/types.go",
+      "package": "types",
+      "priority_score": 14,
+      "function_count": 0
+    },
+    {
+      "path": "pkg/rdt/rdt_linux.go",
+      "package": "rdt",
+      "priority_score": 14,
+      "function_count": 3
+    },
+    {
+      "path": "pkg/rdt/rdt_nonlinux.go",
+      "package": "rdt",
+      "priority_score": 14,
+      "function_count": 3
+    },
+    {
+      "path": "pkg/rootfs/diff.go",
+      "package": "rootfs",
+      "priority_score": 14,
+      "function_count": 1
+    },
+    {
+      "path": "pkg/rootfs/init_linux.go",
+      "package": "rootfs",
+      "priority_score": 14,
+      "function_count": 5
+    },
+    {
+      "path": "pkg/rootfs/init_other.go",
+      "package": "rootfs",
+      "priority_score": 14,
+      "function_count": 0
+    },
+    {
+      "path": "pkg/schedcore/prctl_linux.go",
+      "package": "schedcore",
+      "priority_score": 14,
+      "function_count": 2
+    },
+    {
+      "path": "pkg/seccomp/seccomp.go",
+      "package": "seccomp",
+      "priority_score": 14,
+      "function_count": 1
+    },
+    {
+      "path": "pkg/seccomp/seccomp_linux.go",
+      "package": "seccomp",
+      "priority_score": 14,
+      "function_count": 1
+    },
+    {
+      "path": "pkg/seccomp/seccomp_unsupported.go",
+      "package": "seccomp",
+      "priority_score": 14,
+      "function_count": 1
+    },
+    {
+      "path": "pkg/shim/shim_darwin.go",
+      "package": "shim",
+      "priority_score": 14,
+      "function_count": 2
+    },
+    {
+      "path": "pkg/shim/shim_freebsd.go",
+      "package": "shim",
+      "priority_score": 14,
+      "function_count": 2
+    },
+    {
+      "path": "pkg/shim/shim_linux.go",
+      "package": "shim",
+      "priority_score": 14,
+      "function_count": 2
+    },
+    {
+      "path": "pkg/shim/util_windows.go",
+      "package": "shim",
+      "priority_score": 14,
+      "function_count": 5
+    },
+    {
+      "path": "pkg/snapshotters/annotations.go",
+      "package": "snapshotters",
+      "priority_score": 14,
+      "function_count": 2
+    },
+    {
+      "path": "pkg/sys/eintr_unix.go",
+      "package": "sys",
+      "priority_score": 14,
+      "function_count": 1
+    },
+    {
+      "path": "pkg/sys/filesys_unix.go",
+      "package": "sys",
+      "priority_score": 14,
+      "function_count": 1
+    },
+    {
+      "path": "pkg/sys/namespace_linux.go",
+      "package": "sys",
+      "priority_score": 14,
+      "function_count": 1
+    },
+    {
+      "path": "pkg/sys/oom_linux.go",
+      "package": "sys",
+      "priority_score": 14,
+      "function_count": 4
+    },
+    {
+      "path": "pkg/sys/oom_unsupported.go",
+      "package": "sys",
+      "priority_score": 14,
+      "function_count": 3
+    },
+    {
+      "path": "pkg/sys/pidfd_linux.go",
+      "package": "sys",
+      "priority_score": 14,
+      "function_count": 2
+    },
+    {
+      "path": "pkg/sys/socket_windows.go",
+      "package": "sys",
+      "priority_score": 14,
+      "function_count": 1
+    },
+    {
+      "path": "pkg/sys/socket_unix.go",
+      "package": "sys",
+      "priority_score": 14,
+      "function_count": 3
+    },
+    {
+      "path": "pkg/sys/unshare_linux.go",
+      "package": "sys",
+      "priority_score": 14,
+      "function_count": 3
+    },
+    {
+      "path": "pkg/sys/reaper/reaper_utils_linux.go",
+      "package": "reaper",
+      "priority_score": 14,
+      "function_count": 2
+    },
+    {
+      "path": "pkg/testutil/helpers.go",
+      "package": "testutil",
+      "priority_score": 14,
+      "function_count": 4
+    },
+    {
+      "path": "pkg/testutil/helpers_unix.go",
+      "package": "testutil",
+      "priority_score": 14,
+      "function_count": 2
+    },
+    {
+      "path": "pkg/testutil/helpers_windows.go",
+      "package": "testutil",
+      "priority_score": 14,
+      "function_count": 2
+    },
+    {
+      "path": "pkg/timeout/timeout.go",
+      "package": "timeout",
+      "priority_score": 14,
+      "function_count": 4
+    },
+    {
+      "path": "pkg/tracing/helpers.go",
+      "package": "tracing",
+      "priority_score": 14,
+      "function_count": 1
+    },
+    {
+      "path": "plugins/content/local/store.go",
+      "package": "local",
+      "priority_score": 14,
+      "function_count": 7
+    },
+    {
+      "path": "plugins/diff/windows/windows.go",
+      "package": "windows",
+      "priority_score": 14,
+      "function_count": 6
+    },
+    {
+      "path": "plugins/snapshots/devmapper/dmsetup/dmsetup.go",
+      "package": "dmsetup",
+      "priority_score": 14,
+      "function_count": 23
+    },
+    {
+      "path": "cmd/containerd-shim-runc-v2/manager/manager_linux.go",
+      "package": "manager",
+      "priority_score": 13,
+      "function_count": 4
+    },
+    {
+      "path": "cmd/containerd-shim-runc-v2/process/deleted_state.go",
+      "package": "process",
+      "priority_score": 13,
+      "function_count": 0
+    },
+    {
+      "path": "cmd/containerd-shim-runc-v2/process/types.go",
+      "package": "process",
+      "priority_score": 13,
+      "function_count": 0
+    },
+    {
+      "path": "cmd/containerd-shim-runc-v2/process/exec.go",
+      "package": "process",
+      "priority_score": 13,
+      "function_count": 0
+    },
+    {
+      "path": "cmd/containerd-shim-runc-v2/process/init.go",
+      "package": "process",
+      "priority_score": 13,
+      "function_count": 3
+    },
+    {
+      "path": "cmd/containerd-shim-runc-v2/process/io.go",
+      "package": "process",
+      "priority_score": 13,
+      "function_count": 4
+    },
+    {
+      "path": "cmd/containerd-shim-runc-v2/runc/platform.go",
+      "package": "runc",
+      "priority_score": 13,
+      "function_count": 1
+    },
+    {
+      "path": "cmd/containerd-stress/cri_worker.go",
+      "package": "main",
+      "priority_score": 13,
+      "function_count": 1
+    },
+    {
+      "path": "cmd/containerd-stress/density.go",
+      "package": "main",
+      "priority_score": 13,
+      "function_count": 3
+    },
+    {
+      "path": "cmd/containerd-stress/exec_worker.go",
+      "package": "main",
+      "priority_score": 13,
+      "function_count": 0
+    },
+    {
+      "path": "cmd/containerd-stress/worker.go",
+      "package": "main",
+      "priority_score": 13,
+      "function_count": 0
+    },
+    {
+      "path": "cmd/containerd/command/oci-hook.go",
+      "package": "command",
+      "priority_score": 13,
+      "function_count": 5
+    },
+    {
+      "path": "cmd/containerd/server/namespace.go",
+      "package": "server",
+      "priority_score": 13,
+      "function_count": 2
+    },
+    {
+      "path": "cmd/ctr/commands/cni.go",
+      "package": "commands",
+      "priority_score": 13,
+      "function_count": 2
+    },
+    {
+      "path": "cmd/ctr/commands/resolver.go",
+      "package": "commands",
+      "priority_score": 13,
+      "function_count": 5
+    },
+    {
+      "path": "cmd/ctr/commands/content/content.go",
+      "package": "content",
+      "priority_score": 13,
+      "function_count": 1
+    },
+    {
+      "path": "cmd/ctr/commands/content/fetch.go",
+      "package": "content",
+      "priority_score": 13,
+      "function_count": 5
+    },
+    {
+      "path": "cmd/ctr/commands/deprecations/deprecations.go",
+      "package": "deprecations",
+      "priority_score": 13,
+      "function_count": 2
+    },
+    {
+      "path": "cmd/ctr/commands/images/push.go",
+      "package": "images",
+      "priority_score": 13,
+      "function_count": 1
+    },
+    {
+      "path": "cmd/ctr/commands/info/info.go",
+      "package": "info",
+      "priority_score": 13,
+      "function_count": 0
+    },
+    {
+      "path": "cmd/ctr/commands/run/run_unix.go",
+      "package": "run",
+      "priority_score": 13,
+      "function_count": 6
+    },
+    {
+      "path": "cmd/ctr/commands/snapshots/snapshots.go",
+      "package": "snapshots",
+      "priority_score": 13,
+      "function_count": 5
+    },
+    {
+      "path": "cmd/ctr/commands/tasks/exec.go",
+      "package": "tasks",
+      "priority_score": 13,
+      "function_count": 0
+    },
+    {
+      "path": "internal/cri/opts/spec_opts.go",
+      "package": "opts",
+      "priority_score": 13,
+      "function_count": 22
+    },
+    {
+      "path": "plugins/cri/cri.go",
+      "package": "cri",
+      "priority_score": 13,
+      "function_count": 5
+    },
+    {
+      "path": "plugins/diff/lcow/lcow.go",
+      "package": "lcow",
+      "priority_score": 13,
+      "function_count": 3
+    },
+    {
+      "path": "plugins/gc/scheduler.go",
+      "package": "scheduler",
+      "priority_score": 13,
+      "function_count": 3
+    },
+    {
+      "path": "plugins/leases/local.go",
+      "package": "plugin",
+      "priority_score": 13,
+      "function_count": 1
+    },
+    {
+      "path": "plugins/restart/monitor.go",
+      "package": "monitor",
+      "priority_score": 13,
+      "function_count": 1
+    },
+    {
+      "path": "plugins/services/services.go",
+      "package": "services",
+      "priority_score": 13,
+      "function_count": 0
+    },
+    {
+      "path": "plugins/services/diff/local.go",
+      "package": "diff",
+      "priority_score": 13,
+      "function_count": 1
+    },
+    {
+      "path": "plugins/services/diff/service_unix.go",
+      "package": "diff",
+      "priority_score": 13,
+      "function_count": 0
+    },
+    {
+      "path": "plugins/services/diff/service_windows.go",
+      "package": "diff",
+      "priority_score": 13,
+      "function_count": 0
+    },
+    {
+      "path": "plugins/services/images/local.go",
+      "package": "images",
+      "priority_score": 13,
+      "function_count": 1
+    },
+    {
+      "path": "plugins/services/introspection/local.go",
+      "package": "introspection",
+      "priority_score": 13,
+      "function_count": 5
+    },
+    {
+      "path": "cmd/containerd-shim-runc-v2/main_tracing.go",
+      "package": "main",
+      "priority_score": 12,
+      "function_count": 0
+    },
+    {
+      "path": "cmd/containerd-shim-runc-v2/process/io_util.go",
+      "package": "process",
+      "priority_score": 12,
+      "function_count": 2
+    },
+    {
+      "path": "cmd/containerd-shim-runc-v2/runc/util.go",
+      "package": "runc",
+      "priority_score": 12,
+      "function_count": 2
+    },
+    {
+      "path": "cmd/containerd-shim-runc-v2/task/plugin/plugin_linux.go",
+      "package": "plugin",
+      "priority_score": 12,
+      "function_count": 1
+    },
+    {
+      "path": "cmd/containerd-stress/rlimit_freebsd.go",
+      "package": "main",
+      "priority_score": 12,
+      "function_count": 1
+    },
+    {
+      "path": "cmd/containerd-stress/rlimit_unix.go",
+      "package": "main",
+      "priority_score": 12,
+      "function_count": 1
+    },
+    {
+      "path": "cmd/containerd-stress/rlimit_windows.go",
+      "package": "main",
+      "priority_score": 12,
+      "function_count": 1
+    },
+    {
+      "path": "cmd/containerd-stress/size.go",
+      "package": "main",
+      "priority_score": 12,
+      "function_count": 1
+    },
+    {
+      "path": "cmd/containerd/builtins/btrfs_linux.go",
+      "package": "builtins",
+      "priority_score": 12,
+      "function_count": 0
+    },
+    {
+      "path": "cmd/containerd/builtins/builtins.go",
+      "package": "builtins",
+      "priority_score": 12,
+      "function_count": 0
+    },
+    {
+      "path": "cmd/containerd/builtins/builtins_freebsd.go",
+      "package": "builtins",
+      "priority_score": 12,
+      "function_count": 0
+    },
+    {
+      "path": "cmd/containerd/builtins/builtins_unix.go",
+      "package": "builtins",
+      "priority_score": 12,
+      "function_count": 0
+    },
+    {
+      "path": "cmd/containerd/builtins/builtins_windows.go",
+      "package": "builtins",
+      "priority_score": 12,
+      "function_count": 0
+    },
+    {
+      "path": "cmd/containerd/builtins/cri.go",
+      "package": "builtins",
+      "priority_score": 12,
+      "function_count": 0
+    },
+    {
+      "path": "cmd/containerd/builtins/devmapper_linux.go",
+      "package": "builtins",
+      "priority_score": 12,
+      "function_count": 0
+    },
+    {
+      "path": "cmd/containerd/builtins/tracing.go",
+      "package": "builtins",
+      "priority_score": 12,
+      "function_count": 0
+    },
+    {
+      "path": "cmd/containerd/builtins/zfs_linux.go",
+      "package": "builtins",
+      "priority_score": 12,
+      "function_count": 0
+    },
+    {
+      "path": "cmd/containerd/builtins/builtins_linux.go",
+      "package": "builtins",
+      "priority_score": 12,
+      "function_count": 0
+    },
+    {
+      "path": "cmd/containerd/command/config.go",
+      "package": "command",
+      "priority_score": 12,
+      "function_count": 5
+    },
+    {
+      "path": "cmd/containerd/command/main_unix.go",
+      "package": "command",
+      "priority_score": 12,
+      "function_count": 2
+    },
+    {
+      "path": "cmd/containerd/command/main_windows.go",
+      "package": "command",
+      "priority_score": 12,
+      "function_count": 5
+    },
+    {
+      "path": "cmd/containerd/command/notify_no_systemd.go",
+      "package": "command",
+      "priority_score": 12,
+      "function_count": 2
+    },
+    {
+      "path": "cmd/containerd/command/notify_systemd.go",
+      "package": "command",
+      "priority_score": 12,
+      "function_count": 3
+    },
+    {
+      "path": "cmd/containerd/command/notify_unsupported.go",
+      "package": "command",
+      "priority_score": 12,
+      "function_count": 2
+    },
+    {
+      "path": "cmd/containerd/command/publish.go",
+      "package": "command",
+      "priority_score": 12,
+      "function_count": 3
+    },
+    {
+      "path": "cmd/containerd/server/server_linux.go",
+      "package": "server",
+      "priority_score": 12,
+      "function_count": 2
+    },
+    {
+      "path": "cmd/containerd/server/server_solaris.go",
+      "package": "server",
+      "priority_score": 12,
+      "function_count": 1
+    },
+    {
+      "path": "cmd/containerd/server/server_unsupported.go",
+      "package": "server",
+      "priority_score": 12,
+      "function_count": 2
+    },
+    {
+      "path": "cmd/containerd/server/server_windows.go",
+      "package": "server",
+      "priority_score": 12,
+      "function_count": 2
+    },
+    {
+      "path": "cmd/containerd/server/server_no_plugins.go",
+      "package": "server",
+      "priority_score": 12,
+      "function_count": 1
+    },
+    {
+      "path": "cmd/containerd/server/server_plugins.go",
+      "package": "server",
+      "priority_score": 12,
+      "function_count": 1
+    },
+    {
+      "path": "cmd/ctr/app/main_unix.go",
+      "package": "app",
+      "priority_score": 12,
+      "function_count": 1
+    },
+    {
+      "path": "cmd/ctr/commands/commands.go",
+      "package": "commands",
+      "priority_score": 12,
+      "function_count": 5
+    },
+    {
+      "path": "cmd/ctr/commands/commands_unix.go",
+      "package": "commands",
+      "priority_score": 12,
+      "function_count": 3
+    },
+    {
+      "path": "cmd/ctr/commands/commands_windows.go",
+      "package": "commands",
+      "priority_score": 12,
+      "function_count": 2
+    },
+    {
+      "path": "cmd/ctr/commands/signals_linux.go",
+      "package": "commands",
+      "priority_score": 12,
+      "function_count": 1
+    },
+    {
+      "path": "cmd/ctr/commands/signals_notlinux.go",
+      "package": "commands",
+      "priority_score": 12,
+      "function_count": 1
+    },
+    {
+      "path": "cmd/ctr/commands/containers/checkpoint.go",
+      "package": "containers",
+      "priority_score": 12,
+      "function_count": 0
+    },
+    {
+      "path": "cmd/ctr/commands/containers/containers.go",
+      "package": "containers",
+      "priority_score": 12,
+      "function_count": 1
+    },
+    {
+      "path": "cmd/ctr/commands/containers/restore.go",
+      "package": "containers",
+      "priority_score": 12,
+      "function_count": 0
+    },
+    {
+      "path": "cmd/ctr/commands/content/prune.go",
+      "package": "content",
+      "priority_score": 12,
+      "function_count": 2
+    },
+    {
+      "path": "cmd/ctr/commands/events/events.go",
+      "package": "events",
+      "priority_score": 12,
+      "function_count": 0
+    },
+    {
+      "path": "cmd/ctr/commands/images/convert.go",
+      "package": "images",
+      "priority_score": 12,
+      "function_count": 0
+    },
+    {
+      "path": "cmd/ctr/commands/images/export.go",
+      "package": "images",
+      "priority_score": 12,
+      "function_count": 0
+    },
+    {
+      "path": "cmd/ctr/commands/images/images.go",
+      "package": "images",
+      "priority_score": 12,
+      "function_count": 0
+    },
+    {
+      "path": "cmd/ctr/commands/images/inspect.go",
+      "package": "images",
+      "priority_score": 12,
+      "function_count": 0
+    },
+    {
+      "path": "cmd/ctr/commands/images/tag.go",
+      "package": "images",
+      "priority_score": 12,
+      "function_count": 0
+    },
+    {
+      "path": "cmd/ctr/commands/images/unmount.go",
+      "package": "images",
+      "priority_score": 12,
+      "function_count": 0
+    },
+    {
+      "path": "cmd/ctr/commands/images/usage.go",
+      "package": "images",
+      "priority_score": 12,
+      "function_count": 0
+    },
+    {
+      "path": "cmd/ctr/commands/images/import.go",
+      "package": "images",
+      "priority_score": 12,
+      "function_count": 0
+    },
+    {
+      "path": "cmd/ctr/commands/images/mount.go",
+      "package": "images",
+      "priority_score": 12,
+      "function_count": 0
+    },
+    {
+      "path": "cmd/ctr/commands/install/install.go",
+      "package": "install",
+      "priority_score": 12,
+      "function_count": 0
+    },
+    {
+      "path": "cmd/ctr/commands/leases/leases.go",
+      "package": "leases",
+      "priority_score": 12,
+      "function_count": 0
+    },
+    {
+      "path": "cmd/ctr/commands/namespaces/namespaces.go",
+      "package": "namespaces",
+      "priority_score": 12,
+      "function_count": 0
+    },
+    {
+      "path": "cmd/ctr/commands/namespaces/namespaces_linux.go",
+      "package": "namespaces",
+      "priority_score": 12,
+      "function_count": 1
+    },
+    {
+      "path": "cmd/ctr/commands/namespaces/namespaces_other.go",
+      "package": "namespaces",
+      "priority_score": 12,
+      "function_count": 1
+    },
+    {
+      "path": "cmd/ctr/commands/oci/oci.go",
+      "package": "oci",
+      "priority_score": 12,
+      "function_count": 0
+    },
+    {
+      "path": "cmd/ctr/commands/plugins/plugins.go",
+      "package": "plugins",
+      "priority_score": 12,
+      "function_count": 1
+    },
+    {
+      "path": "cmd/ctr/commands/pprof/pprof_unix.go",
+      "package": "pprof",
+      "priority_score": 12,
+      "function_count": 1
+    },
+    {
+      "path": "cmd/ctr/commands/pprof/pprof_windows.go",
+      "package": "pprof",
+      "priority_score": 12,
+      "function_count": 1
+    },
+    {
+      "path": "cmd/ctr/commands/run/run.go",
+      "package": "run",
+      "priority_score": 12,
+      "function_count": 3
+    },
+    {
+      "path": "cmd/ctr/commands/run/run_windows.go",
+      "package": "run",
+      "priority_score": 12,
+      "function_count": 2
+    },
+    {
+      "path": "cmd/ctr/commands/sandboxes/sandboxes.go",
+      "package": "sandboxes",
+      "priority_score": 12,
+      "function_count": 0
+    },
+    {
+      "path": "cmd/ctr/commands/shim/io_unix.go",
+      "package": "shim",
+      "priority_score": 12,
+      "function_count": 1
+    },
+    {
+      "path": "cmd/ctr/commands/shim/pprof.go",
+      "package": "shim",
+      "priority_score": 12,
+      "function_count": 1
+    },
+    {
+      "path": "cmd/ctr/commands/shim/shim.go",
+      "package": "shim",
+      "priority_score": 12,
+      "function_count": 3
+    },
+    {
+      "path": "cmd/ctr/commands/tasks/attach.go",
+      "package": "tasks",
+      "priority_score": 12,
+      "function_count": 0
+    },
+    {
+      "path": "cmd/ctr/commands/tasks/checkpoint.go",
+      "package": "tasks",
+      "priority_score": 12,
+      "function_count": 1
+    },
+    {
+      "path": "cmd/ctr/commands/tasks/delete.go",
+      "package": "tasks",
+      "priority_score": 12,
+      "function_count": 1
+    },
+    {
+      "path": "cmd/ctr/commands/tasks/kill.go",
+      "package": "tasks",
+      "priority_score": 12,
+      "function_count": 1
+    },
+    {
+      "path": "cmd/ctr/commands/tasks/list.go",
+      "package": "tasks",
+      "priority_score": 12,
+      "function_count": 0
+    },
+    {
+      "path": "cmd/ctr/commands/tasks/metrics.go",
+      "package": "tasks",
+      "priority_score": 12,
+      "function_count": 5
+    },
+    {
+      "path": "cmd/ctr/commands/tasks/pause.go",
+      "package": "tasks",
+      "priority_score": 12,
+      "function_count": 0
+    },
+    {
+      "path": "cmd/ctr/commands/tasks/ps.go",
+      "package": "tasks",
+      "priority_score": 12,
+      "function_count": 0
+    },
+    {
+      "path": "cmd/ctr/commands/tasks/resume.go",
+      "package": "tasks",
+      "priority_score": 12,
+      "function_count": 0
+    },
+    {
+      "path": "cmd/ctr/commands/tasks/start.go",
+      "package": "tasks",
+      "priority_score": 12,
+      "function_count": 0
+    },
+    {
+      "path": "cmd/ctr/commands/tasks/tasks_unix.go",
+      "package": "tasks",
+      "priority_score": 12,
+      "function_count": 3
+    },
+    {
+      "path": "cmd/ctr/commands/tasks/tasks_windows.go",
+      "package": "tasks",
+      "priority_score": 12,
+      "function_count": 3
+    },
+    {
+      "path": "cmd/ctr/commands/version/version.go",
+      "package": "version",
+      "priority_score": 12,
+      "function_count": 0
+    },
+    {
+      "path": "integration/client/client.go",
+      "package": "client",
+      "priority_score": 12,
+      "function_count": 3
+    },
+    {
+      "path": "plugins/cri/runtime/plugin.go",
+      "package": "runtime",
+      "priority_score": 12,
+      "function_count": 7
+    },
+    {
+      "path": "plugins/services/tasks/local.go",
+      "package": "tasks",
+      "priority_score": 12,
+      "function_count": 7
+    },
+    {
+      "path": "plugins/snapshots/blockfile/blockfile.go",
+      "package": "blockfile",
+      "priority_score": 12,
+      "function_count": 7
+    },
+    {
+      "path": "contrib/fuzz/cri_fuzzer.go",
+      "package": "fuzz",
+      "priority_score": 11,
+      "function_count": 29
+    },
+    {
+      "path": "internal/cri/instrument/instrumented_service.go",
+      "package": "instrument",
+      "priority_score": 11,
+      "function_count": 1
+    },
+    {
+      "path": "internal/cri/opts/spec_linux_opts.go",
+      "package": "opts",
+      "priority_score": 11,
+      "function_count": 10
+    },
+    {
+      "path": "internal/cri/opts/spec_windows_opts.go",
+      "package": "opts",
+      "priority_score": 11,
+      "function_count": 8
+    },
+    {
+      "path": "internal/cri/server/service_windows.go",
+      "package": "server",
+      "priority_score": 11,
+      "function_count": 0
+    },
+    {
+      "path": "internal/cri/server/service_linux.go",
+      "package": "server",
+      "priority_score": 11,
+      "function_count": 1
+    },
+    {
+      "path": "internal/cri/server/service_other.go",
+      "package": "server",
+      "priority_score": 11,
+      "function_count": 0
+    },
+    {
+      "path": "internal/cri/server/events/events.go",
+      "package": "events",
+      "priority_score": 11,
+      "function_count": 4
+    },
+    {
+      "path": "internal/cri/server/podsandbox/controller.go",
+      "package": "podsandbox",
+      "priority_score": 11,
+      "function_count": 2
+    },
+    {
+      "path": "internal/cri/store/container/status.go",
+      "package": "container",
+      "priority_score": 11,
+      "function_count": 3
+    },
+    {
+      "path": "internal/cri/store/sandbox/status.go",
+      "package": "sandbox",
+      "priority_score": 11,
+      "function_count": 1
+    },
+    {
+      "path": "internal/kmutex/kmutex.go",
+      "package": "kmutex",
+      "priority_score": 11,
+      "function_count": 2
+    },
+    {
+      "path": "internal/nri/domain.go",
+      "package": "nri",
+      "priority_score": 11,
+      "function_count": 1
+    },
+    {
+      "path": "internal/nri/nri.go",
+      "package": "nri",
+      "priority_score": 11,
+      "function_count": 1
+    },
+    {
+      "path": "plugins/content/local/locks.go",
+      "package": "local",
+      "priority_score": 11,
+      "function_count": 0
+    },
+    {
+      "path": "plugins/content/local/readerat.go",
+      "package": "local",
+      "priority_score": 11,
+      "function_count": 1
+    },
+    {
+      "path": "plugins/content/local/writer.go",
+      "package": "local",
+      "priority_score": 11,
+      "function_count": 0
+    },
+    {
+      "path": "plugins/diff/walking/differ.go",
+      "package": "walking",
+      "priority_score": 11,
+      "function_count": 2
+    },
+    {
+      "path": "plugins/diff/walking/plugin/plugin.go",
+      "package": "plugin",
+      "priority_score": 11,
+      "function_count": 1
+    },
+    {
+      "path": "plugins/diff/windows/cimfs.go",
+      "package": "windows",
+      "priority_score": 11,
+      "function_count": 3
+    },
+    {
+      "path": "plugins/metadata/plugin.go",
+      "package": "plugin",
+      "priority_score": 11,
+      "function_count": 2
+    },
+    {
+      "path": "plugins/restart/change.go",
+      "package": "monitor",
+      "priority_score": 11,
+      "function_count": 1
+    },
+    {
+      "path": "plugins/sandbox/controller.go",
+      "package": "sandbox",
+      "priority_score": 11,
+      "function_count": 1
+    },
+    {
+      "path": "plugins/services/containers/local.go",
+      "package": "containers",
+      "priority_score": 11,
+      "function_count": 1
+    },
+    {
+      "path": "plugins/services/content/store.go",
+      "package": "content",
+      "priority_score": 11,
+      "function_count": 2
+    },
+    {
+      "path": "plugins/services/content/contentserver/contentserver.go",
+      "package": "contentserver",
+      "priority_score": 11,
+      "function_count": 3
+    },
+    {
+      "path": "plugins/services/events/ttrpc.go",
+      "package": "events",
+      "priority_score": 11,
+      "function_count": 1
+    },
+    {
+      "path": "plugins/services/namespaces/local.go",
+      "package": "namespaces",
+      "priority_score": 11,
+      "function_count": 1
+    },
+    {
+      "path": "plugins/services/sandbox/controller_service.go",
+      "package": "sandbox",
+      "priority_score": 11,
+      "function_count": 1
+    },
+    {
+      "path": "plugins/services/sandbox/store_service.go",
+      "package": "sandbox",
+      "priority_score": 11,
+      "function_count": 1
+    },
+    {
+      "path": "plugins/snapshots/blockfile/plugin/plugin.go",
+      "package": "plugin",
+      "priority_score": 11,
+      "function_count": 1
+    },
+    {
+      "path": "plugins/snapshots/btrfs/btrfs.go",
+      "package": "btrfs",
+      "priority_score": 11,
+      "function_count": 1
+    },
+    {
+      "path": "plugins/snapshots/btrfs/plugin/plugin.go",
+      "package": "plugin",
+      "priority_score": 11,
+      "function_count": 1
+    },
+    {
+      "path": "plugins/snapshots/devmapper/config.go",
+      "package": "devmapper",
+      "priority_score": 11,
+      "function_count": 1
+    },
+    {
+      "path": "plugins/snapshots/devmapper/device_info.go",
+      "package": "devmapper",
+      "priority_score": 11,
+      "function_count": 0
+    },
+    {
+      "path": "plugins/snapshots/devmapper/metadata.go",
+      "package": "devmapper",
+      "priority_score": 11,
+      "function_count": 5
+    },
+    {
+      "path": "plugins/snapshots/devmapper/pool_device.go",
+      "package": "devmapper",
+      "priority_score": 11,
+      "function_count": 3
+    },
+    {
+      "path": "plugins/snapshots/devmapper/snapshotter.go",
+      "package": "devmapper",
+      "priority_score": 11,
+      "function_count": 2
+    },
+    {
+      "path": "plugins/snapshots/lcow/lcow.go",
+      "package": "lcow",
+      "priority_score": 11,
+      "function_count": 2
+    },
+    {
+      "path": "plugins/snapshots/native/native.go",
+      "package": "native",
+      "priority_score": 11,
+      "function_count": 1
+    },
+    {
+      "path": "plugins/snapshots/native/plugin/plugin.go",
+      "package": "plugin",
+      "priority_score": 11,
+      "function_count": 1
+    },
+    {
+      "path": "plugins/snapshots/overlay/plugin/plugin.go",
+      "package": "overlay",
+      "priority_score": 11,
+      "function_count": 1
+    },
+    {
+      "path": "plugins/snapshots/windows/common.go",
+      "package": "windows",
+      "priority_score": 11,
+      "function_count": 3
+    },
+    {
+      "path": "plugins/snapshots/windows/windows.go",
+      "package": "windows",
+      "priority_score": 11,
+      "function_count": 2
+    },
+    {
+      "path": "plugins/snapshots/windows/cimfs.go",
+      "package": "windows",
+      "priority_score": 11,
+      "function_count": 4
+    },
+    {
+      "path": "plugins/streaming/manager.go",
+      "package": "streaming",
+      "priority_score": 11,
+      "function_count": 1
+    },
+    {
+      "path": "plugins/transfer/plugin.go",
+      "package": "transfer",
+      "priority_score": 11,
+      "function_count": 2
+    },
+    {
+      "path": "internal/cri/bandwidth/interfaces.go",
+      "package": "bandwidth",
+      "priority_score": 10,
+      "function_count": 0
+    },
+    {
+      "path": "internal/cri/config/config.go",
+      "package": "config",
+      "priority_score": 10,
+      "function_count": 8
+    },
+    {
+      "path": "internal/cri/io/helpers.go",
+      "package": "io",
+      "priority_score": 10,
+      "function_count": 8
+    },
+    {
+      "path": "internal/cri/opts/spec_darwin_opts.go",
+      "package": "opts",
+      "priority_score": 10,
+      "function_count": 1
+    },
+    {
+      "path": "internal/cri/server/restart.go",
+      "package": "server",
+      "priority_score": 10,
+      "function_count": 2
+    },
+    {
+      "path": "internal/cri/server/container_stats_list.go",
+      "package": "server",
+      "priority_score": 10,
+      "function_count": 6
+    },
+    {
+      "path": "internal/cri/server/helpers.go",
+      "package": "server",
+      "priority_score": 10,
+      "function_count": 17
+    },
+    {
+      "path": "internal/cri/server/images/image_pull.go",
+      "package": "images",
+      "priority_score": 10,
+      "function_count": 7
+    },
+    {
+      "path": "internal/cri/server/podsandbox/helpers_linux.go",
+      "package": "podsandbox",
+      "priority_score": 10,
+      "function_count": 11
+    },
+    {
+      "path": "internal/failpoint/fail.go",
+      "package": "failpoint",
+      "priority_score": 10,
+      "function_count": 7
+    },
+    {
+      "path": "internal/nri/sandbox.go",
+      "package": "nri",
+      "priority_score": 10,
+      "function_count": 2
+    },
+    {
+      "path": "plugins/types.go",
+      "package": "stores",
+      "priority_score": 10,
+      "function_count": 0
+    },
+    {
+      "path": "plugins/content/local/store_bsd.go",
+      "package": "local",
+      "priority_score": 10,
+      "function_count": 1
+    },
+    {
+      "path": "plugins/content/local/store_openbsd.go",
+      "package": "local",
+      "priority_score": 10,
+      "function_count": 1
+    },
+    {
+      "path": "plugins/content/local/store_unix.go",
+      "package": "local",
+      "priority_score": 10,
+      "function_count": 1
+    },
+    {
+      "path": "plugins/content/local/store_windows.go",
+      "package": "local",
+      "priority_score": 10,
+      "function_count": 1
+    },
+    {
+      "path": "plugins/content/local/content_local_fuzzer.go",
+      "package": "local",
+      "priority_score": 10,
+      "function_count": 2
+    },
+    {
+      "path": "plugins/content/local/test_helper.go",
+      "package": "local",
+      "priority_score": 10,
+      "function_count": 1
+    },
+    {
+      "path": "plugins/content/local/plugin/plugin.go",
+      "package": "plugin",
+      "priority_score": 10,
+      "function_count": 1
+    },
+    {
+      "path": "plugins/cri/images/plugin.go",
+      "package": "images",
+      "priority_score": 10,
+      "function_count": 3
+    },
+    {
+      "path": "plugins/events/plugin.go",
+      "package": "events",
+      "priority_score": 10,
+      "function_count": 1
+    },
+    {
+      "path": "plugins/gc/metrics.go",
+      "package": "scheduler",
+      "priority_score": 10,
+      "function_count": 1
+    },
+    {
+      "path": "plugins/imageverifier/path_unix.go",
+      "package": "imageverifier",
+      "priority_score": 10,
+      "function_count": 0
+    },
+    {
+      "path": "plugins/imageverifier/path_windows.go",
+      "package": "imageverifier",
+      "priority_score": 10,
+      "function_count": 0
+    },
+    {
+      "path": "plugins/imageverifier/plugin.go",
+      "package": "imageverifier",
+      "priority_score": 10,
+      "function_count": 2
+    },
+    {
+      "path": "plugins/nri/plugin.go",
+      "package": "nri",
+      "priority_score": 10,
+      "function_count": 2
+    },
+    {
+      "path": "plugins/services/containers/helpers.go",
+      "package": "containers",
+      "priority_score": 10,
+      "function_count": 3
+    },
+    {
+      "path": "plugins/services/images/helpers.go",
+      "package": "images",
+      "priority_score": 10,
+      "function_count": 3
+    },
+    {
+      "path": "plugins/services/introspection/pidns_linux.go",
+      "package": "introspection",
+      "priority_score": 10,
+      "function_count": 1
+    },
+    {
+      "path": "plugins/services/introspection/pidns_others.go",
+      "package": "introspection",
+      "priority_score": 10,
+      "function_count": 1
+    },
+    {
+      "path": "plugins/services/opt/path_unix.go",
+      "package": "opt",
+      "priority_score": 10,
+      "function_count": 0
+    },
+    {
+      "path": "plugins/services/opt/path_windows.go",
+      "package": "opt",
+      "priority_score": 10,
+      "function_count": 0
+    },
+    {
+      "path": "plugins/services/sandbox/store_local.go",
+      "package": "sandbox",
+      "priority_score": 10,
+      "function_count": 1
+    },
+    {
+      "path": "plugins/services/snapshots/snapshotters.go",
+      "package": "snapshots",
+      "priority_score": 10,
+      "function_count": 1
+    },
+    {
+      "path": "plugins/services/tasks/local_darwin.go",
+      "package": "tasks",
+      "priority_score": 10,
+      "function_count": 0
+    },
+    {
+      "path": "plugins/services/tasks/local_freebsd.go",
+      "package": "tasks",
+      "priority_score": 10,
+      "function_count": 0
+    },
+    {
+      "path": "plugins/services/tasks/local_unix.go",
+      "package": "tasks",
+      "priority_score": 10,
+      "function_count": 0
+    },
+    {
+      "path": "plugins/services/tasks/local_windows.go",
+      "package": "tasks",
+      "priority_score": 10,
+      "function_count": 0
+    },
+    {
+      "path": "plugins/snapshots/devmapper/blkdiscard/blkdiscard.go",
+      "package": "blkdiscard",
+      "priority_score": 10,
+      "function_count": 3
+    },
+    {
+      "path": "plugins/snapshots/devmapper/plugin/plugin.go",
+      "package": "plugin",
+      "priority_score": 10,
+      "function_count": 1
+    },
+    {
+      "path": "plugins/snapshots/native/native_default.go",
+      "package": "native",
+      "priority_score": 10,
+      "function_count": 0
+    },
+    {
+      "path": "plugins/snapshots/native/native_freebsd.go",
+      "package": "native",
+      "priority_score": 10,
+      "function_count": 0
+    },
+    {
+      "path": "plugins/snapshots/overlay/overlayutils/check.go",
+      "package": "overlayutils",
+      "priority_score": 10,
+      "function_count": 5
+    },
+    {
+      "path": "plugins/transfer/plugin_defaults_other.go",
+      "package": "transfer",
+      "priority_score": 10,
+      "function_count": 1
+    },
+    {
+      "path": "plugins/transfer/plugin_defaults_windows.go",
+      "package": "transfer",
+      "priority_score": 10,
+      "function_count": 1
+    },
+    {
+      "path": "contrib/nvidia/nvidia.go",
+      "package": "nvidia",
+      "priority_score": 9,
+      "function_count": 11
+    },
+    {
+      "path": "internal/cleanup/context.go",
+      "package": "cleanup",
+      "priority_score": 9,
+      "function_count": 2
+    },
+    {
+      "path": "internal/cri/bandwidth/fake_shaper.go",
+      "package": "bandwidth",
+      "priority_score": 9,
+      "function_count": 0
+    },
+    {
+      "path": "internal/cri/bandwidth/linux.go",
+      "package": "bandwidth",
+      "priority_score": 9,
+      "function_count": 4
+    },
+    {
+      "path": "internal/cri/bandwidth/unsupported.go",
+      "package": "bandwidth",
+      "priority_score": 9,
+      "function_count": 1
+    },
+    {
+      "path": "internal/cri/io/container_io.go",
+      "package": "io",
+      "priority_score": 9,
+      "function_count": 5
+    },
+    {
+      "path": "internal/cri/io/exec_io.go",
+      "package": "io",
+      "priority_score": 9,
+      "function_count": 2
+    },
+    {
+      "path": "internal/cri/io/helpers_windows.go",
+      "package": "io",
+      "priority_score": 9,
+      "function_count": 1
+    },
+    {
+      "path": "internal/cri/nri/nri_api_other.go",
+      "package": "nri",
+      "priority_score": 9,
+      "function_count": 1
+    },
+    {
+      "path": "internal/cri/nri/nri_api_linux.go",
+      "package": "nri",
+      "priority_score": 9,
+      "function_count": 1
+    },
+    {
+      "path": "internal/cri/opts/spec_linux.go",
+      "package": "opts",
+      "priority_score": 9,
+      "function_count": 6
+    },
+    {
+      "path": "internal/cri/server/container_status.go",
+      "package": "server",
+      "priority_score": 9,
+      "function_count": 2
+    },
+    {
+      "path": "internal/cri/server/container_execsync.go",
+      "package": "server",
+      "priority_score": 9,
+      "function_count": 1
+    },
+    {
+      "path": "internal/cri/server/cni_conf_syncer.go",
+      "package": "server",
+      "priority_score": 9,
+      "function_count": 1
+    },
+    {
+      "path": "internal/cri/server/events.go",
+      "package": "server",
+      "priority_score": 9,
+      "function_count": 0
+    },
+    {
+      "path": "internal/cri/server/helpers_linux.go",
+      "package": "server",
+      "priority_score": 9,
+      "function_count": 7
+    },
+    {
+      "path": "internal/cri/server/nri.go",
+      "package": "server",
+      "priority_score": 9,
+      "function_count": 0
+    },
+    {
+      "path": "internal/cri/server/sandbox_run.go",
+      "package": "server",
+      "priority_score": 9,
+      "function_count": 9
+    },
+    {
+      "path": "internal/cri/server/sandbox_service.go",
+      "package": "server",
+      "priority_score": 9,
+      "function_count": 1
+    },
+    {
+      "path": "internal/cri/server/container_create_linux.go",
+      "package": "server",
+      "priority_score": 9,
+      "function_count": 6
+    },
+    {
+      "path": "internal/cri/server/streaming.go",
+      "package": "server",
+      "priority_score": 9,
+      "function_count": 2
+    },
+    {
+      "path": "internal/cri/server/update_runtime_config.go",
+      "package": "server",
+      "priority_score": 9,
+      "function_count": 2
+    },
+    {
+      "path": "internal/cri/server/images/snapshots.go",
+      "package": "images",
+      "priority_score": 9,
+      "function_count": 1
+    },
+    {
+      "path": "internal/cri/server/images/image_status.go",
+      "package": "images",
+      "priority_score": 9,
+      "function_count": 2
+    },
+    {
+      "path": "internal/cri/server/podsandbox/store.go",
+      "package": "podsandbox",
+      "priority_score": 9,
+      "function_count": 1
+    },
+    {
+      "path": "internal/cri/server/podsandbox/sandbox_run.go",
+      "package": "podsandbox",
+      "priority_score": 9,
+      "function_count": 1
+    },
+    {
+      "path": "internal/cri/server/podsandbox/events.go",
+      "package": "podsandbox",
+      "priority_score": 9,
+      "function_count": 0
+    },
+    {
+      "path": "internal/cri/server/podsandbox/types/podsandbox.go",
+      "package": "types",
+      "priority_score": 9,
+      "function_count": 1
+    },
+    {
+      "path": "internal/cri/store/util.go",
+      "package": "store",
+      "priority_score": 9,
+      "function_count": 1
+    },
+    {
+      "path": "internal/cri/store/container/fake_status.go",
+      "package": "container",
+      "priority_score": 9,
+      "function_count": 1
+    },
+    {
+      "path": "internal/cri/store/container/metadata.go",
+      "package": "container",
+      "priority_score": 9,
+      "function_count": 0
+    },
+    {
+      "path": "internal/cri/store/label/label.go",
+      "package": "label",
+      "priority_score": 9,
+      "function_count": 1
+    },
+    {
+      "path": "internal/cri/store/sandbox/metadata.go",
+      "package": "sandbox",
+      "priority_score": 9,
+      "function_count": 0
+    },
+    {
+      "path": "internal/cri/store/sandbox/sandbox.go",
+      "package": "sandbox",
+      "priority_score": 9,
+      "function_count": 2
+    },
+    {
+      "path": "internal/cri/store/snapshot/snapshot.go",
+      "package": "snapshot",
+      "priority_score": 9,
+      "function_count": 1
+    },
+    {
+      "path": "internal/cri/store/stats/stats.go",
+      "package": "stats",
+      "priority_score": 9,
+      "function_count": 0
+    },
+    {
+      "path": "internal/cri/testing/fake_cni_plugin.go",
+      "package": "testing",
+      "priority_score": 9,
+      "function_count": 1
+    },
+    {
+      "path": "internal/cri/types/sandbox_info.go",
+      "package": "types",
+      "priority_score": 9,
+      "function_count": 0
+    },
+    {
+      "path": "internal/fsverity/fsverity_linux.go",
+      "package": "fsverity",
+      "priority_score": 9,
+      "function_count": 3
+    },
+    {
+      "path": "internal/kmutex/noop.go",
+      "package": "kmutex",
+      "priority_score": 9,
+      "function_count": 1
+    },
+    {
+      "path": "internal/nri/config.go",
+      "package": "nri",
+      "priority_score": 9,
+      "function_count": 1
+    },
+    {
+      "path": "internal/registrar/registrar.go",
+      "package": "registrar",
+      "priority_score": 9,
+      "function_count": 1
+    },
+    {
+      "path": "internal/truncindex/truncindex.go",
+      "package": "truncindex",
+      "priority_score": 9,
+      "function_count": 1
+    },
+    {
+      "path": "internal/userns/idmap.go",
+      "package": "userns",
+      "priority_score": 9,
+      "function_count": 2
+    },
+    {
+      "path": "contrib/apparmor/template.go",
+      "package": "apparmor",
+      "priority_score": 8,
+      "function_count": 7
+    },
+    {
+      "path": "contrib/fuzz/metadata_fuzzer.go",
+      "package": "fuzz",
+      "priority_score": 8,
+      "function_count": 6
+    },
+    {
+      "path": "internal/cri/annotations/annotations.go",
+      "package": "annotations",
+      "priority_score": 8,
+      "function_count": 1
+    },
+    {
+      "path": "internal/cri/bandwidth/doc.go",
+      "package": "bandwidth",
+      "priority_score": 8,
+      "function_count": 0
+    },
+    {
+      "path": "internal/cri/bandwidth/utils.go",
+      "package": "bandwidth",
+      "priority_score": 8,
+      "function_count": 2
+    },
+    {
+      "path": "internal/cri/config/config_kernel_linux.go",
+      "package": "config",
+      "priority_score": 8,
+      "function_count": 1
+    },
+    {
+      "path": "internal/cri/config/config_kernel_other.go",
+      "package": "config",
+      "priority_score": 8,
+      "function_count": 1
+    },
+    {
+      "path": "internal/cri/config/config_unix.go",
+      "package": "config",
+      "priority_score": 8,
+      "function_count": 2
+    },
+    {
+      "path": "internal/cri/config/config_windows.go",
+      "package": "config",
+      "priority_score": 8,
+      "function_count": 2
+    },
+    {
+      "path": "internal/cri/config/streaming.go",
+      "package": "config",
+      "priority_score": 8,
+      "function_count": 2
+    },
+    {
+      "path": "internal/cri/constants/constants.go",
+      "package": "constants",
+      "priority_score": 8,
+      "function_count": 0
+    },
+    {
+      "path": "internal/cri/io/helpers_unix.go",
+      "package": "io",
+      "priority_score": 8,
+      "function_count": 1
+    },
+    {
+      "path": "internal/cri/io/logger.go",
+      "package": "io",
+      "priority_score": 8,
+      "function_count": 4
+    },
+    {
+      "path": "internal/cri/io/metrics.go",
+      "package": "io",
+      "priority_score": 8,
+      "function_count": 1
+    },
+    {
+      "path": "internal/cri/labels/labels.go",
+      "package": "labels",
+      "priority_score": 8,
+      "function_count": 0
+    },
+    {
+      "path": "internal/cri/opts/spec_nonwindows.go",
+      "package": "opts",
+      "priority_score": 8,
+      "function_count": 1
+    },
+    {
+      "path": "internal/cri/opts/spec_windows.go",
+      "package": "opts",
+      "priority_score": 8,
+      "function_count": 3
+    },
+    {
+      "path": "internal/cri/opts/spec_nonlinux.go",
+      "package": "opts",
+      "priority_score": 8,
+      "function_count": 3
+    },
+    {
+      "path": "internal/cri/server/blockio_linux.go",
+      "package": "server",
+      "priority_score": 8,
+      "function_count": 0
+    },
+    {
+      "path": "internal/cri/server/blockio_stub.go",
+      "package": "server",
+      "priority_score": 8,
+      "function_count": 0
+    },
+    {
+      "path": "internal/cri/server/container_attach.go",
+      "package": "server",
+      "priority_score": 8,
+      "function_count": 0
+    },
+    {
+      "path": "internal/cri/server/container_stop.go",
+      "package": "server",
+      "priority_score": 8,
+      "function_count": 0
+    },
+    {
+      "path": "internal/cri/server/status.go",
+      "package": "server",
+      "priority_score": 8,
+      "function_count": 1
+    },
+    {
+      "path": "internal/cri/server/container_create_other.go",
+      "package": "server",
+      "priority_score": 8,
+      "function_count": 1
+    },
+    {
+      "path": "internal/cri/server/container_create_windows.go",
+      "package": "server",
+      "priority_score": 8,
+      "function_count": 1
+    },
+    {
+      "path": "internal/cri/server/container_events.go",
+      "package": "server",
+      "priority_score": 8,
+      "function_count": 0
+    },
+    {
+      "path": "internal/cri/server/container_exec.go",
+      "package": "server",
+      "priority_score": 8,
+      "function_count": 0
+    },
+    {
+      "path": "internal/cri/server/container_checkpoint.go",
+      "package": "server",
+      "priority_score": 8,
+      "function_count": 0
+    },
+    {
+      "path": "internal/cri/server/container_list.go",
+      "package": "server",
+      "priority_score": 8,
+      "function_count": 1
+    },
+    {
+      "path": "internal/cri/server/container_log_reopen.go",
+      "package": "server",
+      "priority_score": 8,
+      "function_count": 0
+    },
+    {
+      "path": "internal/cri/server/container_remove.go",
+      "package": "server",
+      "priority_score": 8,
+      "function_count": 2
+    },
+    {
+      "path": "internal/cri/server/container_start.go",
+      "package": "server",
+      "priority_score": 8,
+      "function_count": 2
+    },
+    {
+      "path": "internal/cri/server/container_start_linux.go",
+      "package": "server",
+      "priority_score": 8,
+      "function_count": 1
+    },
+    {
+      "path": "internal/cri/server/container_start_other.go",
+      "package": "server",
+      "priority_score": 8,
+      "function_count": 1
+    },
+    {
+      "path": "internal/cri/server/container_stats.go",
+      "package": "server",
+      "priority_score": 8,
+      "function_count": 0
+    },
+    {
+      "path": "internal/cri/server/sandbox_remove.go",
+      "package": "server",
+      "priority_score": 8,
+      "function_count": 0
+    },
+    {
+      "path": "internal/cri/server/container_status_linux.go",
+      "package": "server",
+      "priority_score": 8,
+      "function_count": 1
+    },
+    {
+      "path": "internal/cri/server/container_status_other.go",
+      "package": "server",
+      "priority_score": 8,
+      "function_count": 1
+    },
+    {
+      "path": "internal/cri/server/container_status_windows.go",
+      "package": "server",
+      "priority_score": 8,
+      "function_count": 1
+    },
+    {
+      "path": "internal/cri/server/container_update_resources.go",
+      "package": "server",
+      "priority_score": 8,
+      "function_count": 1
+    },
+    {
+      "path": "internal/cri/server/container_update_resources_linux.go",
+      "package": "server",
+      "priority_score": 8,
+      "function_count": 2
+    },
+    {
+      "path": "internal/cri/server/fuzz.go",
+      "package": "server",
+      "priority_score": 8,
+      "function_count": 1
+    },
+    {
+      "path": "internal/cri/server/container_update_resources_other.go",
+      "package": "server",
+      "priority_score": 8,
+      "function_count": 0
+    },
+    {
+      "path": "internal/cri/server/container_update_resources_windows.go",
+      "package": "server",
+      "priority_score": 8,
+      "function_count": 2
+    },
+    {
+      "path": "internal/cri/server/helpers_other.go",
+      "package": "server",
+      "priority_score": 8,
+      "function_count": 4
+    },
+    {
+      "path": "internal/cri/server/sandbox_stop.go",
+      "package": "server",
+      "priority_score": 8,
+      "function_count": 0
+    },
+    {
+      "path": "internal/cri/server/helpers_windows.go",
+      "package": "server",
+      "priority_score": 8,
+      "function_count": 5
+    },
+    {
+      "path": "internal/cri/server/list_metric_descriptors.go",
+      "package": "server",
+      "priority_score": 8,
+      "function_count": 0
+    },
+    {
+      "path": "internal/cri/server/list_pod_sandbox_metrics.go",
+      "package": "server",
+      "priority_score": 8,
+      "function_count": 0
+    },
+    {
+      "path": "internal/cri/server/metrics.go",
+      "package": "server",
+      "priority_score": 8,
+      "function_count": 1
+    },
+    {
+      "path": "internal/cri/server/nri_linux.go",
+      "package": "server",
+      "priority_score": 8,
+      "function_count": 0
+    },
+    {
+      "path": "internal/cri/server/nri_other.go",
+      "package": "server",
+      "priority_score": 8,
+      "function_count": 0
+    },
+    {
+      "path": "internal/cri/server/rdt.go",
+      "package": "server",
+      "priority_score": 8,
+      "function_count": 0
+    },
+    {
+      "path": "internal/cri/server/rdt_stub.go",
+      "package": "server",
+      "priority_score": 8,
+      "function_count": 0
+    },
+    {
+      "path": "internal/cri/server/runtime_config.go",
+      "package": "server",
+      "priority_score": 8,
+      "function_count": 0
+    },
+    {
+      "path": "internal/cri/server/runtime_config_linux.go",
+      "package": "server",
+      "priority_score": 8,
+      "function_count": 1
+    },
+    {
+      "path": "internal/cri/server/runtime_config_other.go",
+      "package": "server",
+      "priority_score": 8,
+      "function_count": 0
+    },
+    {
+      "path": "internal/cri/server/sandbox_list.go",
+      "package": "server",
+      "priority_score": 8,
+      "function_count": 1
+    },
+    {
+      "path": "internal/cri/server/sandbox_portforward.go",
+      "package": "server",
+      "priority_score": 8,
+      "function_count": 0
+    },
+    {
+      "path": "internal/cri/server/sandbox_portforward_linux.go",
+      "package": "server",
+      "priority_score": 8,
+      "function_count": 0
+    },
+    {
+      "path": "internal/cri/server/sandbox_portforward_other.go",
+      "package": "server",
+      "priority_score": 8,
+      "function_count": 0
+    },
+    {
+      "path": "internal/cri/server/sandbox_portforward_windows.go",
+      "package": "server",
+      "priority_score": 8,
+      "function_count": 0
+    },
+    {
+      "path": "internal/cri/server/sandbox_run_linux.go",
+      "package": "server",
+      "priority_score": 8,
+      "function_count": 0
+    },
+    {
+      "path": "internal/cri/server/sandbox_run_other.go",
+      "package": "server",
+      "priority_score": 8,
+      "function_count": 0
+    },
+    {
+      "path": "internal/cri/server/sandbox_run_windows.go",
+      "package": "server",
+      "priority_score": 8,
+      "function_count": 0
+    },
+    {
+      "path": "internal/cri/server/sandbox_stats.go",
+      "package": "server",
+      "priority_score": 8,
+      "function_count": 0
+    },
+    {
+      "path": "internal/cri/server/sandbox_stats_linux.go",
+      "package": "server",
+      "priority_score": 8,
+      "function_count": 2
+    },
+    {
+      "path": "internal/cri/server/sandbox_stats_list.go",
+      "package": "server",
+      "priority_score": 8,
+      "function_count": 0
+    },
+    {
+      "path": "internal/cri/server/sandbox_stats_other.go",
+      "package": "server",
+      "priority_score": 8,
+      "function_count": 0
+    },
+    {
+      "path": "internal/cri/server/sandbox_stats_windows.go",
+      "package": "server",
+      "priority_score": 8,
+      "function_count": 5
+    },
+    {
+      "path": "internal/cri/server/sandbox_status.go",
+      "package": "server",
+      "priority_score": 8,
+      "function_count": 2
+    },
+    {
+      "path": "internal/cri/server/test_config.go",
+      "package": "server",
+      "priority_score": 8,
+      "function_count": 0
+    },
+    {
+      "path": "internal/cri/server/version.go",
+      "package": "server",
+      "priority_score": 8,
+      "function_count": 0
+    },
+    {
+      "path": "internal/cri/server/container_checkpoint_linux.go",
+      "package": "server",
+      "priority_score": 8,
+      "function_count": 5
+    },
+    {
+      "path": "internal/cri/server/container_create.go",
+      "package": "server",
+      "priority_score": 8,
+      "function_count": 2
+    },
+    {
+      "path": "internal/cri/server/images/image_list.go",
+      "package": "images",
+      "priority_score": 8,
+      "function_count": 0
+    },
+    {
+      "path": "internal/cri/server/images/imagefs_info.go",
+      "package": "images",
+      "priority_score": 8,
+      "function_count": 0
+    },
+    {
+      "path": "internal/cri/server/images/metrics.go",
+      "package": "images",
+      "priority_score": 8,
+      "function_count": 1
+    },
+    {
+      "path": "internal/cri/server/images/image_remove.go",
+      "package": "images",
+      "priority_score": 8,
+      "function_count": 0
+    },
+    {
+      "path": "internal/cri/server/images/check.go",
+      "package": "images",
+      "priority_score": 8,
+      "function_count": 0
+    },
+    {
+      "path": "internal/cri/server/podsandbox/helpers_other.go",
+      "package": "podsandbox",
+      "priority_score": 8,
+      "function_count": 2
+    },
+    {
+      "path": "internal/cri/server/podsandbox/helpers_windows.go",
+      "package": "podsandbox",
+      "priority_score": 8,
+      "function_count": 2
+    },
+    {
+      "path": "internal/cri/server/podsandbox/opts.go",
+      "package": "podsandbox",
+      "priority_score": 8,
+      "function_count": 1
+    },
+    {
+      "path": "internal/cri/server/podsandbox/recover.go",
+      "package": "podsandbox",
+      "priority_score": 8,
+      "function_count": 2
+    },
+    {
+      "path": "internal/cri/server/podsandbox/sandbox_delete.go",
+      "package": "podsandbox",
+      "priority_score": 8,
+      "function_count": 0
+    },
+    {
+      "path": "internal/cri/server/podsandbox/sandbox_run_other.go",
+      "package": "podsandbox",
+      "priority_score": 8,
+      "function_count": 1
+    },
+    {
+      "path": "internal/cri/server/podsandbox/sandbox_run_windows.go",
+      "package": "podsandbox",
+      "priority_score": 8,
+      "function_count": 1
+    },
+    {
+      "path": "internal/cri/server/podsandbox/sandbox_stats.go",
+      "package": "podsandbox",
+      "priority_score": 8,
+      "function_count": 0
+    },
+    {
+      "path": "internal/cri/server/podsandbox/sandbox_status.go",
+      "package": "podsandbox",
+      "priority_score": 8,
+      "function_count": 2
+    },
+    {
+      "path": "internal/cri/server/podsandbox/helpers.go",
+      "package": "podsandbox",
+      "priority_score": 8,
+      "function_count": 1
+    },
+    {
+      "path": "internal/cri/server/podsandbox/sandbox_stop.go",
+      "package": "podsandbox",
+      "priority_score": 8,
+      "function_count": 1
+    },
+    {
+      "path": "internal/cri/server/podsandbox/container_linux.go",
+      "package": "podsandbox",
+      "priority_score": 8,
+      "function_count": 3
+    },
+    {
+      "path": "internal/cri/server/podsandbox/sandbox_run_linux.go",
+      "package": "podsandbox",
+      "priority_score": 8,
+      "function_count": 2
+    },
+    {
+      "path": "internal/cri/seutil/seutil.go",
+      "package": "seutil",
+      "priority_score": 8,
+      "function_count": 1
+    },
+    {
+      "path": "internal/cri/store/image/fake_image.go",
+      "package": "image",
+      "priority_score": 8,
+      "function_count": 1
+    },
+    {
+      "path": "internal/cri/systemd/util.go",
+      "package": "systemd",
+      "priority_score": 8,
+      "function_count": 1
+    },
+    {
+      "path": "internal/cri/util/deep_copy.go",
+      "package": "util",
+      "priority_score": 8,
+      "function_count": 1
+    },
+    {
+      "path": "internal/cri/util/id.go",
+      "package": "util",
+      "priority_score": 8,
+      "function_count": 1
+    },
+    {
+      "path": "internal/cri/util/references.go",
+      "package": "util",
+      "priority_score": 8,
+      "function_count": 2
+    },
+    {
+      "path": "internal/cri/util/strings.go",
+      "package": "util",
+      "priority_score": 8,
+      "function_count": 3
+    },
+    {
+      "path": "internal/cri/util/util.go",
+      "package": "util",
+      "priority_score": 8,
+      "function_count": 5
+    },
+    {
+      "path": "internal/eventq/eventq.go",
+      "package": "eventq",
+      "priority_score": 8,
+      "function_count": 1
+    },
+    {
+      "path": "internal/fsverity/fsverity_other.go",
+      "package": "fsverity",
+      "priority_score": 8,
+      "function_count": 3
+    },
+    {
+      "path": "internal/nri/container_linux.go",
+      "package": "nri",
+      "priority_score": 8,
+      "function_count": 1
+    },
+    {
+      "path": "internal/nri/container_other.go",
+      "package": "nri",
+      "priority_score": 8,
+      "function_count": 1
+    },
+    {
+      "path": "internal/nri/sandbox_linux.go",
+      "package": "nri",
+      "priority_score": 8,
+      "function_count": 1
+    },
+    {
+      "path": "internal/nri/sandbox_other.go",
+      "package": "nri",
+      "priority_score": 8,
+      "function_count": 1
+    },
+    {
+      "path": "internal/pprof/plugin.go",
+      "package": "pprof",
+      "priority_score": 8,
+      "function_count": 2
+    },
+    {
+      "path": "internal/randutil/randutil.go",
+      "package": "randutil",
+      "priority_score": 8,
+      "function_count": 4
+    },
+    {
+      "path": "internal/tomlext/toml_v2_util.go",
+      "package": "tomlext",
+      "priority_score": 8,
+      "function_count": 2
+    },
+    {
+      "path": "contrib/fuzz/content_fuzzer.go",
+      "package": "fuzz",
+      "priority_score": 7,
+      "function_count": 6
+    },
+    {
+      "path": "contrib/fuzz/cri_server_fuzzer.go",
+      "package": "fuzz",
+      "priority_score": 7,
+      "function_count": 1
+    },
+    {
+      "path": "integration/cri-api/pkg/apis/services.go",
+      "package": "cri",
+      "priority_score": 7,
+      "function_count": 0
+    },
+    {
+      "path": "contrib/apparmor/apparmor_unsupported.go",
+      "package": "apparmor",
+      "priority_score": 6,
+      "function_count": 2
+    },
+    {
+      "path": "contrib/apparmor/apparmor.go",
+      "package": "apparmor",
+      "priority_score": 6,
+      "function_count": 4
+    },
+    {
+      "path": "contrib/apparmor/apparmor_fuzzer.go",
+      "package": "apparmor",
+      "priority_score": 6,
+      "function_count": 1
+    },
+    {
+      "path": "contrib/fuzz/builtins.go",
+      "package": "fuzz",
+      "priority_score": 6,
+      "function_count": 0
+    },
+    {
+      "path": "contrib/fuzz/builtins_linux.go",
+      "package": "fuzz",
+      "priority_score": 6,
+      "function_count": 0
+    },
+    {
+      "path": "contrib/fuzz/builtins_unix.go",
+      "package": "fuzz",
+      "priority_score": 6,
+      "function_count": 0
+    },
+    {
+      "path": "contrib/fuzz/builtins_windows.go",
+      "package": "fuzz",
+      "priority_score": 6,
+      "function_count": 0
+    },
+    {
+      "path": "contrib/fuzz/archive_fuzzer.go",
+      "package": "fuzz",
+      "priority_score": 6,
+      "function_count": 2
+    },
+    {
+      "path": "contrib/fuzz/containerd_import_fuzzer.go",
+      "package": "fuzz",
+      "priority_score": 6,
+      "function_count": 2
+    },
+    {
+      "path": "contrib/fuzz/daemon.go",
+      "package": "fuzz",
+      "priority_score": 6,
+      "function_count": 1
+    },
+    {
+      "path": "contrib/fuzz/diff_fuzzer.go",
+      "package": "fuzz",
+      "priority_score": 6,
+      "function_count": 2
+    },
+    {
+      "path": "contrib/fuzz/exchange_fuzzer.go",
+      "package": "fuzz",
+      "priority_score": 6,
+      "function_count": 1
+    },
+    {
+      "path": "contrib/fuzz/fuzz_images.go",
+      "package": "fuzz",
+      "priority_score": 6,
+      "function_count": 1
+    },
+    {
+      "path": "contrib/fuzz/uuid_fuzzer.go",
+      "package": "fuzz",
+      "priority_score": 6,
+      "function_count": 1
+    },
+    {
+      "path": "contrib/seccomp/seccomp_default_unsupported.go",
+      "package": "seccomp",
+      "priority_score": 6,
+      "function_count": 1
+    },
+    {
+      "path": "contrib/seccomp/seccomp.go",
+      "package": "seccomp",
+      "priority_score": 6,
+      "function_count": 2
+    },
+    {
+      "path": "contrib/seccomp/seccomp_default.go",
+      "package": "seccomp",
+      "priority_score": 6,
+      "function_count": 2
+    },
+    {
+      "path": "integration/failpoint/cmd/runc-fp/main.go",
+      "package": "main",
+      "priority_score": 6,
+      "function_count": 4
+    },
+    {
+      "path": "defaults/defaults.go",
+      "package": "defaults",
+      "priority_score": 4,
+      "function_count": 0
+    },
+    {
+      "path": "defaults/defaults_freebsd.go",
+      "package": "defaults",
+      "priority_score": 4,
+      "function_count": 0
+    },
+    {
+      "path": "defaults/doc.go",
+      "package": "defaults",
+      "priority_score": 4,
+      "function_count": 0
+    },
+    {
+      "path": "defaults/defaults_darwin.go",
+      "package": "defaults",
+      "priority_score": 4,
+      "function_count": 0
+    },
+    {
+      "path": "defaults/defaults_differ_windows.go",
+      "package": "defaults",
+      "priority_score": 4,
+      "function_count": 0
+    },
+    {
+      "path": "defaults/defaults_linux.go",
+      "package": "defaults",
+      "priority_score": 4,
+      "function_count": 0
+    },
+    {
+      "path": "defaults/defaults_snapshotter_linux.go",
+      "package": "defaults",
+      "priority_score": 4,
+      "function_count": 0
+    },
+    {
+      "path": "defaults/defaults_snapshotter_unix.go",
+      "package": "defaults",
+      "priority_score": 4,
+      "function_count": 0
+    },
+    {
+      "path": "defaults/defaults_snapshotter_windows.go",
+      "package": "defaults",
+      "priority_score": 4,
+      "function_count": 0
+    },
+    {
+      "path": "defaults/defaults_unix.go",
+      "package": "defaults",
+      "priority_score": 4,
+      "function_count": 0
+    },
+    {
+      "path": "defaults/defaults_windows.go",
+      "package": "defaults",
+      "priority_score": 4,
+      "function_count": 0
+    },
+    {
+      "path": "integration/client/container_fuzzer.go",
+      "package": "client",
+      "priority_score": 4,
+      "function_count": 14
+    },
+    {
+      "path": "integration/failpoint/cmd/cni-bridge-fp/main_linux.go",
+      "package": "main",
+      "priority_score": 4,
+      "function_count": 9
+    },
+    {
+      "path": "integration/client/daemon.go",
+      "package": "client",
+      "priority_score": 3,
+      "function_count": 0
+    },
+    {
+      "path": "integration/failpoint/cmd/containerd-shim-runc-fp-v1/plugin_linux.go",
+      "package": "main",
+      "priority_score": 3,
+      "function_count": 2
+    },
+    {
+      "path": "integration/images/image_list.go",
+      "package": "images",
+      "priority_score": 3,
+      "function_count": 3
+    },
+    {
+      "path": "integration/remote/remote_image.go",
+      "package": "remote",
+      "priority_score": 3,
+      "function_count": 1
+    },
+    {
+      "path": "integration/remote/remote_runtime.go",
+      "package": "remote",
+      "priority_score": 3,
+      "function_count": 1
+    },
+    {
+      "path": "integration/remote/util/util_unix.go",
+      "package": "util",
+      "priority_score": 3,
+      "function_count": 7
+    },
+    {
+      "path": "integration/remote/util/util_unsupported.go",
+      "package": "util",
+      "priority_score": 3,
+      "function_count": 6
+    },
+    {
+      "path": "integration/remote/util/util_windows.go",
+      "package": "util",
+      "priority_score": 3,
+      "function_count": 8
+    },
+    {
+      "path": "integration/build_local_containerd_helper_test_linux.go",
+      "package": "integration",
+      "priority_score": 2,
+      "function_count": 0
+    },
+    {
+      "path": "integration/client/client_unix.go",
+      "package": "client",
+      "priority_score": 2,
+      "function_count": 0
+    },
+    {
+      "path": "integration/client/client_windows.go",
+      "package": "client",
+      "priority_score": 2,
+      "function_count": 0
+    },
+    {
+      "path": "integration/client/helpers_unix.go",
+      "package": "client",
+      "priority_score": 2,
+      "function_count": 2
+    },
+    {
+      "path": "integration/client/tracing.go",
+      "package": "client",
+      "priority_score": 2,
+      "function_count": 2
+    },
+    {
+      "path": "integration/client/helpers_windows.go",
+      "package": "client",
+      "priority_score": 2,
+      "function_count": 4
+    },
+    {
+      "path": "integration/failpoint/const.go",
+      "package": "failpoint",
+      "priority_score": 2,
+      "function_count": 0
+    },
+    {
+      "path": "integration/failpoint/cmd/containerd-shim-runc-fp-v1/main_linux.go",
+      "package": "main",
+      "priority_score": 2,
+      "function_count": 1
+    },
+    {
+      "path": "integration/failpoint/cmd/runc-fp/delayexec.go",
+      "package": "main",
+      "priority_score": 2,
+      "function_count": 4
+    },
+    {
+      "path": "integration/failpoint/cmd/runc-fp/issue9103.go",
+      "package": "main",
+      "priority_score": 2,
+      "function_count": 1
+    },
+    {
+      "path": "integration/images/volume-ownership/tools/get_owner_windows.go",
+      "package": "main",
+      "priority_score": 2,
+      "function_count": 1
+    },
+    {
+      "path": "integration/remote/doc.go",
+      "package": "remote",
+      "priority_score": 2,
+      "function_count": 0
+    },
+    {
+      "path": "integration/remote/utils.go",
+      "package": "remote",
+      "priority_score": 2,
+      "function_count": 4
+    },
+    {
+      "path": "version/version.go",
+      "package": "version",
+      "priority_score": 0,
+      "function_count": 0
+    }
+  ]
+}

@@ -67,8 +67,6 @@ config.json
 .env.local
 .env.production
 .env.development
-
-*.metadata.json
 *cost_report*.txt
 
 # OS
