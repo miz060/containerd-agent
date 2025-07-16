@@ -1,0 +1,117 @@
+[
+  {
+    "question": "How do folks troubleshoot failing CRI integration tests on Windows? I have a couple tests repeatedly failing in my PR. I'd like to run these tests locally to debug further but I'm unfamiliar with how to do so. One workaround would be to make a PR, make local changes (debug logging), and then push and wait for CI to run again but that seemed heavy handed.",
+    "category": "windows-testing",
+    "system_prompt": "You are an expert in containerd and container runtime systems. Provide accurate, detailed, and practical information about containerd's architecture, APIs, and implementation.",
+    "context": "A developer is trying to debug failing CRI integration tests on Windows and needs guidance on local testing approaches.",
+    "expected_topics": [
+      "Windows development environment setup",
+      "CRI integration testing",
+      "Local debugging strategies",
+      "CI/CD workflows for Windows",
+      "Development containers or VM alternatives"
+    ],
+    "original_response_summary": "Community members suggested: 1) Using a Windows-based dev container would be ideal but doesn't exist yet. 2) Referencing hcsshim build guide for Windows setup. 3) Using CI divide-and-conquer approach with iterative PRs as a practical workaround. 4) Challenges include missing instructions for local Windows development setup and differences between GitHub runner environment and basic Windows installations. 5) Mentioned James Sturtevant's guide for attaching debugger to Windows containerd shim, and suggested looking at moby/moby's Dockerfile.windows for reference."
+  },
+  {
+    "question": "Question about TaskOptions and RuntimeOptions. I'm curious why they both share the same Options struct? Is it possible for TaskOptions to set something like BinaryName (which is normally found in RuntimeOptions)? If so, what should happen if both RuntimeOptions and TaskOptions set BinaryName?",
+    "category": "options-design",
+    "system_prompt": "You are an expert in containerd and container runtime systems. Provide accurate, detailed, and practical information about containerd's architecture, APIs, and implementation.",
+    "context": "A developer is questioning the design of TaskOptions and RuntimeOptions sharing the same Options struct and wondering about potential conflicts when both set the same fields.",
+    "expected_topics": [
+      "TaskOptions vs RuntimeOptions design",
+      "Options struct sharing",
+      "BinaryName field usage",
+      "Merge behavior and conflicts",
+      "CRI integration patterns"
+    ],
+    "original_response_summary": "Community members analyzed the code and found that: 1) The expectation is for CRI to use RuntimeOptions, not TaskOptions. 2) TaskOptions should be nil in CRI context, avoiding conflicts. 3) The issue might be due to not creating new RuntimeOptions properly and needing a 'with' function for them. 4) Referenced specific code in task_opts_unix.go and container_start_linux.go. 5) Concluded that allowing both options seems fragile without proper merge rules, suggesting the design needs clearer separation."
+  },
+  {
+    "question": "Hi folks! I am trying to test out OCI volume mount in containerd: https://github.com/containerd/containerd/pull/10579 in a kubernetes cluster. But I am getting this issue: 'Warning FailedMount 11s (x5 over 64s) kubelet Unable to attach or mount volumes: unmounted volumes=[volume], unattached volumes=[], failed to process volumes=[volume]: failed to get Plugin from volumeSpec for volume \"volume\" err=no volume plugin matched'. Any pointers on what I am doing wrong? Here is how I built containerd: git clone https://github.com/containerd/containerd.git, cd containerd, make, sudo make install, sudo systemctl restart containerd.service. Here is how I started my cluster with kubeadm using CRI socket unix:///run/containerd/containerd.sock and feature-gates ImageVolume=true in the apiServer extraArgs.",
+    "category": "kubernetes-integration",
+    "system_prompt": "You are an expert in containerd and container runtime systems. Provide accurate, detailed, and practical information about containerd's architecture, APIs, and implementation.",
+    "context": "A developer is trying to test OCI volume mount functionality in containerd with Kubernetes but encountering volume plugin errors during pod creation.",
+    "expected_topics": [
+      "OCI volume mount feature",
+      "Kubernetes CRI integration",
+      "Volume plugin configuration",
+      "Feature gates in Kubernetes",
+      "Kubelet configuration",
+      "containerd build and installation"
+    ],
+    "original_response_summary": "Community members identified the issue as a kubelet configuration problem. The solution suggested was to add the ImageVolume feature gate to the KubeletConfiguration section as well, not just the apiServer extraArgs. The error indicates that the kubelet doesn't have the proper feature gate enabled to recognize the OCI volume mount functionality."
+  },
+  {
+    "question": "There are a couple of Media Types for OCI image layer like application/vnd.oci.image.layer.v1.tar and application/vnd.oci.image.layer.v1.tar+gzip, does containerd have a mechanism to distinguish the Media type of the container image layers during pulling and unpacking the image? Would you mind pointing me to the code where the logic is? Thanks so much!",
+    "category": "image-layers",
+    "system_prompt": "You are an expert in containerd and container runtime systems. Provide accurate, detailed, and practical information about containerd's architecture, APIs, and implementation.",
+    "context": "A developer is asking about how containerd handles different OCI image layer media types during image pulling and unpacking, and wants to understand the code implementation.",
+    "expected_topics": [
+      "OCI image layer media types",
+      "Image pulling and unpacking mechanisms",
+      "Media type detection and handling",
+      "Code locations for compression handling",
+      "Descriptor and manifest processing"
+    ],
+    "original_response_summary": "Community members explained that layer media types are recorded in the descriptor contained in the manifest, so the media type is known prior to downloading the layer. They provided specific code references: 1) Starting point at compression.go#L187 for compression handling logic, 2) Referenced uncompress.go#L37 as an example of how media types are used in the converter/uncompress functionality. The response guided the developer to trace back through referencing callers to understand the full flow."
+  },
+  {
+    "question": "Hi team, I have a question regarding NRI. Is it by default that all create/update events are blocking (returns errors when they fail) and all remove actions are non-blocking (do not return error just log it)? I'm looking at the code where container_create returns errors but container_remove just logs them. I am writing my own NRI plugin and was wondering how should I approach error handling in cleanup logic. Thanks!",
+    "category": "nri-plugins",
+    "system_prompt": "You are an expert in containerd and container runtime systems. Provide accurate, detailed, and practical information about containerd's architecture, APIs, and implementation.",
+    "context": "A developer is writing an NRI plugin and needs to understand the error handling patterns for different NRI lifecycle events, specifically why create/update events are blocking while remove events are non-blocking.",
+    "expected_topics": [
+      "NRI plugin architecture",
+      "Error handling patterns in NRI",
+      "Pre-hook vs post-hook event semantics",
+      "Container lifecycle management",
+      "Plugin cleanup logic best practices"
+    ],
+    "original_response_summary": "Community members explained that NRI CreateContainer is a 'pre-hook' by nature where plugins can adjust container attributes before creation, so errors can block the process. StopContainer and RemoveContainer are 'post-hook' events where plugins get notified but cannot prevent the action. StopContainer can happen actively via external request or by container process exiting/crashing, so plugins cannot prevent it. RemoveContainer is semantically like a post-hook - plugins cannot prevent removal but can perform local bookkeeping actions."
+  },
+  {
+    "question": "Hi Containerd Dev Team. I am looking for a way to retrieve the current configuration (the resolved config after every containerd configuration toml file is merged) programmatically via Go. While we can achieve this via the 'containerd config dump' command, I would like to retrieve the same output without invoking a command line call from the Go programme. Appreciate any guidance/insight on this. Thanks!",
+    "category": "configuration-api",
+    "system_prompt": "You are an expert in containerd and container runtime systems. Provide accurate, detailed, and practical information about containerd's architecture, APIs, and implementation.",
+    "context": "A developer wants to programmatically retrieve containerd's resolved configuration in Go without using command line calls, similar to what 'containerd config dump' provides.",
+    "expected_topics": [
+      "Containerd configuration management",
+      "CRI API for configuration retrieval",
+      "Go programming interfaces",
+      "Configuration merging and resolution",
+      "Runtime status and info APIs"
+    ],
+    "original_response_summary": "Community member suggested using the CRI Status/Info API which already returns configuration information. They referenced 'crictl info' command which shows the resolved configuration in the 'config' section of the output. The suggestion was to expand what's returned in the CRI Status/Info API if needed, and pointed to the CRI plugin Status API implementation. The response included a detailed example of what 'crictl info' returns, showing the comprehensive configuration data available through this API."
+  },
+  {
+    "question": "Is there a way to start a pod without a pause container? Or to make the pause container use one runtime and the main container in the pod use another runtime? I have my own runtime that does some low-level local tasks (doesn't require networking and would only deploy a single container at a time) which works fine with containerd but if I try to use it in an orchestration setup like k3s/k8s, every pod has a sandbox/pause container in addition to my own. The pause container won't be able to run due to the nature of my runtime. I'm looking for either: 1) Run pause container with runc and mine with my runtime (but this isn't possible since every pod needs to use the same runtime), 2) Disable the pause container entirely, or 3) Change the CRI config to use a dummy empty container as sandbox_image.",
+    "category": "pause-containers",
+    "system_prompt": "You are an expert in containerd and container runtime systems. Provide accurate, detailed, and practical information about containerd's architecture, APIs, and implementation.",
+    "context": "A developer has a custom runtime for low-level local tasks that works with containerd but faces issues in Kubernetes orchestration due to pause container requirements. They need to either disable pause containers or use different runtimes for pause vs main containers.",
+    "expected_topics": [
+      "Pause container architecture",
+      "Sandbox API implementation",
+      "CRI runtime configuration",
+      "Multi-runtime pod support",
+      "Custom runtime integration with Kubernetes",
+      "Sandbox container alternatives"
+    ],
+    "original_response_summary": "Community members explained that there's no out-of-the-box way to start pods without pause containers or use different runtimes within a pod. However, they suggested looking at the Sandbox API which aims to mitigate this issue. The Sandbox API allows replacing the pause container with your own implementation by implementing CRI.SandboxCreate/Start/Delete in your runtime. This provides a way to have custom sandbox behavior while maintaining CRI compatibility."
+  },
+  {
+    "question": "Hi containerd newbie here. I am trying to understand why there are two different cgroups packages: one in github.com/opencontainers/runc/tree/main/libcontainer/cgroups and another in github.com/containerd/cgroups. Why I ask this is I saw a change to read PSI that was required to be added in both repos which made me wonder if there was a reason for code duplication? The same PSI reading functionality was implemented in both runc and containerd cgroups packages.",
+    "category": "cgroups-architecture",
+    "system_prompt": "You are an expert in containerd and container runtime systems. Provide accurate, detailed, and practical information about containerd's architecture, APIs, and implementation.",
+    "context": "A developer is confused about why there are separate cgroups packages in runc and containerd, and why similar functionality (like PSI reading) needs to be implemented in both.",
+    "expected_topics": [
+      "Cgroups package architecture",
+      "runc vs containerd separation",
+      "Code duplication rationale",
+      "Shim server metrics export",
+      "Protobuf definitions for RPC",
+      "Package maintenance strategies"
+    ],
+    "original_response_summary": "Community members explained that the different packages are from different organizations and serve different use cases. Containerd has a shim server to export metrics and the cgroups package defines protobuf for RPC calls. It's not good to add an extra layer to use runc's cgroups package, and runc plans to move all those packages to internal so no one can use them. For containerd, they focus on reading operations, so it's easier to maintain a small, focused package."
+  }
+]

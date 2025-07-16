@@ -1,62 +1,52 @@
 [
   {
-    "question": "What is the purpose of the containerd client package and how does it interact with the daemon?",
-    "category": "architecture",
+    "question": "I'm new to the containerd codebase and want to contribute. What are the main directories and packages I should understand first, and how is the code organized?",
+    "category": "codebase-navigation",
     "system_prompt": "You are an expert in containerd and container runtime systems. Provide accurate, detailed, and practical information about containerd's architecture, APIs, and implementation."
   },
   {
-    "question": "How does containerd handle container image pulling and caching?",
-    "category": "images",
+    "question": "How do I set up a development environment for containerd? What tools and dependencies do I need to build and test the project locally?",
+    "category": "development-setup",
     "system_prompt": "You are an expert in containerd and container runtime systems. Provide accurate, detailed, and practical information about containerd's architecture, APIs, and implementation."
   },
   {
-    "question": "What are the key differences between containerd's snapshotter implementations?",
-    "category": "storage",
+    "question": "What is the typical workflow for contributing to containerd? How do I run tests, create a PR, and what are the code review expectations?",
+    "category": "contribution-workflow",
     "system_prompt": "You are an expert in containerd and container runtime systems. Provide accurate, detailed, and practical information about containerd's architecture, APIs, and implementation."
   },
   {
-    "question": "How does containerd integrate with Kubernetes through the CRI interface?",
-    "category": "integration",
+    "question": "Where should I look in the codebase to understand how containerd handles gRPC APIs? Which files define the service interfaces and how are they implemented?",
+    "category": "api-implementation",
     "system_prompt": "You are an expert in containerd and container runtime systems. Provide accurate, detailed, and practical information about containerd's architecture, APIs, and implementation."
   },
   {
-    "question": "What is the role of the containerd metadata store and how is it implemented?",
-    "category": "metadata",
+    "question": "I want to add a new feature to containerd's image service. Which files should I modify and what patterns should I follow for extending the existing functionality?",
+    "category": "feature-development",
     "system_prompt": "You are an expert in containerd and container runtime systems. Provide accurate, detailed, and practical information about containerd's architecture, APIs, and implementation."
   },
   {
-    "question": "How does containerd handle container lifecycle management through tasks?",
-    "category": "lifecycle",
+    "question": "How does containerd's plugin system work from a developer perspective? If I want to create a new plugin, what interfaces do I need to implement and where should I place the code?",
+    "category": "plugin-development",
     "system_prompt": "You are an expert in containerd and container runtime systems. Provide accurate, detailed, and practical information about containerd's architecture, APIs, and implementation."
   },
   {
-    "question": "What are the security considerations when using containerd in production?",
-    "category": "security",
+    "question": "What testing strategies does containerd use? How do I write unit tests, integration tests, and what are the best practices for testing containerd components?",
+    "category": "testing-practices",
     "system_prompt": "You are an expert in containerd and container runtime systems. Provide accurate, detailed, and practical information about containerd's architecture, APIs, and implementation."
   },
   {
-    "question": "How does containerd's plugin architecture work and how can you extend it?",
-    "category": "plugins",
+    "question": "How does error handling work in containerd? What are the common error types and patterns I should follow when writing new code or fixing bugs?",
+    "category": "error-handling",
     "system_prompt": "You are an expert in containerd and container runtime systems. Provide accurate, detailed, and practical information about containerd's architecture, APIs, and implementation."
   },
   {
-    "question": "What are the performance characteristics of different containerd runtimes like runc, runsc, and kata?",
-    "category": "performance",
+    "question": "I found a bug in containerd's container lifecycle management. How do I debug issues in the task service and what tools or techniques should I use?",
+    "category": "debugging-techniques",
     "system_prompt": "You are an expert in containerd and container runtime systems. Provide accurate, detailed, and practical information about containerd's architecture, APIs, and implementation."
   },
   {
-    "question": "How does containerd handle networking for containers?",
-    "category": "networking",
-    "system_prompt": "You are an expert in containerd and container runtime systems. Provide accurate, detailed, and practical information about containerd's architecture, APIs, and implementation."
-  },
-  {
-    "question": "What are the key components of the containerd architecture and how do they interact?",
-    "category": "architecture",
-    "system_prompt": "You are an expert in containerd and container runtime systems. Provide accurate, detailed, and practical information about containerd's architecture, APIs, and implementation."
-  },
-  {
-    "question": "How do you troubleshoot common containerd issues in production environments?",
-    "category": "troubleshooting",
+    "question": "What are the key coding standards and conventions used in containerd? Are there specific Go patterns, naming conventions, or architectural principles I should follow?",
+    "category": "coding-standards",
     "system_prompt": "You are an expert in containerd and container runtime systems. Provide accurate, detailed, and practical information about containerd's architecture, APIs, and implementation."
   }
 ]

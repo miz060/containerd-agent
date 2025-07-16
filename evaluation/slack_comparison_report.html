@@ -1,0 +1,251 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Model Comparison Report</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; background-color: #f5f5f5; }
+        .container { max-width: 1200px; margin: 0 auto; background-color: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        h1 { color: #333; text-align: center; margin-bottom: 30px; }
+        h2 { color: #555; border-bottom: 2px solid #007acc; padding-bottom: 5px; }
+        h3 { color: #666; margin-top: 25px; }
+        .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 30px; }
+        .info-box { background-color: #f8f9fa; padding: 15px; border-radius: 6px; border-left: 4px solid #007acc; }
+        .summary { background-color: #e7f3ff; padding: 15px; border-radius: 6px; margin-bottom: 20px; }
+        .question-container { margin-bottom: 40px; border: 1px solid #ddd; border-radius: 8px; overflow: hidden; }
+        .question-header { background-color: #007acc; color: white; padding: 12px; font-weight: bold; }
+        .question-category { background-color: #17a2b8; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8em; margin-left: 10px; }
+        .responses { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
+        .response { padding: 20px; }
+        .base-response { background-color: #fff8dc; border-right: 1px solid #ddd; }
+        .finetuned-response { background-color: #f0fff0; }
+        .response-header { font-weight: bold; margin-bottom: 10px; color: #333; }
+        .response-meta { font-size: 0.9em; color: #666; margin-bottom: 10px; }
+        .response-text { line-height: 1.6; white-space: pre-wrap; word-wrap: break-word; }
+        .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-top: 20px; }
+        .stat-box { background-color: #f8f9fa; padding: 15px; border-radius: 6px; text-align: center; }
+        .stat-value { font-size: 1.5em; font-weight: bold; color: #007acc; }
+        .stat-label { color: #666; font-size: 0.9em; }
+        .improvement { color: #28a745; font-weight: bold; }
+        .degradation { color: #dc3545; font-weight: bold; }
+        .neutral { color: #6c757d; font-weight: bold; }
+        .toc { background-color: #f8f9fa; padding: 15px; border-radius: 6px; margin-bottom: 20px; }
+        .toc ul { list-style-type: none; padding: 0; }
+        .toc li { margin: 5px 0; }
+        .toc a { color: #007acc; text-decoration: none; }
+        .toc a:hover { text-decoration: underline; }
+        @media (max-width: 768px) {
+            .info-grid, .responses, .stats { grid-template-columns: 1fr; }
+            .response { border-bottom: 1px solid #ddd; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🤖 Model Comparison Report</h1>
+        
+        <div class="info-grid">
+            <div class="info-box">
+                <h3>📊 Comparison Info</h3>
+                <p><strong>Generated:</strong> 2025-07-16 20:10:24</p>
+                <p><strong>Total Questions:</strong> 1</p>
+            </div>
+            <div class="info-box">
+                <h3>🔧 Models Compared</h3>
+                <p><strong>Base:</strong> GPT-4.1 Base</p>
+                <p><strong>Fine-tuned:</strong> GPT-4.1 Fine-tuned</p>
+            </div>
+        </div>
+        
+        <div class="summary">
+            <h2>📈 Summary Statistics</h2>
+            <div class="stats">
+                <div class="stat-box">
+                    <div class="stat-value">1</div>
+                    <div class="stat-label">Questions Compared</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-value">1,068</div>
+                    <div class="stat-label">Base Model Tokens</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-value">267</div>
+                    <div class="stat-label">Fine-tuned Model Tokens</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-value improvement">-801</div>
+                    <div class="stat-label">Token Difference</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-value">11.03s</div>
+                    <div class="stat-label">Base Model Avg Time</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-value">3.48s</div>
+                    <div class="stat-label">Fine-tuned Model Avg Time</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-value improvement">-7.54s</div>
+                    <div class="stat-label">Time Difference</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="toc">
+            <h2>📋 Table of Contents</h2>
+            <ul>
+                <li><a href="#question1">1. How do folks troubleshoot failing CRI integration tests on W...</a> <span class="question-category">windows-testing</span></li>\n
+            </ul>
+        </div>
+        
+        <h2>💬 Question Comparisons</h2>
+        
+        <div class="question-container" id="question1">
+            <div class="question-header">
+                Question 1: How do folks troubleshoot failing CRI integration tests on Windows? I have a couple tests repeatedly failing in my PR. I'd like to run these tests locally to debug further but I'm unfamiliar with how to do so. One workaround would be to make a PR, make local changes (debug logging), and then push and wait for CI to run again but that seemed heavy handed.
+                <span class="question-category">windows-testing</span>
+            </div>
+            <div class="responses">
+                <div class="response base-response">
+                    <div class="response-header">🔵 Base Model (GPT-4.1 Base)</div>
+                    <div class="response-meta">
+                        Tokens: 1068 | Time: 11.03s
+                    </div>
+                    <div class="response-text">Great question! Troubleshooting failing CRI (Container Runtime Interface) integration tests on Windows can be a bit tricky, especially since most documentation and community experience is Linux-focused. Here’s a practical guide to running and debugging these tests locally on Windows:
+
+---
+
+## 1. **Prerequisites**
+
+- **Windows 10/11 or Windows Server** (with containers feature enabled)
+- **Go** (matching the version used by containerd)
+- **Git**
+- **Build tools** (e.g., `make`, `gcc` via MSYS2 or similar, if needed)
+- **Docker** (optional, for building images)
+- **containerd** source code (your PR branch)
+
+---
+
+## 2. **Clone and Prepare the Repo**
+
+```powershell
+git clone https://github.com/containerd/containerd.git
+cd containerd
+git checkout <your-branch>
+```
+
+---
+
+## 3. **Build containerd and containerd-shim-runhcs-v1**
+
+On Windows, containerd uses the [runhcs](https://github.com/containerd/runhcs) shim.
+
+- Build containerd:
+  ```powershell
+  go build -o bin/containerd.exe ./cmd/containerd
+  go build -o bin/containerd-shim-runhcs-v1.exe ./cmd/containerd-shim-runhcs-v1
+  ```
+
+- (Optional) Build `ctr`:
+  ```powershell
+  go build -o bin/ctr.exe ./cmd/ctr
+  ```
+
+---
+
+## 4. **Running CRI Integration Tests Locally**
+
+The CRI integration tests live in `test/integration` and are run via Go’s test tooling. On Windows, you’ll want to run them with the correct environment variables and permissions.
+
+### **A. Start containerd**
+
+Open a terminal and run:
+
+```powershell
+bin\containerd.exe --config .\test\windows\containerd-config.toml
+```
+
+Leave this running.
+
+### **B. Run the CRI integration tests**
+
+Open another terminal. Set the required environment variables (if any), then run:
+
+```powershell
+cd test\integration
+go test -v -run <TestName>
+```
+
+- Replace `<TestName>` with the name or regex of the failing test(s).
+- Use `-timeout` if needed (some tests can be slow).
+
+**Example:**
+```powershell
+go test -v -run TestContainerStats
+```
+
+### **C. Debugging**
+
+- Add `t.Logf()` or `fmt.Printf()` statements in the test or code under test.
+- Use breakpoints if you’re using an IDE like VS Code or GoLand.
+- You can also run the test in debug mode from your IDE.
+
+---
+
+## 5. **Common Issues**
+
+- **Permissions:** Run your terminal as Administrator.
+- **Hyper-V/Windows Containers:** Make sure your system is set to use Windows containers (not Linux containers).
+- **Image Availability:** Some tests require specific images. Pull them manually if needed:
+  ```powershell
+  ctr -n k8s.io images pull mcr.microsoft.com/windows/nanoserver:1809
+  ```
+
+---
+
+## 6. **Extra Tips**
+
+- **Verbose Logging:** Increase containerd logging verbosity in the config file.
+- **Test Filtering:** Use `-run` to target specific tests.
+- **Test Cleanup:** Some tests may leave containers/images behind; clean up with `ctr` or Docker as needed.
+
+---
+
+## 7. **References**
+
+- [containerd Windows Developer Guide](https://github.com/containerd/containerd/blob/main/docs/ops/windows.md)
+- [containerd CRI Integration Tests](https://github.com/containerd/containerd/tree/main/test/integration)
+- [runhcs shim](https://github.com/containerd/runhcs)
+
+---
+
+## **Summary Table**
+
+| Step                | Command/Action                                                                 |
+|---------------------|-------------------------------------------------------------------------------|
+| Build containerd    | `go build -o bin/containerd.exe ./cmd/containerd`                             |
+| Start containerd    | `bin\containerd.exe --config .\test\windows\containerd-config.toml`           |
+| Run test            | `cd test\integration; go test -v -run <TestName>`                             |
+| Debug               | Add `t.Logf`, use IDE breakpoints, or add logging                             |
+| Pull images         | `ctr -n k8s.io images pull <image>`                                           |
+
+---
+
+**If you run into specific errors or test failures, feel free to paste the logs or error messages for more targeted help!**</div>
+                </div>
+                <div class="response finetuned-response">
+                    <div class="response-header">🟢 Fine-tuned Model (GPT-4.1 Fine-tuned)</div>
+                    <div class="response-meta">
+                        Tokens: 267 | Time: 3.48s
+                    </div>
+                    <div class="response-text">To troubleshoot failing CRI integration tests on Windows, you can run the tests locally using the `make cri-integration` command. This command is designed to execute the CRI integration tests in your local environment, allowing you to debug issues without relying on CI. Before running the tests, ensure that your environment is properly set up with the required dependencies, such as a compatible version of containerd, Kubernetes, and any necessary runtime configurations. If the tests are still failing, you can add debug logging to the relevant parts of the codebase to gain more insights. This approach is more efficient than repeatedly pushing changes to CI. Additionally, you can refer to the `test/integration/cri` directory in the containerd repository for specific test cases and configurations.</div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</body>
+</html>
+    

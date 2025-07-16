@@ -1,0 +1,1521 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Model Comparison Report</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; background-color: #f5f5f5; }
+        .container { max-width: 1200px; margin: 0 auto; background-color: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        h1 { color: #333; text-align: center; margin-bottom: 30px; }
+        h2 { color: #555; border-bottom: 2px solid #007acc; padding-bottom: 5px; }
+        h3 { color: #666; margin-top: 25px; }
+        .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 30px; }
+        .info-box { background-color: #f8f9fa; padding: 15px; border-radius: 6px; border-left: 4px solid #007acc; }
+        .summary { background-color: #e7f3ff; padding: 15px; border-radius: 6px; margin-bottom: 20px; }
+        .question-container { margin-bottom: 40px; border: 1px solid #ddd; border-radius: 8px; overflow: hidden; }
+        .question-header { background-color: #007acc; color: white; padding: 12px; font-weight: bold; }
+        .question-category { background-color: #17a2b8; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8em; margin-left: 10px; }
+        .responses { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
+        .response { padding: 20px; }
+        .base-response { background-color: #fff8dc; border-right: 1px solid #ddd; }
+        .finetuned-response { background-color: #f0fff0; }
+        .response-header { font-weight: bold; margin-bottom: 10px; color: #333; }
+        .response-meta { font-size: 0.9em; color: #666; margin-bottom: 10px; }
+        .response-text { line-height: 1.6; white-space: pre-wrap; word-wrap: break-word; }
+        .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-top: 20px; }
+        .stat-box { background-color: #f8f9fa; padding: 15px; border-radius: 6px; text-align: center; }
+        .stat-value { font-size: 1.5em; font-weight: bold; color: #007acc; }
+        .stat-label { color: #666; font-size: 0.9em; }
+        .improvement { color: #28a745; font-weight: bold; }
+        .degradation { color: #dc3545; font-weight: bold; }
+        .neutral { color: #6c757d; font-weight: bold; }
+        .toc { background-color: #f8f9fa; padding: 15px; border-radius: 6px; margin-bottom: 20px; }
+        .toc ul { list-style-type: none; padding: 0; }
+        .toc li { margin: 5px 0; }
+        .toc a { color: #007acc; text-decoration: none; }
+        .toc a:hover { text-decoration: underline; }
+        @media (max-width: 768px) {
+            .info-grid, .responses, .stats { grid-template-columns: 1fr; }
+            .response { border-bottom: 1px solid #ddd; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🤖 Model Comparison Report</h1>
+        
+        <div class="info-grid">
+            <div class="info-box">
+                <h3>📊 Comparison Info</h3>
+                <p><strong>Generated:</strong> 2025-07-16 19:59:54</p>
+                <p><strong>Total Questions:</strong> 10</p>
+            </div>
+            <div class="info-box">
+                <h3>🔧 Models Compared</h3>
+                <p><strong>Base:</strong> GPT-4.1 Base</p>
+                <p><strong>Fine-tuned:</strong> GPT-4.1 Fine-tuned</p>
+            </div>
+        </div>
+        
+        <div class="summary">
+            <h2>📈 Summary Statistics</h2>
+            <div class="stats">
+                <div class="stat-box">
+                    <div class="stat-value">10</div>
+                    <div class="stat-label">Questions Compared</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-value">10,319</div>
+                    <div class="stat-label">Base Model Tokens</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-value">2,364</div>
+                    <div class="stat-label">Fine-tuned Model Tokens</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-value improvement">-7,955</div>
+                    <div class="stat-label">Token Difference</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-value">10.17s</div>
+                    <div class="stat-label">Base Model Avg Time</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-value">3.93s</div>
+                    <div class="stat-label">Fine-tuned Model Avg Time</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-value improvement">-6.24s</div>
+                    <div class="stat-label">Time Difference</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="toc">
+            <h2>📋 Table of Contents</h2>
+            <ul>
+                <li><a href="#question1">1. I'm new to the containerd codebase and want to contribute. W...</a> <span class="question-category">codebase-navigation</span></li>\n<li><a href="#question2">2. How do I set up a development environment for containerd? Wh...</a> <span class="question-category">development-setup</span></li>\n<li><a href="#question3">3. What is the typical workflow for contributing to containerd?...</a> <span class="question-category">contribution-workflow</span></li>\n<li><a href="#question4">4. Where should I look in the codebase to understand how contai...</a> <span class="question-category">api-implementation</span></li>\n<li><a href="#question5">5. I want to add a new feature to containerd's image service. W...</a> <span class="question-category">feature-development</span></li>\n<li><a href="#question6">6. How does containerd's plugin system work from a developer pe...</a> <span class="question-category">plugin-development</span></li>\n<li><a href="#question7">7. What testing strategies does containerd use? How do I write ...</a> <span class="question-category">testing-practices</span></li>\n<li><a href="#question8">8. How does error handling work in containerd? What are the com...</a> <span class="question-category">error-handling</span></li>\n<li><a href="#question9">9. I found a bug in containerd's container lifecycle management...</a> <span class="question-category">debugging-techniques</span></li>\n<li><a href="#question10">10. What are the key coding standards and conventions used in co...</a> <span class="question-category">coding-standards</span></li>\n
+            </ul>
+        </div>
+        
+        <h2>💬 Question Comparisons</h2>
+        
+        <div class="question-container" id="question1">
+            <div class="question-header">
+                Question 1: I'm new to the containerd codebase and want to contribute. What are the main directories and packages I should understand first, and how is the code organized?
+                <span class="question-category">codebase-navigation</span>
+            </div>
+            <div class="responses">
+                <div class="response base-response">
+                    <div class="response-header">🔵 Base Model (GPT-4.1 Base)</div>
+                    <div class="response-meta">
+                        Tokens: 1074 | Time: 12.98s
+                    </div>
+                    <div class="response-text">Welcome to the containerd project! Understanding its codebase structure is a great first step. Here’s a practical guide to the main directories, packages, and how the code is organized:
+
+---
+
+## **Top-Level Structure**
+
+The containerd repository (https://github.com/containerd/containerd) is organized to separate core runtime logic, API definitions, client libraries, and supporting tools.
+
+### **Key Directories**
+
+#### 1. **cmd/**
+- **Purpose:** Entry points for containerd and its CLI tools.
+- **Notable subdirs:**
+  - `containerd/` — The main containerd daemon.
+  - `ctr/` — The `ctr` CLI tool (for debugging and development).
+  - `containerd-shim/` — The shim process that manages container lifecycle.
+
+#### 2. **api/**
+- **Purpose:** Protocol Buffers (protobuf) definitions for gRPC APIs.
+- **Subdirs:**
+  - `services/` — Service definitions (e.g., containers, images, snapshots).
+  - `types/` — Common message types.
+- **Generated Go code** is in `api/` and used throughout the codebase.
+
+#### 3. **runtime/**
+- **Purpose:** Container runtime logic.
+- **Subdirs:**
+  - `v2/` — Implementation of the runtime v2 API (used by modern shims like `containerd-shim-runc-v2`).
+  - `v1/` — (Legacy) Older runtime API.
+
+#### 4. **services/**
+- **Purpose:** gRPC service implementations for core containerd features.
+- **Examples:**
+  - `containers/` — CRUD operations for containers.
+  - `images/` — Image management.
+  - `snapshots/` — Snapshotter management.
+  - `tasks/` — Container process lifecycle.
+
+#### 5. **pkg/**
+- **Purpose:** Reusable utility packages (internal helpers, not part of the public API).
+- **Examples:** `idgen/`, `lock/`, `transfer/`, etc.
+
+#### 6. **client/**
+- **Purpose:** Go client library for interacting with containerd’s API (used by `ctr` and external projects).
+
+#### 7. **containerd/**
+- **Purpose:** Core logic for the containerd daemon (main server, initialization, orchestration).
+
+#### 8. **snapshots/**
+- **Purpose:** Snapshotter implementations (overlayfs, btrfs, etc.).
+
+#### 9. **oci/**
+- **Purpose:** OCI (Open Container Initiative) runtime spec helpers and conversions.
+
+#### 10. **mount/**, **images/**, **platforms/**, **content/**, **events/**, **runtime/**, etc.
+- **Purpose:** Supporting packages for mounting, image management, platform abstraction, content storage, event handling, and runtime interfaces.
+
+---
+
+## **How the Code is Organized**
+
+- **API Definitions:** In `api/` (protobuf), with generated Go code used by both server and client.
+- **Service Implementations:** In `services/`, each service implements a gRPC API and business logic.
+- **Core Daemon:** In `containerd/`, orchestrates services, manages plugins, and handles lifecycle.
+- **Runtime Integration:** In `runtime/`, with shims and runtime-specific logic.
+- **Client Library:** In `client/`, provides a Go API for interacting with containerd.
+- **CLI Tools:** In `cmd/`, for running the daemon and tools like `ctr`.
+
+---
+
+## **Where to Start as a Contributor**
+
+1. **Read the [CONTRIBUTING.md](https://github.com/containerd/containerd/blob/main/CONTRIBUTING.md) and [README.md](https://github.com/containerd/containerd/blob/main/README.md).**
+2. **Explore `cmd/containerd/`** (daemon entrypoint) and `containerd/` (core logic).
+3. **Understand `api/`** (service definitions) and `services/` (implementations).
+4. **Look at `client/`** to see how clients interact with the daemon.
+5. **Check `runtime/v2/`** for how containerd interacts with container runtimes (e.g., runc).
+6. **Review `snapshots/`** for storage layer logic.
+
+---
+
+## **Tips**
+
+- **Start with small issues:** Look for [good first issues](https://github.com/containerd/containerd/labels/good%20first%20issue).
+- **Use `ctr` for experimentation:** It’s a thin client, so you can trace how commands map to API calls.
+- **Read the [architecture docs](https://github.com/containerd/containerd/blob/main/docs/architecture.md).**
+
+---
+
+**Summary Table:**
+
+| Directory      | Purpose                                    |
+|----------------|--------------------------------------------|
+|</div>
+                </div>
+                <div class="response finetuned-response">
+                    <div class="response-header">🟢 Fine-tuned Model (GPT-4.1 Fine-tuned)</div>
+                    <div class="response-meta">
+                        Tokens: 276 | Time: 5.47s
+                    </div>
+                    <div class="response-text">To contribute effectively to containerd, you should start by understanding its core architecture and key directories. The main directories include: 1. `cmd/`: Contains the entry points for containerd binaries, such as `containerd` and `ctr`. 2. `core/`: Houses the core functionality, including the runtime, snapshotter, and content store. 3. `pkg/`: Contains reusable utility packages and libraries used across the codebase. 4. `api/`: Defines the gRPC API and protobuf definitions for containerd's services. 5. `services/`: Implements the gRPC services that power containerd's functionality, such as the runtime, content, and snapshot services. The code is organized around modular components, each responsible for a specific aspect of containerd's functionality. For example, the runtime component manages container lifecycle, while the snapshotter handles filesystem snapshots. Understanding these directories and their roles will help you navigate the codebase and identify areas where you can contribute.</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="question-container" id="question2">
+            <div class="question-header">
+                Question 2: How do I set up a development environment for containerd? What tools and dependencies do I need to build and test the project locally?
+                <span class="question-category">development-setup</span>
+            </div>
+            <div class="responses">
+                <div class="response base-response">
+                    <div class="response-header">🔵 Base Model (GPT-4.1 Base)</div>
+                    <div class="response-meta">
+                        Tokens: 1069 | Time: 9.76s
+                    </div>
+                    <div class="response-text">Setting up a development environment for **containerd** involves preparing your system to build, run, and test the containerd codebase. Here’s a step-by-step guide covering tools, dependencies, and practical tips:
+
+---
+
+## 1. **Prerequisites**
+
+### Operating System
+- **Linux** is recommended (containerd is primarily developed and tested on Linux).
+- macOS can be used for some development, but not all features will work natively.
+
+### Essential Tools
+- **Go** (Golang): containerd is written in Go.
+- **Git**: for source code management.
+- **make**: for build automation.
+- **gcc** (or another C compiler): for building some dependencies.
+- **btrfs-progs** (optional): for btrfs snapshotter support.
+- **seccomp** headers: for seccomp support.
+
+#### Example (Ubuntu/Debian):
+```sh
+sudo apt-get update
+sudo apt-get install -y \
+    git make gcc pkg-config \
+    libseccomp-dev btrfs-progs
+```
+
+---
+
+## 2. **Install Go**
+
+- containerd requires **Go 1.20+** (check [containerd's go.mod](https://github.com/containerd/containerd/blob/main/go.mod) for the exact version).
+- Download from [golang.org](https://golang.org/dl/) or use your package manager.
+
+```sh
+# Example for Go 1.21
+wget https://go.dev/dl/go1.21.0.linux-amd64.tar.gz
+sudo tar -C /usr/local -xzf go1.21.0.linux-amd64.tar.gz
+export PATH=$PATH:/usr/local/go/bin
+```
+
+- Set up your `GOPATH` (optional with Go modules, but sometimes useful):
+
+```sh
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOPATH/bin
+```
+
+---
+
+## 3. **Clone the containerd Repository**
+
+```sh
+git clone https://github.com/containerd/containerd.git
+cd containerd
+```
+
+---
+
+## 4. **Build containerd**
+
+containerd uses **Go modules** and **Makefile** for building.
+
+```sh
+make
+```
+
+- This builds the binaries in `bin/` (e.g., `bin/containerd`, `bin/ctr`).
+
+---
+
+## 5. **Run Unit and Integration Tests**
+
+- **Unit tests:**
+  ```sh
+  make test
+  ```
+- **Integration tests:**
+  ```sh
+  sudo -E PATH=$PATH make integration
+  ```
+  - Integration tests require root privileges and may need additional dependencies (see [test documentation](https://github.com/containerd/containerd/blob/main/TESTING.md)).
+
+---
+
+## 6. **Useful Tools for Development**
+
+- **Delve**: Go debugger (`go install github.com/go-delve/delve/cmd/dlv@latest`)
+- **ginkgo**: For BDD-style tests (`go install github.com/onsi/ginkgo/v2/ginkgo@latest`)
+- **runc**: OCI runtime (containerd uses runc by default; install from [runc releases](https://github.com/opencontainers/runc/releases))
+- **crictl**: For CRI testing (`go install github.com/kubernetes-sigs/cri-tools/cmd/crictl@latest`)
+
+---
+
+## 7. **Running containerd Locally**
+
+- Start containerd:
+  ```sh
+  sudo ./bin/containerd
+  ```
+- Use `./bin/ctr` to interact with the daemon.
+
+---
+
+## 8. **Editor/IDE Setup**
+
+- **VSCode**, **GoLand**, or **vim** with Go plugins for code navigation, linting, and debugging.
+
+---
+
+## 9. **Optional: Docker-based Development**
+
+You can use Docker to build and test containerd in a clean environment. See [containerd's DEVELOPMENT.md](https://github.com/containerd/containerd/blob/main/DEVELOPMENT.md) for details.
+
+---
+
+## 10. **References**
+
+- [containerd DEVELOPMENT.md](https://github.com/containerd/containerd/blob/main/DEVELOPMENT.md)
+- [containerd TESTING.md](https://github.com/containerd/containerd/blob/main/TESTING.md)
+- [containerd CONTRIBUTING.md](https://github.com/containerd/containerd/blob/main/CONTRIBUTING.md)
+
+---
+
+### **Summary Table**
+
+| Dependency      | Purpose                        | Install Command (Ubuntu)         |
+|-----------------|--------------------------------|----------------------------------|
+| Go (>=1.20)     | Build & run containerd         | See above                        |
+| git             | Clone repo                     | `sudo apt-get install git`       |
+| make            | Build automation               | `sudo apt-get install make`      |
+</div>
+                </div>
+                <div class="response finetuned-response">
+                    <div class="response-header">🟢 Fine-tuned Model (GPT-4.1 Fine-tuned)</div>
+                    <div class="response-meta">
+                        Tokens: 187 | Time: 2.94s
+                    </div>
+                    <div class="response-text">To set up a development environment for containerd, you need Go (version 1.20 or later), Git, and a Linux-based system (containerd is primarily developed and tested on Linux). Clone the repository using `git clone https://github.com/containerd/containerd.git`. Install dependencies using `make vendor` or `go mod tidy`. To build containerd, run `make`. For testing, use `make test` to run unit tests and `make integration` for integration tests. Docker or a compatible container runtime is also useful for testing containerd in real-world scenarios.</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="question-container" id="question3">
+            <div class="question-header">
+                Question 3: What is the typical workflow for contributing to containerd? How do I run tests, create a PR, and what are the code review expectations?
+                <span class="question-category">contribution-workflow</span>
+            </div>
+            <div class="responses">
+                <div class="response base-response">
+                    <div class="response-header">🔵 Base Model (GPT-4.1 Base)</div>
+                    <div class="response-meta">
+                        Tokens: 1071 | Time: 10.41s
+                    </div>
+                    <div class="response-text">Contributing to **containerd** follows a standard open-source workflow, but with some project-specific practices and tools. Here’s a step-by-step guide:
+
+---
+
+## 1. **Fork and Clone**
+
+- **Fork** the [containerd/containerd](https://github.com/containerd/containerd) repository on GitHub.
+- **Clone** your fork locally:
+  ```sh
+  git clone https://github.com/<your-username>/containerd.git
+  cd containerd
+  ```
+
+---
+
+## 2. **Set Up Your Environment**
+
+- Install Go (see [containerd’s Go version requirements](https://github.com/containerd/containerd/blob/main/README.md#build-requirements)).
+- Install build dependencies:
+  ```sh
+  make install.tools
+  ```
+
+---
+
+## 3. **Create a Branch**
+
+- Always create a new branch for your work:
+  ```sh
+  git checkout -b my-feature
+  ```
+
+---
+
+## 4. **Make Your Changes**
+
+- Edit code, add tests, update docs as needed.
+- Follow the [containerd coding style](https://github.com/containerd/containerd/blob/main/CONTRIBUTING.md#coding-style).
+
+---
+
+## 5. **Run Tests Locally**
+
+- **Unit tests:**
+  ```sh
+  make test
+  ```
+- **Integration tests:**
+  ```sh
+  sudo -E PATH=$PATH make integration
+  ```
+  > Integration tests require root privileges and a suitable environment (e.g., a Linux host with runc).
+
+- **Static checks (lint, vet, etc):**
+  ```sh
+  make check
+  ```
+
+- **All checks:**
+  ```sh
+  make all
+  ```
+
+---
+
+## 6. **Commit and Push**
+
+- Write clear, conventional commit messages.
+- Sign your commits (DCO is required):
+  ```sh
+  git commit -s -m "Short summary"
+  ```
+- Push to your fork:
+  ```sh
+  git push origin my-feature
+  ```
+
+---
+
+## 7. **Create a Pull Request (PR)**
+
+- Go to your fork on GitHub and click **"Compare & pull request"**.
+- Fill out the PR template:
+  - Describe your change and motivation.
+  - Reference related issues (if any).
+  - Note any special considerations (backward compatibility, etc).
+
+---
+
+## 8. **Code Review Expectations**
+
+- **Automated CI** will run on your PR (unit, integration, lint, etc).
+- **Reviewers** (maintainers and contributors) will:
+  - Check code quality, style, and test coverage.
+  - Ask for changes if needed (respond promptly and update your PR).
+  - Ensure the change aligns with project goals and architecture.
+- **Squash** or **rebase** your commits as requested.
+- **DCO**: All commits must be signed-off (`git commit -s`).
+
+---
+
+## 9. **Getting Merged**
+
+- Once approved and CI passes, a maintainer will merge your PR.
+- You may be asked to rebase or resolve conflicts if the main branch has changed.
+
+---
+
+## 10. **Resources**
+
+- [CONTRIBUTING.md](https://github.com/containerd/containerd/blob/main/CONTRIBUTING.md)
+- [Development Guide](https://github.com/containerd/containerd/blob/main/DEVELOPMENT.md)
+- [Code of Conduct](https://github.com/containerd/containerd/blob/main/code-of-conduct.md)
+
+---
+
+### **Summary Table**
+
+| Step                | Command/Action                                  |
+|---------------------|------------------------------------------------|
+| Fork & Clone        | `git clone ...`                                 |
+| Install Tools       | `make install.tools`                            |
+| Create Branch       | `git checkout -b my-feature`                    |
+| Run Unit Tests      | `make test`                                     |
+| Run Integration     | `sudo -E PATH=$PATH make integration`           |
+| Run Lint/Checks     | `make check`                                    |
+| Commit (signed)     | `git commit -s -m "..."`                        |
+| Push                | `git push origin my-feature`                    |
+| Create PR           | On GitHub                                       |
+| Respond to Review   | Update PR, rebase, address comments             |
+
+---
+
+**Tip:** For any questions, open a [GitHub Discussion](https://github.com/containerd/containerd/discussions) or ask in the [#containerd channel on CNCF Slack](https://cloud-native.slack.com/archives/C8TSNPY4T).
+
+---
+
+**In summary:**  
+- Fork, branch, code, test, commit (signed), push, PR, respond to review, and iterate until merge.  
+- Always run tests and static checks before submitting.  
+- Follow the project’s contribution and code</div>
+                </div>
+                <div class="response finetuned-response">
+                    <div class="response-header">🟢 Fine-tuned Model (GPT-4.1 Fine-tuned)</div>
+                    <div class="response-meta">
+                        Tokens: 212 | Time: 2.82s
+                    </div>
+                    <div class="response-text">The typical workflow for contributing to containerd involves several steps: 1. Fork the containerd repository and clone it locally. 2. Create a new branch for your changes. 3. Make your changes and ensure they follow the project's coding standards. 4. Run tests using `make test` to verify your changes. 5. Commit your changes with a descriptive message and push the branch to your fork. 6. Open a pull request (PR) against the containerd repository. During code review, maintainers will check for code quality, adherence to project guidelines, and the impact of your changes. Address any feedback promptly and ensure your PR passes all CI checks before it is merged.</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="question-container" id="question4">
+            <div class="question-header">
+                Question 4: Where should I look in the codebase to understand how containerd handles gRPC APIs? Which files define the service interfaces and how are they implemented?
+                <span class="question-category">api-implementation</span>
+            </div>
+            <div class="responses">
+                <div class="response base-response">
+                    <div class="response-header">🔵 Base Model (GPT-4.1 Base)</div>
+                    <div class="response-meta">
+                        Tokens: 712 | Time: 5.91s
+                    </div>
+                    <div class="response-text">Great question! Understanding how containerd handles gRPC APIs involves looking at both the **service interface definitions** (protobuf files) and their **Go implementations**.
+
+## 1. **Service Interface Definitions (Protobuf)**
+
+The gRPC service interfaces are defined using Protocol Buffers (`.proto` files). In containerd, these are located in:
+
+```
+/api/services/
+```
+
+For example:
+- `api/services/containers/v1/containers.proto`
+- `api/services/tasks/v1/tasks.proto`
+- `api/services/images/v1/images.proto`
+- etc.
+
+These `.proto` files define the gRPC services, their RPC methods, and the request/response message types.
+
+## 2. **Generated Go Code**
+
+The `.proto` files are compiled to Go code (using `protoc`), which you’ll find in:
+
+```
+/api/services/<service>/v1/<service>.pb.go
+```
+
+For example:
+- `api/services/containers/v1/containers.pb.go`
+
+These files contain the Go interfaces and types generated from the protobuf definitions.
+
+## 3. **Service Implementations**
+
+The actual implementation of these gRPC services is in the main containerd codebase, typically under:
+
+```
+/services/
+```
+
+For example:
+- `services/containers/service.go` implements the Containers service.
+- `services/tasks/service.go` implements the Tasks service.
+- `services/images/service.go` implements the Images service.
+
+Each `service.go` file implements the corresponding gRPC server interface (e.g., `ContainersServer`, `TasksServer`).
+
+## 4. **gRPC Server Setup**
+
+The gRPC server is set up in the main daemon code, which you can find in:
+
+- `cmd/containerd/main.go`
+- `cmd/containerd/server.go`
+
+Here, the server is initialized, and each service implementation is registered with the gRPC server.
+
+## 5. **Summary Table**
+
+| Layer                | Location in Codebase                                 | Example File                                      |
+|----------------------|------------------------------------------------------|---------------------------------------------------|
+| Protobuf definitions | `api/services/<service>/v1/*.proto`                  | `api/services/containers/v1/containers.proto`      |
+| Generated Go code    | `api/services/<service>/v1/*.pb.go`                  | `api/services/containers/v1/containers.pb.go`      |
+| Service implementation| `services/<service>/service.go`                     | `services/containers/service.go`                   |
+| Server setup         | `cmd/containerd/main.go`, `cmd/containerd/server.go` | `cmd/containerd/server.go`                         |
+
+---
+
+**In summary:**  
+- **Start with the `.proto` files** in `api/services/` to see the API surface.
+- **Look at the generated `.pb.go` files** for Go interfaces.
+- **Study the `service.go` files** in `services/` for the actual logic.
+- **Check server setup** in `cmd/containerd/` for how everything is wired together.
+
+Let me know if you want a walkthrough of a specific service or more details on the registration process!</div>
+                </div>
+                <div class="response finetuned-response">
+                    <div class="response-header">🟢 Fine-tuned Model (GPT-4.1 Fine-tuned)</div>
+                    <div class="response-meta">
+                        Tokens: 239 | Time: 7.49s
+                    </div>
+                    <div class="response-text">To understand how containerd handles gRPC APIs, you should start by examining the `api/services` directory, which contains the definitions of the gRPC service interfaces. For example, `api/services/containers/v1/containers.proto` defines the gRPC API for container management. These `.proto` files are compiled into Go code, which can be found in the `api/services/containers/v1/containers.pb.go` file. The actual implementation of these services is located in the `services` directory, such as `services/containers/service.go` for the container service. This file contains the logic for handling gRPC requests and interacting with the underlying containerd components. Additionally, the `cmd/containerd` directory contains the entry point for the containerd daemon, where the gRPC server is initialized and the services are registered.</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="question-container" id="question5">
+            <div class="question-header">
+                Question 5: I want to add a new feature to containerd's image service. Which files should I modify and what patterns should I follow for extending the existing functionality?
+                <span class="question-category">feature-development</span>
+            </div>
+            <div class="responses">
+                <div class="response base-response">
+                    <div class="response-header">🔵 Base Model (GPT-4.1 Base)</div>
+                    <div class="response-meta">
+                        Tokens: 1029 | Time: 10.36s
+                    </div>
+                    <div class="response-text">Great question! Extending containerd’s image service requires understanding its architecture, code layout, and extension patterns. Here’s a practical guide:
+
+---
+
+## 1. **Understand the Image Service Architecture**
+
+Containerd’s image service is responsible for managing images: pulling, pushing, listing, deleting, and resolving them. It is defined by the [`images.Service`](https://pkg.go.dev/github.com/containerd/containerd@main/images#Service) interface.
+
+Key components:
+- **Service interface**: `images.Service` ([source](https://github.com/containerd/containerd/blob/main/images/service.go))
+- **GRPC API**: `api/services/images/v1/images.proto`
+- **Implementation**: `images/service.go`
+- **Registration**: `services/images/service.go` (wires up the service with the containerd daemon)
+
+---
+
+## 2. **Key Files to Modify**
+
+Depending on your feature, you’ll likely touch:
+
+- **`images/service.go`**  
+  Main implementation of the image service logic.
+
+- **`api/services/images/v1/images.proto`**  
+  If you need to expose new gRPC endpoints (e.g., new RPCs for your feature).
+
+- **`images/store.go`**  
+  If your feature involves changes to how images are stored or queried.
+
+- **`cmd/ctr/commands/images`**  
+  If you want to add CLI support for your feature.
+
+- **`images/service_test.go`**  
+  For unit and integration tests.
+
+---
+
+## 3. **Extension Patterns**
+
+### a. **Extending the Service Interface**
+
+- Add a new method to `images.Service` if your feature is a new operation.
+- Implement the method in `images/service.go`.
+- If it needs to be exposed via gRPC, update `images.proto` and regenerate Go code (`make protos`).
+
+### b. **Middleware/Decorator Pattern**
+
+If your feature is cross-cutting (e.g., logging, metrics, validation), consider wrapping the existing service with a decorator.  
+Example:  
+```go
+type myImageService struct {
+    images.Service
+    // ... your fields
+}
+
+func (s *myImageService) NewFeature(ctx context.Context, ...) error {
+    // your logic
+    return s.Service.NewFeature(ctx, ...)
+}
+```
+Register your service in place of the default one.
+
+### c. **Feature Flags/Options**
+
+If your feature is optional, add configuration options to `config.toml` and propagate them to the image service via the containerd daemon’s initialization.
+
+---
+
+## 4. **Testing**
+
+- Add/modify tests in `images/service_test.go`.
+- For gRPC, add tests in `api/services/images/v1/images_test.go`.
+
+---
+
+## 5. **Follow Coding and Contribution Guidelines**
+
+- Follow existing code style and patterns.
+- Add comments and documentation.
+- Run `make check` and `make test` before submitting a PR.
+
+---
+
+## 6. **Example: Adding a New RPC**
+
+Suppose you want to add an `InspectImage` RPC:
+
+1. **Update `images.proto`:**
+   ```proto
+   rpc Inspect(InspectImageRequest) returns (InspectImageResponse);
+   ```
+2. **Regenerate Go code:**
+   ```sh
+   make protos
+   ```
+3. **Add method to `images.Service` interface.**
+4. **Implement in `images/service.go`.**
+5. **Wire up in `services/images/service.go`.**
+6. **Add tests.**
+
+---
+
+## 7. **References**
+
+- [containerd images package](https://github.com/containerd/containerd/tree/main/images)
+- [containerd API proto files](https://github.com/containerd/containerd/tree/main/api/services/images/v1)
+- [containerd contribution guide](https://github.com/containerd/containerd/blob/main/CONTRIBUTING.md)
+
+---
+
+**Summary Table**
+
+| File/Dir                                 | Purpose                                      |
+|------------------------------------------|----------------------------------------------|
+| `images/service.go`                      | Main image service logic                     |
+| `images/service_test.go`                 | Tests for image service                      |
+| `api/services/images/v1/images.proto`    | gRPC API definition                          |
+| `images/store.go`                        | Image storage logic                          |
+| `cmd/ctr/commands/images`                | CLI commands for images                      |
+| `services/images/service.go`             | Service registration/wiring                  |
+
+---
+
+**Tip:**  
+Start with a clear design of your feature and discuss it in a GitHub issue or PR draft to get early feedback from maintainers.
+
+If you describe your feature idea, I can give more targeted advice!</div>
+                </div>
+                <div class="response finetuned-response">
+                    <div class="response-header">🟢 Fine-tuned Model (GPT-4.1 Fine-tuned)</div>
+                    <div class="response-meta">
+                        Tokens: 203 | Time: 3.20s
+                    </div>
+                    <div class="response-text">To add a new feature to containerd's image service, you should start by modifying the `images.go` file to define the new functionality and its associated API. Next, update the `images.pb.go` file to include the new gRPC service definitions, ensuring that the protobuf schema is updated accordingly. Implement the new feature in the `images.pb.gw.go` file to expose it via the HTTP gateway. Finally, update the `images.proto` file to define the new protobuf messages and service methods. Follow containerd's design patterns, such as using context for request handling, adhering to protobuf conventions, and ensuring backward compatibility with existing APIs.</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="question-container" id="question6">
+            <div class="question-header">
+                Question 6: How does containerd's plugin system work from a developer perspective? If I want to create a new plugin, what interfaces do I need to implement and where should I place the code?
+                <span class="question-category">plugin-development</span>
+            </div>
+            <div class="responses">
+                <div class="response base-response">
+                    <div class="response-header">🔵 Base Model (GPT-4.1 Base)</div>
+                    <div class="response-meta">
+                        Tokens: 1079 | Time: 10.83s
+                    </div>
+                    <div class="response-text">containerd’s plugin system is central to its extensibility and modularity. Here’s a detailed developer-oriented explanation of how it works and how to create your own plugin:
+
+---
+
+## 1. **Plugin System Overview**
+
+containerd is built around a **plugin model**. Almost all of its functionality (snapshotters, content stores, runtimes, etc.) is implemented as plugins. Plugins are registered at startup and can depend on each other.
+
+- **Plugins are Go packages** that implement specific interfaces and register themselves with containerd’s plugin registry.
+- Plugins are discovered and initialized at containerd startup.
+- Plugins can be enabled/disabled/configured via the containerd configuration file.
+
+---
+
+## 2. **Plugin Types and Interfaces**
+
+Each plugin has a **type** (e.g., `io.containerd.snapshotter.v1`, `io.containerd.runtime.v1`, etc.) and a **unique ID**.
+
+The main interface is:
+
+```go
+type Plugin interface {
+    ID() string
+    Type() Type
+    Requires() []Type
+    Init(context.Context) (interface{}, error)
+}
+```
+
+But in practice, you rarely implement this directly. Instead, you implement the interface required for your plugin type (e.g., `Snapshotter`, `TaskService`, etc.), and use the plugin registration mechanism.
+
+---
+
+## 3. **Registering a Plugin**
+
+You register a plugin using the `plugin.Register` function, typically in your package’s `init()` function:
+
+```go
+import "github.com/containerd/containerd/plugin"
+
+func init() {
+    plugin.Register(&plugin.Registration{
+        Type: plugin.SnapshotPlugin, // or another type
+        ID:   "myplugin",
+        Requires: []plugin.Type{ /* dependencies */ },
+        InitFn: func(ic *plugin.InitContext) (interface{}, error) {
+            // Initialize and return your plugin instance
+        },
+    })
+}
+```
+
+- **Type**: The plugin type (see `plugin.Type` constants).
+- **ID**: Unique identifier for your plugin.
+- **Requires**: List of plugin types this plugin depends on.
+- **InitFn**: Function that initializes your plugin and returns the implementation.
+
+---
+
+## 4. **Implementing a Plugin**
+
+Suppose you want to implement a **snapshotter** plugin:
+
+1. **Implement the interface**: For a snapshotter, implement the `snapshots.Snapshotter` interface.
+2. **Register the plugin**: Use `plugin.Register` in your package’s `init()`.
+
+Example:
+
+```go
+import (
+    "context"
+    "github.com/containerd/containerd/plugin"
+    "github.com/containerd/containerd/snapshots"
+)
+
+type MySnapshotter struct {
+    // implement required methods
+}
+
+func (s *MySnapshotter) Prepare(...) error { ... }
+func (s *MySnapshotter) Commit(...) error { ... }
+// etc.
+
+func init() {
+    plugin.Register(&plugin.Registration{
+        Type: plugin.SnapshotPlugin,
+        ID:   "mysnap",
+        InitFn: func(ic *plugin.InitContext) (interface{}, error) {
+            return &MySnapshotter{/*...*/}, nil
+        },
+    })
+}
+```
+
+---
+
+## 5. **Where to Place the Code**
+
+- **In-tree**: If contributing to containerd itself, place your code in the appropriate subdirectory (e.g., `snapshots/`, `runtime/`, etc.).
+- **Out-of-tree**: For external plugins, create your own Go module/package. Build your plugin as a Go plugin (`.so`) or as a statically linked binary with containerd (less common).
+
+**Note:** As of now, containerd does not support dynamic loading of plugins at runtime (like Docker’s plugin `.so` model). Plugins must be built into the containerd binary.
+
+---
+
+## 6. **Configuration**
+
+Plugins can be configured via the containerd config file (`/etc/containerd/config.toml`), under the `[plugins."<type>.<id>"]` section.
+
+---
+
+## 7. **References**
+
+- [containerd plugin documentation](https://github.com/containerd/containerd/blob/main/docs/PLUGINS.md)
+- [plugin registration code](https://github.com/containerd/containerd/blob/main/plugin/plugin.go)
+- [Example: overlay snapshotter](https://github.com/containerd/containerd/blob/main/snapshots/overlay/overlay.go)
+
+---
+
+## **Summary Table**
+
+| Step                | What to Do                                                                 |
+|---------------------|----------------------------------------------------------------------------|
+| Implement interface | E.g., `snapshots.Snapshotter`, `TaskService`, etc.                         |
+| Register plugin     | Use `plugin.Register` in `init()` with type, ID, dependencies, and InitFn. |
+| Place code          | In-tree (containerd repo) or out-of-tree (your own Go module).</div>
+                </div>
+                <div class="response finetuned-response">
+                    <div class="response-header">🟢 Fine-tuned Model (GPT-4.1 Fine-tuned)</div>
+                    <div class="response-meta">
+                        Tokens: 243 | Time: 3.29s
+                    </div>
+                    <div class="response-text">Containerd's plugin system is designed to be modular and extensible. To create a new plugin, a developer needs to implement the `plugin.Plugin` interface, which defines the lifecycle and capabilities of the plugin. The plugin must be registered using the `plugin.Register` function, typically in an `init()` function. The code for the plugin should be placed in a dedicated package under the `plugins` directory, following the convention used by existing plugins. Developers should also define the plugin's type (e.g., `plugin.TypeService`, `plugin.TypeGRPCPlugin`) and ensure it adheres to the required interfaces for that type. For example, a GRPC plugin must implement the `grpc.ServiceRegistrar` interface. Additionally, developers should provide configuration options and ensure the plugin integrates seamlessly with containerd's core components.</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="question-container" id="question7">
+            <div class="question-header">
+                Question 7: What testing strategies does containerd use? How do I write unit tests, integration tests, and what are the best practices for testing containerd components?
+                <span class="question-category">testing-practices</span>
+            </div>
+            <div class="responses">
+                <div class="response base-response">
+                    <div class="response-header">🔵 Base Model (GPT-4.1 Base)</div>
+                    <div class="response-meta">
+                        Tokens: 1072 | Time: 9.50s
+                    </div>
+                    <div class="response-text">containerd is a core container runtime, and its maintainers take testing seriously to ensure reliability and stability. Here’s a detailed overview of containerd’s testing strategies, how to write unit and integration tests, and best practices for testing containerd components.
+
+---
+
+## 1. **Testing Strategies Used by containerd**
+
+containerd employs a multi-layered testing approach:
+
+### a. **Unit Tests**
+- **Purpose:** Test individual functions or small components in isolation.
+- **Tools:** Go’s built-in testing framework (`testing` package).
+- **Location:** Most unit tests are in files ending with `_test.go` alongside the code.
+
+### b. **Integration Tests**
+- **Purpose:** Test the interaction between multiple components, often requiring a running containerd daemon.
+- **Tools:** Go’s testing framework, sometimes with helper scripts.
+- **Location:** `integration/` directory and some in `testutil/`.
+
+### c. **End-to-End (E2E) Tests**
+- **Purpose:** Test the full stack, often using real container images and runtime operations.
+- **Tools:** Go tests, shell scripts, and sometimes external tools like `ctr` or `containerd-shim`.
+- **Location:** `integration/` and `test/` directories.
+
+### d. **Static Analysis & Linters**
+- **Purpose:** Enforce code quality and catch bugs early.
+- **Tools:** `golangci-lint`, `go vet`, `staticcheck`, etc.
+
+### e. **Continuous Integration (CI)**
+- **Purpose:** Run all tests on every pull request and merge.
+- **Tools:** GitHub Actions, Travis CI (historically), etc.
+
+---
+
+## 2. **How to Write Unit Tests for containerd**
+
+### a. **Structure**
+- Place tests in the same package as the code, in files named `xxx_test.go`.
+- Use Go’s `testing` package.
+
+### b. **Example**
+
+```go
+// file: foo.go
+package foo
+
+func Add(a, b int) int {
+    return a + b
+}
+
+// file: foo_test.go
+package foo
+
+import "testing"
+
+func TestAdd(t *testing.T) {
+    result := Add(2, 3)
+    if result != 5 {
+        t.Errorf("expected 5, got %d", result)
+    }
+}
+```
+
+### c. **Mocking**
+- Use interfaces to abstract dependencies.
+- Use Go’s built-in features or libraries like [gomock](https://github.com/golang/mock) or [testify/mock](https://github.com/stretchr/testify).
+
+### d. **Running Unit Tests**
+```sh
+go test ./...
+```
+
+---
+
+## 3. **How to Write Integration Tests for containerd**
+
+### a. **Structure**
+- Integration tests often require a running containerd daemon.
+- Use the `integration/` directory for such tests.
+- Use helper packages like `testutil` to manage setup/teardown.
+
+### b. **Example**
+
+```go
+// file: integration/client_test.go
+package integration
+
+import (
+    "context"
+    "testing"
+    "github.com/containerd/containerd"
+)
+
+func TestClientConnect(t *testing.T) {
+    client, err := containerd.New("/run/containerd/containerd.sock")
+    if err != nil {
+        t.Fatalf("failed to connect: %v", err)
+    }
+    defer client.Close()
+
+    ctx := context.Background()
+    version, err := client.Version(ctx)
+    if err != nil {
+        t.Fatalf("failed to get version: %v", err)
+    }
+    t.Logf("containerd version: %s", version.Version)
+}
+```
+
+### c. **Running Integration Tests**
+- Some tests require root privileges or a running containerd daemon.
+- Use environment variables or scripts to set up the environment.
+- Example:
+  ```sh
+  sudo -E PATH=$PATH go test -v ./integration/...
+  ```
+
+---
+
+## 4. **Best Practices for Testing containerd Components**
+
+### a. **Unit Tests**
+- **Isolate logic:** Mock external dependencies (e.g., filesystem, network, runtime).
+- **Test edge cases:** Cover error paths and boundary conditions.
+- **Keep fast:** Avoid slow operations (disk, network) in unit tests.
+
+### b. **Integration Tests**
+- **Setup/teardown:** Use helper functions to start/stop containerd or clean up resources.
+- **Parallelism:** Use `t.Parallel()` judiciously; be careful with shared resources.
+- **Environment:** Clearly document environment requirements (e.g., root, running containerd).
+
+### c. **General**
+- **Code coverage:** Aim for high coverage, but prioritize meaningful tests over 100% coverage.
+- **Static analysis:** Run linters and vetters as part of CI.
+- **CI integration:** Ensure all tests</div>
+                </div>
+                <div class="response finetuned-response">
+                    <div class="response-header">🟢 Fine-tuned Model (GPT-4.1 Fine-tuned)</div>
+                    <div class="response-meta">
+                        Tokens: 189 | Time: 2.64s
+                    </div>
+                    <div class="response-text">Containerd employs a combination of unit tests, integration tests, and end-to-end tests to ensure reliability and correctness. Unit tests focus on individual components and are typically written using Go's `testing` package. Integration tests validate interactions between components, such as the CRI plugin and the runtime. End-to-end tests simulate real-world scenarios, such as pulling images and running containers. Best practices include mocking external dependencies, using test fixtures for consistent environments, and leveraging tools like `ctr` for manual testing. Additionally, containerd uses CI/CD pipelines to automate testing across multiple platforms and configurations.</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="question-container" id="question8">
+            <div class="question-header">
+                Question 8: How does error handling work in containerd? What are the common error types and patterns I should follow when writing new code or fixing bugs?
+                <span class="question-category">error-handling</span>
+            </div>
+            <div class="responses">
+                <div class="response base-response">
+                    <div class="response-header">🔵 Base Model (GPT-4.1 Base)</div>
+                    <div class="response-meta">
+                        Tokens: 1070 | Time: 9.85s
+                    </div>
+                    <div class="response-text">Error handling in **containerd** is designed to be idiomatic to Go, but with some conventions and patterns that help maintain clarity, interoperability, and good API hygiene across its codebase and gRPC APIs.
+
+---
+
+## 1. **General Error Handling Approach**
+
+- **Go idioms:** containerd uses the standard Go pattern of returning errors as the last return value from functions:  
+  ```go
+  result, err := SomeFunc()
+  if err != nil {
+      // handle error
+  }
+  ```
+- **Error wrapping:** containerd uses [`fmt.Errorf("...: %w", err)`](https://blog.golang.org/go1.13-errors) to wrap errors, preserving the original error for inspection with `errors.Is` and `errors.As`.
+- **Sentinel errors:** Common, well-known error conditions are represented as package-level variables (e.g., `ErrNotFound`, `ErrAlreadyExists`).
+
+---
+
+## 2. **Common Error Types**
+
+### a. **Sentinel Errors**
+
+Defined in packages like `errdefs`, these are used for common conditions:
+
+```go
+var (
+    ErrNotFound         = errors.New("not found")
+    ErrAlreadyExists    = errors.New("already exists")
+    ErrInvalidArgument  = errors.New("invalid argument")
+    ErrNotImplemented   = errors.New("not implemented")
+    // ... etc.
+)
+```
+
+These are typically returned directly or wrapped:
+
+```go
+if !exists {
+    return fmt.Errorf("container %s: %w", id, errdefs.ErrNotFound)
+}
+```
+
+### b. **errdefs Package**
+
+The [`errdefs`](https://github.com/containerd/containerd/blob/main/errdefs/errors.go) package provides error variables and helper functions to classify errors. This is especially important for mapping Go errors to gRPC status codes.
+
+- **Classification helpers:**  
+  ```go
+  func IsNotFound(err error) bool
+  func IsAlreadyExists(err error) bool
+  func IsInvalidArgument(err error) bool
+  // etc.
+  ```
+- **Error translation:**  
+  When serving gRPC APIs, containerd translates Go errors to appropriate gRPC status codes using these helpers.
+
+### c. **gRPC Error Handling**
+
+When containerd is used as a daemon (containerd-shim, containerd itself), it exposes gRPC APIs. Errors returned from handlers are mapped to gRPC status codes using the `errdefs` helpers.
+
+Example:
+```go
+if errdefs.IsNotFound(err) {
+    return nil, status.Errorf(codes.NotFound, "resource not found: %v", err)
+}
+```
+
+---
+
+## 3. **Patterns to Follow When Writing/Fixing Code**
+
+### a. **Return Sentinel Errors for Common Cases**
+
+If your function encounters a "not found" or "already exists" condition, return the appropriate sentinel error, possibly wrapped with context:
+
+```go
+return fmt.Errorf("failed to find snapshot: %w", errdefs.ErrNotFound)
+```
+
+### b. **Wrap Errors with Context**
+
+Always add context to errors using `fmt.Errorf("...: %w", err)` so that stack traces and logs are more informative.
+
+### c. **Use errdefs Helpers for Error Checking**
+
+When handling errors, use `errdefs.IsNotFound(err)` etc., instead of comparing error messages or types directly.
+
+### d. **Map Errors to gRPC Codes in API Handlers**
+
+When implementing gRPC handlers, map errors to gRPC status codes using the `errdefs` helpers.
+
+### e. **Avoid Panics**
+
+containerd code should never panic for expected error conditions. Only panic for truly unrecoverable programmer errors.
+
+---
+
+## 4. **Practical Example**
+
+```go
+import (
+    "github.com/containerd/containerd/errdefs"
+    "fmt"
+)
+
+func GetContainer(id string) (*Container, error) {
+    c, err := lookupContainer(id)
+    if err != nil {
+        if err == sql.ErrNoRows {
+            return nil, fmt.Errorf("container %s: %w", id, errdefs.ErrNotFound)
+        }
+        return nil, fmt.Errorf("failed to lookup container %s: %w", id, err)
+    }
+    return c, nil
+}
+```
+
+And in a gRPC handler:
+
+```go
+func (s *service) GetContainer(ctx context.Context, req *api.GetContainerRequest) (*api.Container, error) {
+    c, err := s.local.GetContainer(req.Id)
+    if err != nil {
+        if errdefs.IsNotFound(err) {
+            return nil, status.Errorf(codes.NotFound, "container %s not found", req.Id)
+        }
+        return nil, status.Errorf(codes.Internal, "failed to get container: %v", err)
+    }
+    // ...
+}
+```
+
+---
+
+## 5. **Summary</div>
+                </div>
+                <div class="response finetuned-response">
+                    <div class="response-header">🟢 Fine-tuned Model (GPT-4.1 Fine-tuned)</div>
+                    <div class="response-meta">
+                        Tokens: 271 | Time: 3.79s
+                    </div>
+                    <div class="response-text">Error handling in containerd follows a structured approach to ensure clarity and consistency. Common error types include `errdefs.ErrNotFound`, `errdefs.ErrAlreadyExists`, and `errdefs.ErrInvalidArgument`, which are defined in the `errdefs` package. These errors are used to represent standard conditions like missing resources, duplicate entries, or invalid inputs. When writing new code, you should use these predefined errors to maintain consistency across the codebase. Additionally, containerd often wraps errors with context using the `fmt.Errorf` function or the `errors.Wrap` method from the `github.com/pkg/errors` package. This provides additional information about the error's origin, making debugging easier. For example, when a snapshotter operation fails, you might wrap the error with a message indicating the specific operation and resource involved. When fixing bugs, ensure that errors are properly propagated up the call stack and logged with sufficient context. Avoid swallowing errors unless absolutely necessary, and always document the expected error behavior in function comments.</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="question-container" id="question9">
+            <div class="question-header">
+                Question 9: I found a bug in containerd's container lifecycle management. How do I debug issues in the task service and what tools or techniques should I use?
+                <span class="question-category">debugging-techniques</span>
+            </div>
+            <div class="responses">
+                <div class="response base-response">
+                    <div class="response-header">🔵 Base Model (GPT-4.1 Base)</div>
+                    <div class="response-meta">
+                        Tokens: 1072 | Time: 10.99s
+                    </div>
+                    <div class="response-text">Debugging issues in containerd’s **task service**—which is responsible for managing the lifecycle of running containers (create, start, stop, delete, etc.)—requires a combination of understanding containerd’s architecture, using the right tools, and applying effective debugging techniques. Here’s a practical guide:
+
+---
+
+## 1. **Understand the Task Service Architecture**
+
+- The **task service** is part of the containerd **gRPC API** (`api/services/tasks/v1`).
+- It interacts with the **shim** (e.g., `containerd-shim-runc-v2`), which manages the container process lifecycle.
+- The flow is: **containerd** ⇄ **shim** ⇄ **OCI runtime** (e.g., runc).
+
+---
+
+## 2. **Enable and Collect Logs**
+
+### a. **Containerd Logs**
+- Increase log verbosity by running containerd with `--log-level=debug`.
+- Logs are typically at `/var/log/containerd.log` or journal (`journalctl -u containerd`).
+
+### b. **Shim Logs**
+- Shims log to files, usually under `/run/containerd/io.containerd.runtime.v2.task/<namespace>/<container-id>/log.json`.
+- Check for errors or panics in these logs.
+
+---
+
+## 3. **Reproduce the Issue**
+
+- Use the **containerd CLI** (`ctr`) to manually reproduce the lifecycle operation:
+  ```sh
+  ctr -n <namespace> task start <container-id>
+  ctr -n <namespace> task kill <container-id>
+  ctr -n <namespace> task delete <container-id>
+  ```
+- Observe logs and error messages.
+
+---
+
+## 4. **Use containerd’s Debugging Tools**
+
+### a. **ctr commands**
+- `ctr tasks list` – See running tasks.
+- `ctr tasks inspect <id>` – Inspect task state.
+- `ctr events` – Watch for lifecycle events.
+
+### b. **containerd API Tracing**
+- Use `grpcurl` or similar tools to interact with the gRPC API directly for advanced debugging.
+
+---
+
+## 5. **Check Runtime and Shim State**
+
+- Inspect the state directory: `/run/containerd/io.containerd.runtime.v2.task/<namespace>/<container-id>/`
+- Look for:
+  - `config.json` (OCI spec)
+  - `init.pid` (shim process PID)
+  - `address` (shim socket)
+
+- Use `ps` to check if the shim and container processes are running.
+
+---
+
+## 6. **Instrument and Debug the Code**
+
+### a. **Build containerd from Source**
+- Clone the repo, build with debug symbols:
+  ```sh
+  git clone https://github.com/containerd/containerd.git
+  cd containerd
+  make
+  ```
+
+### b. **Use Delve (Go Debugger)**
+- Run containerd under Delve:
+  ```sh
+  dlv exec ./bin/containerd -- --log-level=debug
+  ```
+- Set breakpoints in `services/tasks/` or relevant code.
+
+### c. **Add Logging**
+- Temporarily add more logging to the suspected code paths and rebuild.
+
+---
+
+## 7. **Check for Known Issues**
+
+- Search [containerd GitHub issues](https://github.com/containerd/containerd/issues) for similar reports.
+- Check the [CHANGELOG](https://github.com/containerd/containerd/blob/main/CHANGELOG.md) for recent fixes.
+
+---
+
+## 8. **Advanced: Trace System Calls**
+
+- Use `strace` on the shim or containerd process to see syscalls:
+  ```sh
+  strace -p <shim-pid>
+  ```
+- Useful for debugging stuck or failed process operations.
+
+---
+
+## 9. **Summary Table**
+
+| Tool/Technique         | Purpose                                      |
+|------------------------|----------------------------------------------|
+| containerd logs        | General error and debug info                 |
+| Shim logs              | Errors in container process management       |
+| ctr CLI                | Manual lifecycle operations, inspection      |
+| grpcurl                | Direct gRPC API calls                        |
+| Delve                  | Step-through debugging of Go code            |
+| strace                 | Low-level syscall tracing                    |
+| GitHub issues          | Check for known bugs                         |
+
+---
+
+## 10. **Reporting**
+
+- If you find a bug, gather:
+  - containerd version
+  - OS/distribution
+  - Steps to reproduce
+  - Relevant logs (containerd, shim)
+  - `config.json` and task state
+- Open a detailed issue on [containerd’s GitHub](https://github.com/containerd/containerd/issues).
+
+---
+
+**In summary:**  
+Start with logs and CLI tools, inspect the shim and runtime state, and use Go debugging tools if you need to go deeper. If you’re working on containerd’s code, Delve and</div>
+                </div>
+                <div class="response finetuned-response">
+                    <div class="response-header">🟢 Fine-tuned Model (GPT-4.1 Fine-tuned)</div>
+                    <div class="response-meta">
+                        Tokens: 181 | Time: 2.36s
+                    </div>
+                    <div class="response-text">To debug issues in the task service, start by enabling detailed logging in containerd to capture task-related events. Use tools like `ctr` or `crictl` to inspect container states and task metadata. You can also use `gdb` or `delve` to step through the code in `service.go` and examine the behavior of methods like `Create`, `Start`, and `Wait`. Additionally, reviewing the containerd logs and tracing system calls with tools like `strace` can help identify issues in the task lifecycle.</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="question-container" id="question10">
+            <div class="question-header">
+                Question 10: What are the key coding standards and conventions used in containerd? Are there specific Go patterns, naming conventions, or architectural principles I should follow?
+                <span class="question-category">coding-standards</span>
+            </div>
+            <div class="responses">
+                <div class="response base-response">
+                    <div class="response-header">🔵 Base Model (GPT-4.1 Base)</div>
+                    <div class="response-meta">
+                        Tokens: 1071 | Time: 11.10s
+                    </div>
+                    <div class="response-text">containerd is a large, production-grade Go project with a strong emphasis on maintainability, clarity, and idiomatic Go code. If you’re contributing to containerd or building extensions/plugins, it’s important to follow its established coding standards and conventions. Here’s a summary of the key practices:
+
+---
+
+## 1. **General Coding Standards**
+
+- **Idiomatic Go:**  
+  containerd code follows idiomatic Go practices. Familiarize yourself with [Effective Go](https://golang.org/doc/effective_go.html) and [Go Code Review Comments](https://github.com/golang/go/wiki/CodeReviewComments).
+
+- **Go Version:**  
+  containerd tracks recent Go releases, but always check the [CONTRIBUTING.md](https://github.com/containerd/containerd/blob/main/CONTRIBUTING.md) and `.go-version` for the minimum required version.
+
+- **Formatting:**  
+  All code must be formatted with `gofmt` (or `goimports`). CI will fail if formatting is off.
+
+- **Linting:**  
+  The project uses `golangci-lint` with a set of enabled linters. Run `make lint` before submitting PRs.
+
+---
+
+## 2. **Naming Conventions**
+
+- **Packages:**  
+  - Lowercase, short, no underscores or camelCase (e.g., `runtime`, `snapshots`, `content`).
+  - Avoid stutter (e.g., `runtime.Runtime` is discouraged).
+
+- **Types, Functions, Variables:**  
+  - Use CamelCase for exported names (`Container`, `NewClient`).
+  - Unexported names are lowerCamelCase.
+  - Interface names are descriptive, not suffixed with `Interface` (e.g., `Task`, not `TaskInterface`).
+  - Avoid abbreviations unless widely accepted (`ctx` for `context.Context` is fine).
+
+- **Constants:**  
+  - Use `ALL_CAPS` only for acronyms; otherwise, CamelCase.
+
+---
+
+## 3. **Go Patterns and Practices**
+
+- **Context:**  
+  - All long-running or potentially blocking operations accept a `context.Context` as the first parameter.
+  - Use `context` for cancellation, timeouts, and deadlines.
+
+- **Error Handling:**  
+  - Prefer returning errors over panics.
+  - Use `fmt.Errorf` with `%w` for error wrapping.
+  - Use sentinel errors for common error types (e.g., `ErrNotFound`).
+
+- **Interfaces:**  
+  - Define small, focused interfaces.
+  - Accept interfaces, return concrete types.
+  - Use interface satisfaction assertions in tests (e.g., `var _ MyInterface = (*myType)(nil)`).
+
+- **Dependency Injection:**  
+  - Use constructor functions to inject dependencies.
+  - Avoid global state.
+
+- **Functional Options:**  
+  - Used for configuration (e.g., `NewClient(address, WithDefaultNamespace("foo"))`).
+
+- **Plugin Architecture:**  
+  - containerd is highly modular; new functionality is often implemented as plugins.
+  - Plugins are registered via the `plugin` package and initialized at runtime.
+
+---
+
+## 4. **Architectural Principles**
+
+- **Modularity:**  
+  - Code is organized into clear, decoupled packages (e.g., `runtime`, `snapshotter`, `content`, `metadata`).
+  - Each subsystem has a clear API and responsibility.
+
+- **APIs:**  
+  - gRPC is used for external APIs.
+  - Internal APIs are Go interfaces.
+
+- **Extensibility:**  
+  - New features are often added as plugins (see [plugin model](https://github.com/containerd/containerd/blob/main/docs/PLUGINS.md)).
+  - Avoid breaking public APIs; use versioning if necessary.
+
+- **Testing:**  
+  - Unit tests are required for new code (`*_test.go`).
+  - Use table-driven tests where appropriate.
+  - Use Go’s standard `testing` package.
+
+---
+
+## 5. **Documentation and Comments**
+
+- **Godoc:**  
+  - All exported types, functions, and packages must have doc comments.
+  - Comments should be complete sentences.
+
+- **README and Design Docs:**  
+  - Major subsystems have their own `README.md` or design documentation in the `docs/` directory.
+
+---
+
+## 6. **References**
+
+- [containerd CONTRIBUTING.md](https://github.com/containerd/containerd/blob/main/CONTRIBUTING.md)
+- [containerd Code Style Guide](https://github.com/containerd/containerd/blob/main/docs/CODE_STYLE.md)
+- [containerd Plugin System](https://github.com/containerd/containerd/blob/main/docs/PLUGINS.md)
+- [containerd GoDoc](https://pkg.go.dev/github.com/containerd/containerd)
+- [Go Code Review Comments](https://github.com/golang/go/wiki/</div>
+                </div>
+                <div class="response finetuned-response">
+                    <div class="response-header">🟢 Fine-tuned Model (GPT-4.1 Fine-tuned)</div>
+                    <div class="response-meta">
+                        Tokens: 363 | Time: 5.26s
+                    </div>
+                    <div class="response-text">Containerd follows several key coding standards and conventions to ensure consistency and maintainability. These include: 1) **Go Patterns**: Use idiomatic Go practices, such as error handling with `if err != nil`, context propagation for cancellation and timeouts, and avoiding global state. 2) **Naming Conventions**: Use descriptive names for variables, functions, and structs. For example, `Client` in `client.go` clearly represents the main interface for interacting with containerd. 3) **Architectural Principles**: Containerd emphasizes modularity and separation of concerns. For example, the `client` package abstracts the gRPC communication layer, while other packages handle specific subsystems like snapshots or content storage. 4) **Documentation**: Ensure all exported functions and structs are well-documented using GoDoc comments. 5) **Testing**: Write comprehensive unit tests and integration tests for new features or bug fixes. Use the `testing` package and mock dependencies where appropriate. 6) **Error Handling**: Use `fmt.Errorf` or `errors.Wrap` to provide context for errors, and avoid exposing internal errors directly to users. 7) **Concurrency**: Use Go's concurrency primitives (e.g., goroutines, channels, sync.Mutex) carefully to avoid race conditions and deadlocks. Following these conventions ensures your contributions align with containerd's design philosophy and are easier for other developers to review and maintain.</div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</body>
+</html>
+    

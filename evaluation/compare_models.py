@@ -17,6 +17,8 @@ from datetime import datetime
 from openai import AzureOpenAI
 from azure.identity import AzureCliCredential, get_bearer_token_provider
 
+
+
 @dataclass
 class ModelConfig:
     name: str
@@ -34,6 +36,10 @@ class ComparisonResult:
     base_time: float
     finetuned_time: float
     category: str = "general"
+    # Additional metadata from question file
+    context: str = None
+    expected_topics: List[str] = None
+    original_response_summary: str = None
 
 class ModelComparator:
     def __init__(self, 
@@ -117,7 +123,7 @@ class ModelComparator:
                 "error": str(e)
             }
 
-    async def compare_question(self, question: str, system_prompt: str = None, category: str = "general") -> ComparisonResult:
+    async def compare_question(self, question: str, system_prompt: str = None, category: str = "general", **kwargs) -> ComparisonResult:
         """Compare both models on a single question"""
         # Default system prompt for containerd questions
         if system_prompt is None:
@@ -145,7 +151,10 @@ class ModelComparator:
             finetuned_tokens=finetuned_result["tokens"],
             base_time=base_result["response_time"],
             finetuned_time=finetuned_result["response_time"],
-            category=category
+            category=category,
+            context=kwargs.get("context"),
+            expected_topics=kwargs.get("expected_topics"),
+            original_response_summary=kwargs.get("original_response_summary")
         )
 
     async def run_comparison(self, questions_file: str, output_file: str):
@@ -173,7 +182,14 @@ class ModelComparator:
                 continue
             
             try:
-                result = await self.compare_question(question, system_prompt, category)
+                result = await self.compare_question(
+                    question=question,
+                    system_prompt=system_prompt,
+                    category=category,
+                    context=question_data.get("context"),
+                    expected_topics=question_data.get("expected_topics"),
+                    original_response_summary=question_data.get("original_response_summary")
+                )
                 results.append(result)
                 
                 print(f"  ✅ Base model: {result.base_tokens} tokens, {result.base_time:.2f}s")
@@ -215,7 +231,7 @@ class ModelComparator:
         }
         
         for result in results:
-            results_data["results"].append({
+            result_data = {
                 "question": result.question,
                 "category": result.category,
                 "base_model": {
@@ -228,7 +244,17 @@ class ModelComparator:
                     "tokens": result.finetuned_tokens,
                     "response_time": result.finetuned_time
                 }
-            })
+            }
+            
+            # Add additional metadata if available
+            if result.context:
+                result_data["context"] = result.context
+            if result.expected_topics:
+                result_data["expected_topics"] = result.expected_topics
+            if result.original_response_summary:
+                result_data["original_response_summary"] = result.original_response_summary
+            
+            results_data["results"].append(result_data)
         
         with open(output_file, 'w', encoding='utf-8') as f:
             json.dump(results_data, f, indent=2, ensure_ascii=False)
@@ -275,7 +301,7 @@ class ModelComparator:
             print(f"\nCategory Breakdown:")
             for category, count in sorted(categories.items()):
                 print(f"  {category}: {count} questions")
-
+    
 def main():
     import argparse
     

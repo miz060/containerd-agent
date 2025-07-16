@@ -1,0 +1,62 @@
+[
+  {
+    "question": "In the containerd CRI server's sandbox pod creation process, what is the specific purpose of the `ensureImageExists` function and what happens when it calls `LocalResolve` on an image reference? Explain the two possible code paths and what conditions trigger each path.",
+    "category": "architecture",
+    "system_prompt": "You are an expert in containerd and container runtime systems. Provide accurate, detailed, and practical information about containerd's architecture, APIs, and implementation.",
+    "focus": "Tests understanding of the core ensureImageExists logic flow and LocalResolve behavior"
+  },
+  {
+    "question": "Analyze the `LocalResolve` implementation in the CRI image service. How does it determine whether to treat the input as an image ID versus an image reference, and what specific stores does it query to resolve the image? What are the potential failure modes of this resolution process?",
+    "category": "implementation",
+    "system_prompt": "You are an expert in containerd and container runtime systems. Provide accurate, detailed, and practical information about containerd's architecture, APIs, and implementation.",
+    "focus": "Deep dive into LocalResolve internals and metadata store interaction"
+  },
+  {
+    "question": "Describe the cross-snapshotter scenario problem in containerd's `ensureImageExists` logic. What specific issue occurs when an image was previously pulled with one snapshotter (e.g., overlayfs) but later a container is created with a different snapshotter (e.g., erofs-snapshotter) after garbage collection has occurred?",
+    "category": "problem-analysis",
+    "system_prompt": "You are an expert in containerd and container runtime systems. Provide accurate, detailed, and practical information about containerd's architecture, APIs, and implementation.",
+    "focus": "Tests understanding of the cross-snapshotter metadata/blob store inconsistency issue"
+  },
+  {
+    "question": "In the cross-snapshotter scenario, explain why `LocalResolve` returns success even though the image blobs were garbage collected. What specific data structures and stores are involved, and why does the metadata record persist while the blob store content is removed?",
+    "category": "problem-analysis", 
+    "system_prompt": "You are an expert in containerd and container runtime systems. Provide accurate, detailed, and practical information about containerd's architecture, APIs, and implementation.",
+    "focus": "Tests understanding of the separation between metadata store and blob store"
+  },
+  {
+    "question": "When `ensureImageExists` is called during sandbox pod creation, what role does the snapshotter parameter play in the image resolution and pulling process? How does the `RuntimeSnapshotter` function determine which snapshotter to use, and what configuration options affect this decision?",
+    "category": "configuration",
+    "system_prompt": "You are an expert in containerd and container runtime systems. Provide accurate, detailed, and practical information about containerd's architecture, APIs, and implementation.",
+    "focus": "Tests understanding of snapshotter selection and runtime configuration"
+  },
+  {
+    "question": "Examine the image store's `Resolve` method implementation. How does the refCache work, and what happens when an image reference exists in the cache but the underlying image has been partially garbage collected? What are the implications for container creation?",
+    "category": "implementation",
+    "system_prompt": "You are an expert in containerd and container runtime systems. Provide accurate, detailed, and practical information about containerd's architecture, APIs, and implementation.",
+    "focus": "Tests understanding of image store caching and reference resolution"
+  },
+  {
+    "question": "In containerd's garbage collection process, what is the relationship between the image metadata store, the content store (blobs), and snapshotter-specific data? Why might metadata records persist after content store cleanup, and how does this affect the `ensureImageExists` logic?",
+    "category": "garbage-collection",
+    "system_prompt": "You are an expert in containerd and container runtime systems. Provide accurate, detailed, and practical information about containerd's architecture, APIs, and implementation.",
+    "focus": "Tests understanding of GC behavior and store relationships"
+  },
+  {
+    "question": "What potential solutions could address the cross-snapshotter scenario in `ensureImageExists`? Consider modifications to the `LocalResolve` logic, metadata store tracking, or validation mechanisms. What are the trade-offs of each approach?",
+    "category": "problem-solving",
+    "system_prompt": "You are an expert in containerd and container runtime systems. Provide accurate, detailed, and practical information about containerd's architecture, APIs, and implementation.",
+    "focus": "Tests ability to propose solutions to the cross-snapshotter issue"
+  },
+  {
+    "question": "How does the snapshotStore's Key structure (with both Key and Snapshotter fields) relate to the cross-snapshotter problem? Explain how snapshots are tracked per-snapshotter and why this doesn't prevent the metadata inconsistency issue in `ensureImageExists`.",
+    "category": "data-structures",
+    "system_prompt": "You are an expert in containerd and container runtime systems. Provide accurate, detailed, and practical information about containerd's architecture, APIs, and implementation.",
+    "focus": "Tests understanding of snapshot store organization and its relationship to the problem"
+  },
+  {
+    "question": "In the context of the `ensureImageExists` cross-snapshotter bug, trace through what happens when container creation eventually fails. At what point does the system discover that the image blobs are missing, and what error propagation occurs back to the CRI client? How could early detection improve this flow?",
+    "category": "error-handling",
+    "system_prompt": "You are an expert in containerd and container runtime systems. Provide accurate, detailed, and practical information about containerd's architecture, APIs, and implementation.",
+    "focus": "Tests understanding of error flows and failure detection in the cross-snapshotter scenario"
+  }
+]
