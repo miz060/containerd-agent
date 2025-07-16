@@ -62,6 +62,15 @@ python3 issue-miner/generate_issue_training_data.py \
   --max-qa-entries 3000 --max-issues-per-minute 6
 ```
 
+### Dependencies Training Data Generation
+
+Generate training data from Go module dependencies and their relationships:
+
+```bash
+python3 dependencies_analyzer/generate_azure_openai_training_dependencies_data.py \
+  --max-qa-per-module 3 --all-modules
+```
+
 ### Background Processing
 
 For long-running jobs:
@@ -100,6 +109,7 @@ nohup python3 -u issue-miner/generate_issue_training_data.py \
 
 - **`code-scanner/`**: AI-powered training data from Go source files
 - **`issue-miner/`**: GitHub issues mining and training data generation
+- **`dependencies_analyzer/`**: Go module dependency analyzer and training data generation
 - **`utils/`**: Shared Q&A allocation and processing utilities
 - **`output/`**: Generated JSONL files and metadata
 
@@ -110,7 +120,8 @@ nohup python3 -u issue-miner/generate_issue_training_data.py \
 | Issue data | 3,000 | ~$25 | 3 hours |
 | Code data (balanced) | 6,000 | ~$180 | 5 hours |
 | Code data (maximum) | 12,000 | ~$360 | 10 hours |
-| **Combined maximum** | **15,000** | **~$385** | **13 hours** |
+| Dependencies data | 1,000 | ~$10 | 1.5 hours |
+| **Combined maximum** | **16,000** | **~$395** | **14.5 hours** |
 
 ## Output Format
 
