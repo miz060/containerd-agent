@@ -1,0 +1,62 @@
+[
+  {
+    "question": "What is the purpose of the containerd client package and how does it interact with the daemon?",
+    "category": "architecture",
+    "system_prompt": "You are an expert in containerd and container runtime systems. Provide accurate, detailed, and practical information about containerd's architecture, APIs, and implementation."
+  },
+  {
+    "question": "How does containerd handle container image pulling and caching?",
+    "category": "images",
+    "system_prompt": "You are an expert in containerd and container runtime systems. Provide accurate, detailed, and practical information about containerd's architecture, APIs, and implementation."
+  },
+  {
+    "question": "What are the key differences between containerd's snapshotter implementations?",
+    "category": "storage",
+    "system_prompt": "You are an expert in containerd and container runtime systems. Provide accurate, detailed, and practical information about containerd's architecture, APIs, and implementation."
+  },
+  {
+    "question": "How does containerd integrate with Kubernetes through the CRI interface?",
+    "category": "integration",
+    "system_prompt": "You are an expert in containerd and container runtime systems. Provide accurate, detailed, and practical information about containerd's architecture, APIs, and implementation."
+  },
+  {
+    "question": "What is the role of the containerd metadata store and how is it implemented?",
+    "category": "metadata",
+    "system_prompt": "You are an expert in containerd and container runtime systems. Provide accurate, detailed, and practical information about containerd's architecture, APIs, and implementation."
+  },
+  {
+    "question": "How does containerd handle container lifecycle management through tasks?",
+    "category": "lifecycle",
+    "system_prompt": "You are an expert in containerd and container runtime systems. Provide accurate, detailed, and practical information about containerd's architecture, APIs, and implementation."
+  },
+  {
+    "question": "What are the security considerations when using containerd in production?",
+    "category": "security",
+    "system_prompt": "You are an expert in containerd and container runtime systems. Provide accurate, detailed, and practical information about containerd's architecture, APIs, and implementation."
+  },
+  {
+    "question": "How does containerd's plugin architecture work and how can you extend it?",
+    "category": "plugins",
+    "system_prompt": "You are an expert in containerd and container runtime systems. Provide accurate, detailed, and practical information about containerd's architecture, APIs, and implementation."
+  },
+  {
+    "question": "What are the performance characteristics of different containerd runtimes like runc, runsc, and kata?",
+    "category": "performance",
+    "system_prompt": "You are an expert in containerd and container runtime systems. Provide accurate, detailed, and practical information about containerd's architecture, APIs, and implementation."
+  },
+  {
+    "question": "How does containerd handle networking for containers?",
+    "category": "networking",
+    "system_prompt": "You are an expert in containerd and container runtime systems. Provide accurate, detailed, and practical information about containerd's architecture, APIs, and implementation."
+  },
+  {
+    "question": "What are the key components of the containerd architecture and how do they interact?",
+    "category": "architecture",
+    "system_prompt": "You are an expert in containerd and container runtime systems. Provide accurate, detailed, and practical information about containerd's architecture, APIs, and implementation."
+  },
+  {
+    "question": "How do you troubleshoot common containerd issues in production environments?",
+    "category": "troubleshooting",
+    "system_prompt": "You are an expert in containerd and container runtime systems. Provide accurate, detailed, and practical information about containerd's architecture, APIs, and implementation."
+  }
+]
