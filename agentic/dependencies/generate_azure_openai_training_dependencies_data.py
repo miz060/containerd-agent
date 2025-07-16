@@ -225,7 +225,6 @@ IMPORTANT: Generate exactly {max_qa_pairs} question-answer pairs, no more, no le
                 answer = qa['answer'].replace('\\n', ' ').replace('\n', ' ')
                 answer = re.sub(r'\s+', ' ', answer).strip()
                 qa_jsonl.append({
-                    "module": mod,
                     "messages": [
                         {"role": "system", "content": "You are an expert in containerd and container runtime systems. Provide accurate, detailed, and practical information about containerd's architecture, APIs, and implementation."},
                         {"role": "user", "content": qa['question']},
