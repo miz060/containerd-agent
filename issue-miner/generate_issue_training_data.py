@@ -413,14 +413,7 @@ Format:
                         "role": "assistant", 
                         "content": pair["answer"]
                     }
-                ],
-                "metadata": {
-                    "source": "github_issue",
-                    "issue_number": issue_metadata["number"],
-                    "issue_title": issue_metadata["title"],
-                    "issue_type": issue_metadata["issue_type"],
-                    "priority_score": issue_metadata["priority_score"]
-                }
+                ]
             }
             chat_examples.append(chat_example)
         

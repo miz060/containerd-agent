@@ -384,13 +384,7 @@ IMPORTANT: Generate exactly {qa_count} question-answer pairs, no more, no less.
                         "role": "assistant", 
                         "content": qa['answer']
                     }
-                ],
-                "metadata": {
-                    "source": "code_file",
-                    "file_path": str(Path(file_info.path).relative_to(self.repo_path)),
-                    "package": file_info.package,
-                    "priority_score": file_info.priority_score
-                }
+                ]
             }
             
             jsonl_entries.append(jsonl_entry)
