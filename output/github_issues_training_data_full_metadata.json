@@ -1,0 +1,13 @@
+{
+  "generation_timestamp": "2025-07-15T22:22:14.161814",
+  "source_metadata_file": "output/github_issues_metadata_all.json",
+  "total_issues_processed": 1141,
+  "successful_generations": 1141,
+  "failed_generations": 3,
+  "total_training_examples": 2988,
+  "total_qa_pairs": 2988,
+  "total_tokens_used": 3262874,
+  "estimated_cost": 21.641409999999997,
+  "azure_endpoint": "https://mitchzhu-containerd.openai.azure.com/",
+  "deployment": "gpt-4o"
+}
