@@ -1,4 +1,14 @@
-# Containerd Agent Training Data Generator
+```
+  ____            _        _                 _    ____       _     _   __  __ _                 
+ / ___|___  _ __ | |_ __ _(_)_ __   ___ _ __| |  / ___| ___ | | __| | |  \/  (_)_ __   ___ _ __ 
+| |   / _ \| '_ \| __/ _` | | '_ \ / _ \ '__| | | |  _ / _ \| |/ _` | | |\/| | | '_ \ / _ \ '__|
+| |__| (_) | | | | || (_| | | | | |  __/ |  | | | |_| | (_) | | (_| | | |  | | | | | |  __/ |   
+ \____\___/|_| |_|\__\__,_|_|_| |_|\___|_|  |_|  \____|\___/|_|\__,_| |_|  |_|_|_| |_|\___|_|   
+                                                                                                  
+            🏗️  Mining Gold from Containerd Code & Issues  ⛏️
+```
+
+# Containerd Gold Miner
 
 This system generates high-quality fine-tuning data for Azure OpenAI by analyzing the containerd repository. It creates comprehensive training datasets from both source code and GitHub issues using Azure OpenAI GPT-4o. The generated data is specifically formatted for supervised fine-tuning of Azure OpenAI models to create containerd domain experts.
 
@@ -14,7 +24,7 @@ This system generates high-quality fine-tuning data for Azure OpenAI by analyzin
 
 2. **Install dependencies**:
    ```bash
-   cd /workspace/containerd-agent
+   cd /workspace/containerd-gold-miner
    pip install -r requirements.txt
    ```
 
