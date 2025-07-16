@@ -37,7 +37,7 @@ python3 evaluate_models.py \
 
 ## Model Endpoints
 
-- **Fine-tuned Model**: `t-4-1-2025-04-14-ft-f20223e392164a70bf32144db3ab63c6-_containerd`
+- **Fine-tuned Model**: `gpt-4-04-14`
 - **Baseline Model**: `gpt-4.1-general`
 
 ## Evaluation Categories

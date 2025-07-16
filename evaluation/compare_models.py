@@ -40,7 +40,7 @@ class ModelComparator:
                  base_endpoint: str = "https://mitchzhu-containerd.openai.azure.com/",
                  base_deployment: str = "gpt-4.1-general",
                  finetuned_endpoint: str = "https://mitchzhu-containerd.openai.azure.com/",
-                 finetuned_deployment: str = "t-4-1-2025-04-14-ft-f20223e392164a70bf32144db3ab63c6-_containerd"):
+                 finetuned_deployment: str = "gpt-4-04-14"):
         
         # Initialize Azure CLI authentication
         token_provider = get_bearer_token_provider(
@@ -283,7 +283,7 @@ def main():
     parser.add_argument('--questions', required=True, help='Path to questions JSON file')
     parser.add_argument('--output', required=True, help='Path to output results JSON file')
     parser.add_argument('--base-deployment', default='gpt-4.1-general', help='Base model deployment name')
-    parser.add_argument('--finetuned-deployment', default='t-4-1-2025-04-14-ft-f20223e392164a70bf32144db3ab63c6-_containerd', help='Fine-tuned model deployment name')
+    parser.add_argument('--finetuned-deployment', default='gpt-4-04-14', help='Fine-tuned model deployment name')
     
     args = parser.parse_args()
     

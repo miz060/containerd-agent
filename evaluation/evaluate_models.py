@@ -27,7 +27,7 @@ class ModelEvaluator:
         # Model configurations
         self.models = {
             "fine_tuned": {
-                "deployment": "t-4-1-2025-04-14-ft-f20223e392164a70bf32144db3ab63c6-_containerd",
+                "deployment": "gpt-4-04-14",
                 "display_name": "Fine-tuned Containerd Model",
                 "system_message": "You are an expert in containerd and container runtime systems. Provide accurate, detailed, and practical information about containerd's architecture, APIs, and implementation."
             },
